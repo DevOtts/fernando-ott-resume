@@ -2,7 +2,7 @@
   <img src="https://media.licdn.com/dms/image/v2/D4D03AQGLRfIttnbNkA/profile-displayphoto-scale_400_400/B4DZrLOHGnG8Ag-/0/1764346067628?e=1776902400&v=beta&t=SBczeajmRTKGsCVbCaaun0QQD1NfASdxhaz7k8tcB6M" width="120" style="border-radius:50%" alt="Fernando Ott" />
 </p>
 
-<h1 align="center">Fernando Ott — Interactive AI Resume</h1>
+<h1 align="center">Fernando Ott</h1>
 
 <p align="center">
   <strong>Head of AI · AI Architect · 16+ yrs engineering · 4+ yrs AI/ML in production</strong><br/>
@@ -17,238 +17,162 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Next.js-16-000000?style=flat&logo=nextdotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat&logo=typescript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/LangChain-LCEL-1C3C3C?style=flat&logo=langchain&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Supabase-pgvector-3ECF8E?style=flat&logo=supabase&logoColor=white"/>
-  <img src="https://img.shields.io/badge/ElevenLabs-Voice-000000?style=flat&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Vercel-Deployed-000000?style=flat&logo=vercel&logoColor=white"/>
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat&logo=langchain&logoColor=white"/>
+  <img src="https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazonaws&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white"/>
+  <img src="https://img.shields.io/badge/OpenSearch-005EB8?style=flat&logo=opensearch&logoColor=white"/>
 </p>
 
 ---
 
-> **This repo is the resume.** The code quality, architecture decisions, and AI integration patterns here reflect how I actually build things in production.
+> I design multi-agent AI systems that plug into real business tools, understand context, and make decisions autonomously. 16+ years shipping software. 4+ years deploying AI at scale. My focus is turning complex AI ideas into platforms that actually run in production.
+
+> **This repo is itself a portfolio signal** — the architecture, TypeScript patterns, and AI integration choices here reflect how I build in production. → [Technical docs](docs/PROJECT.md)
 
 ---
 
-## What This Is
+## What I Do
 
-This is not a static HTML page. It is a full-stack AI-powered resume application that I designed and built to demonstrate how I think about software, AI systems, and user experience.
+I sit at the intersection of AI architecture, engineering leadership, and product thinking. I define technical direction, manage AI engineering teams, and ship systems that move real business metrics — not demos.
 
-**Live features:**
-- 🎙 **Voice intro** — ElevenLabs TTS with a cloned voice greets each recruiter by name
-- 🤖 **AI clone chat** — A RAG-powered AI that answers questions about my career as I would
-- 🎯 **Exit-intent capture** — Smart modal that converts visitors into leads before they leave
-- 📊 **Recruiter analytics** — PostHog tracks which questions get asked, voice skip rates, and booking conversions
-- 🌀 **Orbital hero** — JS-driven trigonometric orbital animation (radial-orbital-timeline pattern)
+My core competency is **agentic AI systems**: multi-tenant platforms where agents specialize, hand off tasks, retrieve context from vector + graph + structured stores, and integrate with the tools businesses already use.
 
 ---
 
-## Who I Am
+## Experience
 
-I design and ship multi-agent AI systems. My focus is turning complex AI ideas into platforms that actually run in production and move real business metrics.
+### Head of AI & AI Architect — 8 Figure Agency
+**Jul 2025 – Present · Remote (Santa Monica, CA)**
 
-**Current:** Head of AI & AI Architect at [8 Figure Agency](https://www.8figureagency.co) — built **Brain**, a multi-tenant multi-agent AI OS connecting CRMs, ads platforms, Slack, meetings, and data warehouses. Brain cut 20–30 hours of manual work per client per week.
+8 Figure Agency is an AI-first agency. I lead the design and execution of **Brain** — their multi-tenant, multi-agent AI OS.
 
-**Previous:** Tech Lead at KeHE Distributors (NASDAQ, $8B+ revenue) — rebuilt their B2B e-commerce search platform on AWS + OpenSearch. **14× search speed**, **2× sales conversion**, **onboarding cut from 15 min → 2 min**.
+Brain connects to client tools: CRMs, ad platforms, Slack, meeting tools, and data warehouses. It uses vector stores, graph databases, and structured stores together. The orchestration layer runs on LangChain and CrewAI with reusable agent patterns — adding a new client is configuration, not code.
 
-**Foundation:** Co-founded and served as CTO of [Polen](https://github.com/devotts) for 10 years — first social impact Open API in Latin America. $550K raised, 5,000+ companies, 25M+ users.
-
----
-
-## Tech Stack
-
-| Layer | Technologies |
-|---|---|
-| **Frontend** | Next.js 16 App Router · Tailwind CSS v4 · TypeScript strict |
-| **AI Orchestration** | LangChain LCEL · CrewAI · MCP Server |
-| **LLM Gateway** | OpenRouter (model-agnostic routing) |
-| **RAG / Knowledge** | Supabase pgvector · hybrid search |
-| **Voice** | ElevenLabs (cloned voice, server-side streaming) |
-| **Observability** | LangSmith · PostHog · Grafana · Datadog |
-| **Infrastructure** | AWS · Docker · Vercel · Supabase |
-| **Languages** | Python · TypeScript · C# / .NET |
+- Designed and shipped Brain from whiteboard to multi-client production in months
+- **Cut 20–30 hours of manual work per client per week**
+- LLM strategy: model selection, prompting patterns, tool use, retrieval, guardrails
+- Built evaluation frameworks for AI outputs
+- Production observability with Grafana, Datadog, and LangSmith
+- Stack: Python · Next.js · LangChain · CrewAI · MCP Server · Vector DBs · MongoDB · Supabase · PostgreSQL · AWS
 
 ---
 
-## Architecture
+### Tech Lead & Architect — KeHE Distributors *(NASDAQ: KEHE · $8B+ revenue)*
+**Jul 2022 – Jun 2025 · Remote (Naperville, IL)**
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                       Next.js App Router                        │
-├────────────────────────────┬────────────────────────────────────┤
-│         Frontend           │           Backend (BFF)            │
-│                            │                                    │
-│  page.tsx                  │  /api/chat                         │
-│  ├── HeroSection           │   ├── Session management           │
-│  │   └── Orbital animation │   ├── Guardrails (pre-LLM)        │
-│  ├── ExperienceSection     │   ├── Supabase pgvector RAG        │
-│  ├── PortfolioSection      │   ├── LangChain LCEL chain         │
-│  ├── SkillsSection         │   ├── OpenRouter (Claude Sonnet)   │
-│  ├── ChatPanel             │   └── SSE streaming                │
-│  │   ├── Name collection   │                                    │
-│  │   ├── Voice intro       │  /api/voice-intro                  │
-│  │   └── Streaming chat    │   ├── 1 req/session rate limit     │
-│  └── ExitIntentModal       │   └── ElevenLabs TTS stream        │
-│                            │                                    │
-│                            │  /api/leads                        │
-│                            │   ├── Supabase insert              │
-│                            │   └── Slack webhook (optional)     │
-└────────────────────────────┴────────────────────────────────────┤
-                             │
-             ┌───────────────┴──────────────┐
-             │                              │
-        Supabase pgvector              OpenRouter
-        knowledge_chunks               model routing
-        leads table                    (Claude Sonnet)
-```
+Led the transformation of KeHE's B2B e-commerce search platform — millions of daily queries from retail buyers.
 
-**Key patterns:**
-- **BFF (Backend-for-Frontend)** — All secrets and AI calls are server-side. Zero credentials exposed to the browser.
-- **RAG with graceful degradation** — If Supabase is unavailable, the chat still works from model knowledge.
-- **Rate limiting per session** — Voice intro is 1 request/session via httpOnly cookie. Chat is capped at 20 messages.
-- **Guardrails as a system** — Pre-LLM keyword filters + post-generation classifiers + booking redirect for sensitive topics.
+- **14× improvement in search speed**
+- **2× improvement in sales conversion rate**
+- **B2B client onboarding: 15 min → 2 min**
+- Selected and implemented OpenSearch on AWS after guiding the team through a structured POC process
+- Built flexible architecture enabling ads placement directly in search results
+- Managed multiple engineering teams across retailer and back-office operations
+- Stack: AWS · OpenSearch · .NET 8 · Angular · DynamoDB · SQS · PostgreSQL · Datadog
 
 ---
 
-## Project Structure
+### Co-Founder & CTO — Polen
+**Nov 2013 – Aug 2024 · Curitiba, Brazil**
 
-```
-├── app/
-│   ├── api/
-│   │   ├── chat/route.ts          # LangChain LCEL chain, SSE streaming
-│   │   ├── voice-intro/route.ts   # ElevenLabs TTS, rate-limited
-│   │   └── leads/route.ts         # Lead capture → Supabase + Slack
-│   ├── globals.css                # Design tokens (CSS custom properties)
-│   ├── layout.tsx                 # Fonts, PostHog, meta
-│   └── page.tsx                   # Main page composition
-├── components/                    # One component per file, no barrel exports
-│   ├── HeroSection.tsx            # Orbital animation (JS trigonometry)
-│   ├── ChatPanel.tsx              # Full chat UI + voice intro flow
-│   ├── OrbitalVoiceIntro.tsx      # Web Audio API amplitude animation
-│   ├── ExitIntentModal.tsx        # Lead capture on exit intent
-│   └── YouTubeSection.tsx         # Embedded video section
-├── knowledge/                     # Markdown files → Supabase pgvector
-│   ├── career.md                  # Professional history
-│   ├── technical.md               # Architecture opinions and stack
-│   ├── personality.md             # Who Fernando is
-│   └── faq.md                     # Common recruiter questions
-├── prompts/
-│   └── system.md                  # AI clone system prompt (public, intentional)
-├── scripts/
-│   └── ingest.ts                  # Embeds knowledge/ into pgvector
-├── supabase/
-│   └── migrations/001_init.sql    # DB schema: knowledge_chunks + leads
-├── .claude/
-│   ├── features.json              # 34 tracked features, all passing
-│   └── progress.md                # Session-by-session build log
-└── docs/
-    └── PRD.md                     # Full product requirements document
-```
+Polen was the first social impact Open API in Latin America. I co-founded it, served as CEO for 2 years, then transitioned to CTO and ran the technical organization for ~10 years total.
+
+- **$550K in venture capital raised**
+- **5,000+ companies** using the platform
+- **25M+ end users** reached
+- **$1.5M+ in donations** processed
+- ~20 direct reports; implemented OKRs and Scrum across the org
+- Accepted to accelerators in Chile (Start-Up Chile), UK (DotForge Impact), and Brazil (Start You Up)
+- Migrated from monolith to microservices (Docker, Kubernetes, Google Cloud)
+- Stack: C# / .NET · Angular · MongoDB · Docker · Kubernetes · Google Cloud
 
 ---
 
-## Local Setup
+### Early Career — Enterprise & Retail Systems
+**2008 – 2013 · São Paulo & Curitiba, Brazil**
 
-```bash
-# 1. Clone
-git clone https://github.com/devotts/fernando-ott-resume
-cd fernando-ott-resume
+Built systems handling millions of transactions at Walmart Brazil, BuscaPé (anti-fraud), PRNewswire, FCamara, and MPS. This is where I built discipline in SQL optimization, unit testing, CI, and Scrum — and started managing teams.
 
-# 2. Install (pnpm only — no npm/yarn)
-pnpm install
-
-# 3. Configure environment
-cp .env.example .env.local
-# Fill in the values — see table below
-
-# 4. Set up Supabase (optional — app degrades gracefully without it)
-# Run supabase/migrations/001_init.sql in your Supabase project
-# Then embed the knowledge base:
-pnpm ingest
-
-# 5. Start
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-### Key Commands
-
-```bash
-pnpm dev          # Dev server on localhost:3000
-pnpm build        # Production build
-pnpm lint         # ESLint
-pnpm typecheck    # TypeScript strict check
-pnpm ingest       # Re-embed knowledge/ files into Supabase pgvector
-```
+Stack: ASP.NET / C# · SQL Server · jQuery
 
 ---
 
-## Environment Variables
+## What I've Built
 
-| Variable | Required | Description |
-|---|---|---|
-| `OPENROUTER_API_KEY` | **Yes** | LLM gateway — [openrouter.ai](https://openrouter.ai) |
-| `ELEVENLABS_API_KEY` | Voice | [elevenlabs.io](https://elevenlabs.io) |
-| `ELEVENLABS_VOICE_ID` | Voice | Cloned voice ID from ElevenLabs dashboard |
-| `BOOKING_URL` | Guardrails | Scheduling link shown on sensitive questions |
-| `SUPABASE_URL` | RAG + leads | Supabase project URL |
-| `SUPABASE_PUBLISHABLE_KEY` | RAG + leads | Supabase publishable key |
-| `SUPABASE_SECRET_KEY` | RAG + leads | Supabase secret key (server-side only) |
-| `LANGSMITH_API_KEY` | Tracing | LLM observability — [smith.langchain.com](https://smith.langchain.com) |
-| `NEXT_PUBLIC_POSTHOG_KEY` | Analytics | [posthog.com](https://posthog.com) |
-| `LEAD_NOTIFICATION_WEBHOOK` | Optional | Slack webhook for new lead alerts |
+### Brain — Multi-Tenant AI Platform *(8 Figure Agency)*
+Multi-agent OS for business automation. Connects CRMs, ad platforms, Slack, meetings, and data warehouses. Agents specialize and hand off tasks through structured patterns. Reusable architecture means new clients are onboarded through configuration, not custom engineering. In production, cutting 20–30 hours/week per client.
 
-All secrets are server-side only. The BFF pattern ensures nothing sensitive reaches the browser.
+### OpenSearch Platform — B2B Search *(KeHE Distributors)*
+Rebuilt an e-commerce search platform from the ground up on AWS + OpenSearch. 14× faster. 2× better conversion. Enabled ads placement within search results. Still processing millions of daily queries.
+
+### Cognia — AI Psychologist *(Side project)*
+Multi-model AI system for psychological support. Three validation checkpoints before routing to a human. Fine-tuned for specific personality profiles and domain vocabulary in psychology. Built with safety as a first-class concern.
+
+### TaskClaw — Open Source *(Personal)*
+Kanban board with AI chat and bidirectional sync with Notion and ClickUp. [GitHub →](https://github.com/devotts)
 
 ---
 
-## AI Clone Knowledge Base
+## Technical Depth
 
-The AI chat clone pulls from four markdown files in `knowledge/`:
+**AI / LLM Orchestration**
+LangChain · CrewAI · MCP Server · OpenRouter · LangSmith · RAG pipelines · hybrid search (vector + BM25) · fine-tuning · multi-agent architectures · guardrails design · eval frameworks
 
-| File | Contents |
-|---|---|
-| `career.md` | Professional history: roles, companies, outcomes, metrics |
-| `technical.md` | Architecture opinions, stack preferences, production AI patterns |
-| `personality.md` | Background, interests, how Fernando thinks |
-| `faq.md` | Common recruiter questions with natural, honest answers |
+**Infrastructure & Cloud**
+AWS (Lambda · SQS · S3 · DynamoDB · OpenSearch · CodeBuild · CloudWatch) · Docker · Kubernetes · Google Cloud · Vercel · Supabase
 
-To update the AI's knowledge:
-1. Edit the relevant file in `knowledge/`
-2. Run `pnpm ingest` to re-embed into Supabase pgvector
-3. Changes are reflected immediately in chat
+**Databases**
+PostgreSQL · pgvector · MongoDB · DynamoDB · OpenSearch · Redis
 
-The system prompt is at [`prompts/system.md`](prompts/system.md) — it's public by design. Prompt quality is part of the portfolio.
+**Languages & Frameworks**
+Python · TypeScript · C# / .NET · Next.js · Angular · Node.js
 
----
-
-## Deployment
-
-```bash
-vercel --prod
-```
-
-Configure environment variables in your Vercel project settings. The `vercel.json` maps secret references to the expected variable names.
-
-**Security headers** configured in `next.config.ts`: `X-Content-Type-Options`, `X-Frame-Options`, `X-XSS-Protection`, `Referrer-Policy`.
+**Observability**
+LangSmith · Grafana · Datadog · CloudWatch · PostHog
 
 ---
 
-## Why This Exists
+## Where I'm Growing
 
-Most resumes are PDFs. This one is a production application.
+I'm honest about gaps. These are areas I understand conceptually but haven't run in production:
 
-I built it to show — not tell — how I approach software: clean TypeScript, streaming AI responses, proper BFF security patterns, RAG with graceful degradation, session-based rate limiting, and an orbital animation powered by trigonometry rather than CSS hacks.
+- AI image and video generation pipelines
+- Classical ML research (my ML is applied: RAG, fine-tuning, orchestration)
+- OCR and document processing at scale
+- Formal AWS certifications (extensive hands-on experience, no certs yet)
 
-If you're hiring for an AI Architect, Head of AI, or VP of AI role and want someone who actually ships — [let's talk](https://www.linkedin.com/in/feott/).
+---
+
+## Education
+
+**B.Sc. Computer Science** — Universidade Federal do Paraná (UFPR), 2007–2011
+
+Microsoft Student to Business (S2B) C# Program, 2008 · Startup Weekend Winner
+
+---
+
+## Content
+
+I run **[Otimiza AI](https://www.youtube.com/@otimiza-ai)** on YouTube — practical content on building AI systems, agents, and automation in Portuguese.
+
+---
+
+## What I'm Looking For
+
+AI Architect · Head of AI · VP of AI
+
+Teams that actually ship AI to production — not teams doing POCs that never graduate. I want to work at the intersection of technical depth and business impact, in an environment where I can contribute at a strategic level.
+
+Not looking for just any role. Looking for the right one.
+
+**→ [LinkedIn](https://www.linkedin.com/in/feott/) · [Let's talk](https://www.linkedin.com/in/feott/)**
 
 ---
 
 <p align="center">
-  Built with Next.js · LangChain · Supabase · ElevenLabs · Vercel<br/>
-  <a href="https://www.linkedin.com/in/feott/">LinkedIn</a> &nbsp;·&nbsp;
-  <a href="https://github.com/devotts">GitHub</a> &nbsp;·&nbsp;
-  <a href="https://www.youtube.com/@otimiza-ai">YouTube</a>
+  <a href="docs/PROJECT.md">Technical docs & architecture →</a>
 </p>
