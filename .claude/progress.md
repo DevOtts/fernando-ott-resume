@@ -16,6 +16,11 @@
 
 ## Session Log
 
+### Session 13 — 2026-04-06 (gaps + orbital tag updates)
+- Gaps section: replaced "AWS Certifications" with "Business Intelligence" — honest framing that ClickHouse/BigQuery exposure exists but BI tooling is not a focus area
+- Orbital tags: removed MCP, added Neo4j (simpleicons logo) and Vector DB (Pinecone logo)
+- Total orbital tags on inner ring: 9
+
 ### Session 12 — 2026-04-06 (SEO + GEO enhancement — F035)
 - Replaced favicon.ico with Fernando's GitHub avatar (https://avatars.githubusercontent.com/u/851664)
   - `app/icon.png` — 192×192 (browser tab icon, Next.js convention)
