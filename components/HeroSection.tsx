@@ -17,9 +17,10 @@ const ORBIT_TAGS: OrbitalTag[] = [
   { label: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png" },
   { label: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
   { label: "Hugging Face", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcHc3LEYy9t1hlr-9kUbZ6_hJpu0J4Qyslug&s" },
-  { label: "Docker", logo: "https://cdn.simpleicons.org/docker/2496ED" },
-  { label: "MCP", logo: "https://cdn.sanity.io/images/fxdpen95/production/286312bc09b5f29fc0b346c391b831eaa19ce02f-1059x812.png" },
-  { label: "Python", logo: "https://cdn.simpleicons.org/python/3776AB" },
+  { label: "Docker",    logo: "https://cdn.simpleicons.org/docker/2496ED" },
+  { label: "Neo4j",     logo: "https://cdn.simpleicons.org/neo4j/008CC1" },
+  { label: "Vector DB", logo: "https://montecarlodata.com/wp-content/uploads/2023/12/pinecone-icon-logo-AF8B5B7F96-seeklogo.com_.png" },
+  { label: "Python",    logo: "https://cdn.simpleicons.org/python/3776AB" },
 ];
 
 interface InfoCard {

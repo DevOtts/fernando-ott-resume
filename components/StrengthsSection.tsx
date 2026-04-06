@@ -71,8 +71,8 @@ const gaps = [
     desc: "Haven't worked with OCR specifically, but I've built architecturally analogous ingestion and classification systems. The patterns translate, but I'd be learning the specific tooling.",
   },
   {
-    title: "AWS Certifications",
-    desc: "I've used AWS extensively in production (Lambdas, SQS, S3, DynamoDB, OpenSearch, CloudWatch), but don't hold formal certifications yet.",
+    title: "Business Intelligence",
+    desc: "I've queried ClickHouse and BigQuery in production contexts, but BI tooling — dashboards, data modelling, semantic layers — has never been my focus. Not where I want to specialize.",
   },
 ];
 
