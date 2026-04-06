@@ -12,13 +12,6 @@ export function Footer() {
       <p>
         Fernando Ott · Head of AI &amp; AI Architect ·{" "}
         <a
-          href="mailto:ferott@gmail.com"
-          style={{ color: "var(--accent)", textDecoration: "none" }}
-        >
-          ferott@gmail.com
-        </a>{" "}
-        ·{" "}
-        <a
           href="https://www.linkedin.com/in/feott/"
           target="_blank"
           rel="noopener noreferrer"

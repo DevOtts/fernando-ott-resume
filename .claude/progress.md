@@ -16,6 +16,17 @@
 
 ## Session Log
 
+### Session 3 — 2026-04-06 (UI enhancements)
+- Hero: replaced static floating cards with orbital animation around circular profile photo (8 tech tags: Anthropic, LangChain, AWS, Next.js, OpenSearch, Docker, MCP, Python — with logos)
+- Hero: updated YouTube link to @otimiza-ai, removed email from social links
+- Footer: removed email link (ferott@gmail.com)
+- CTASection: removed "Email Me" button
+- ExitIntentModal + ChatPanel: replaced email fallback text with LinkedIn redirect
+- ChatPanel: replaced "How does Brain work?" quick questions with career-focused ones
+- Created YouTubeSection component with clickable thumbnail embeds and VIDEOS array for easy expansion
+- Added two videos: x5D24tXGcVQ and vxrO7Vs4EPA
+- YouTubeSection inserted between Education and CTA in page.tsx
+
 ### Session 1 — 2026-04-06
 - Set up project scaffolding: features.json, progress.md, init.sh, CLAUDE.md, evals, hooks
 - Created docs/PRD.md

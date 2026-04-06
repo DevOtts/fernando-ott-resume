@@ -53,37 +53,6 @@ export function CTASection({ onChatOpen }: CTASectionProps) {
         }}
       >
         <a
-          href="mailto:ferott@gmail.com"
-          style={{
-            padding: "12px 28px",
-            borderRadius: 10,
-            fontSize: "0.9rem",
-            fontWeight: 600,
-            textDecoration: "none",
-            fontFamily: "var(--sans)",
-            cursor: "pointer",
-            transition: "all 0.25s",
-            border: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            background: "#fff",
-            color: "var(--bg-dark)",
-          }}
-          onMouseEnter={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.background = "#E8E8E8";
-            el.style.transform = "translateY(-2px)";
-          }}
-          onMouseLeave={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.background = "#fff";
-            el.style.transform = "translateY(0)";
-          }}
-        >
-          ✉ Email Me
-        </a>
-        <a
           href="https://www.linkedin.com/in/feott/"
           target="_blank"
           rel="noopener noreferrer"

@@ -18,11 +18,11 @@ interface ChatPanelProps {
 }
 
 const QUICK_QUESTIONS = [
-  "How does Brain work?",
-  "Leadership style?",
-  "Biggest challenge?",
-  "Why looking for new role?",
-  "What are your gaps?",
+  "What's your AI architecture experience?",
+  "Tell me about your leadership style",
+  "What have you built at 8 Figure Agency?",
+  "Why are you looking for a new role?",
+  "What's your biggest career achievement?",
 ];
 
 export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
@@ -163,7 +163,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
           {
             role: "assistant",
             content:
-              "Having trouble connecting. Email me at ferott@gmail.com or reach out on LinkedIn.",
+              "Having trouble connecting. Reach out on LinkedIn or find my contact on the page.",
           },
         ]);
       } finally {

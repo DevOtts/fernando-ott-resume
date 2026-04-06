@@ -76,7 +76,7 @@ export function ExitIntentModal() {
       setModalState("submitted");
       trackEvent("lead_captured", { intent: selectedIntent });
     } catch {
-      setError("Something went wrong. Please email ferott@gmail.com directly.");
+      setError("Something went wrong. Please try again or reach out on LinkedIn.");
     } finally {
       setIsSubmitting(false);
     }

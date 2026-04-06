@@ -9,6 +9,7 @@ import { ExperienceSection } from "@/components/ExperienceSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { EducationSection } from "@/components/EducationSection";
+import { YouTubeSection } from "@/components/YouTubeSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { ChatPanel } from "@/components/ChatPanel";
@@ -35,6 +36,8 @@ export default function Home() {
         <SkillsSection />
         <Divider />
         <EducationSection />
+        <Divider />
+        <YouTubeSection />
         <CTASection onChatOpen={() => setChatOpen(true)} />
       </main>
       <Footer />
