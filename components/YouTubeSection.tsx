@@ -13,26 +13,26 @@ interface YouTubeVideo {
 const VIDEOS: YouTubeVideo[] = [
   {
     id: "3oXyXOxIM2g",
-    title: "Building AI Agents That Actually Work",
-    description: "A practical walkthrough of production multi-agent architecture — what works, what doesn't, and why most demos never ship.",
+    title: "Vibe Coding Levels 1–5",
+    description: "Most devs are stuck at level 3. A breakdown of the 5 levels of AI-assisted coding and where engineers actually plateau.",
     lang: "en",
   },
   {
     id: "fDRRQTpcLhc",
-    title: "Como Construir Agentes de IA em Produção",
-    description: "Arquitetura de agentes de IA para sistemas reais — orquestração, RAG e guardrails em produção.",
+    title: "3 Ferramentas de IA para Editar Vídeos",
+    description: "Crie e edite vídeos rápido usando IA — horas viraram minutos com essas três ferramentas.",
     lang: "pt",
   },
   {
     id: "Y8hKX9iY40s",
-    title: "LangChain na Prática",
-    description: "LangChain LCEL na prática: chains, RAG pipelines e ferramentas para automação de workflows com IA.",
+    title: "Como Rodar DeepSeek R1 Grátis",
+    description: "Instale e rode o DeepSeek R1 localmente no Windows, Mac ou Linux — sem custos de API.",
     lang: "pt",
   },
   {
     id: "Ujd-FXNT6Ms",
-    title: "Introdução ao Otimiza AI",
-    description: "Primeiro episódio do canal: o que é automação com IA e por que a maioria das empresas está fazendo errado.",
+    title: "Crie um SDR com IA",
+    description: "Como construir um agente de IA que qualifica leads e agenda reuniões por telefone automaticamente.",
     lang: "pt",
   },
   {
