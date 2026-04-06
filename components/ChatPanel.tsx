@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { OrbitalVoiceIntro } from "@/components/OrbitalVoiceIntro";
 
 interface Message {
   role: "user" | "assistant";
@@ -59,15 +60,18 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
     const name = nameInput.trim();
     if (!name) return;
     setRecruiterName(name);
-    // Skip voice intro for now — go straight to chat
+    setChatState("voice-intro");
+  };
+
+  const handleVoiceComplete = useCallback(() => {
     setChatState("chat");
     setMessages([
       {
         role: "assistant",
-        content: `Hey ${name}! I'm Fernando's AI clone. I know his career, projects, and thinking inside out. What would you like to know?`,
+        content: `Hey ${recruiterName}! I'm Fernando's AI clone. I know his career, projects, and thinking inside out. What would you like to know?`,
       },
     ]);
-  };
+  }, [recruiterName]);
 
   const sendMessage = useCallback(
     async (text?: string) => {
@@ -367,6 +371,14 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
               </button>
             </div>
           </div>
+        )}
+
+        {/* Voice intro state */}
+        {chatState === "voice-intro" && (
+          <OrbitalVoiceIntro
+            recruiterName={recruiterName}
+            onComplete={handleVoiceComplete}
+          />
         )}
 
         {/* Chat state */}
