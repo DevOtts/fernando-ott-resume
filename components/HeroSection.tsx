@@ -47,7 +47,7 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
   useEffect(() => {
     rafRef.current = setInterval(() => {
       setAngle((a) => (a + SPEED) % 360);
-      setAngle2((a) => (a + SPEED2) % 360);
+      setAngle2((a) => (a - SPEED2 + 360) % 360);
     }, 50);
     return () => { if (rafRef.current) clearInterval(rafRef.current); };
   }, []);
