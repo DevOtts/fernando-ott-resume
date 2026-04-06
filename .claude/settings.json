@@ -1,0 +1,47 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Before stopping, verify: 1) Has .claude/features.json been updated with completed features set to 'pass'? 2) Has .claude/progress.md been updated with what was done this session? 3) Were completed features committed to git with descriptive messages? If any are missing, respond with {\"ok\": false, \"reason\": \"describe what's missing\"}."
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "A UI feature was just completed. Using Playwright MCP, verify it works on both: (1) desktop at 1280x800 — navigate to http://localhost:3000, take a screenshot, verify layout matches the PRD spec in docs/PRD.md. (2) mobile at 375x667 — same verification. If layout is broken or the feature doesn't work as specified, respond with {\"ok\": false, \"reason\": \"specific issue found\"}. If all good, respond with {\"ok\": true}.",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code needs your attention\" with title \"Fernando Resume Build\"' 2>/dev/null; exit 0"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'CONTEXT REMINDER: Read .claude/features.json for feature status. Read .claude/progress.md for current state. Read docs/PRD.md for full specification. Pick the next FAILING feature respecting depends_on chains. Implement it, verify it works (use Playwright for UI features), update features.json to pass, update progress.md, then commit. Package manager is pnpm.'"
+          }
+        ]
+      }
+    ]
+  }
+}

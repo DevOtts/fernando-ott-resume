@@ -1,0 +1,35 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "env": {
+    "OPENROUTER_API_KEY": "@openrouter_api_key",
+    "ELEVENLABS_API_KEY": "@elevenlabs_api_key",
+    "ELEVENLABS_VOICE_ID": "@elevenlabs_voice_id",
+    "CALENDLY_URL": "@calendly_url",
+    "LANGSMITH_API_KEY": "@langsmith_api_key",
+    "LANGSMITH_PROJECT": "@langsmith_project",
+    "LANGCHAIN_TRACING_V2": "@langchain_tracing_v2",
+    "NEXT_PUBLIC_SUPABASE_URL": "@next_public_supabase_url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@next_public_supabase_anon_key",
+    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
+    "NEXT_PUBLIC_POSTHOG_KEY": "@next_public_posthog_key",
+    "NEXT_PUBLIC_POSTHOG_HOST": "@next_public_posthog_host",
+    "LEAD_NOTIFICATION_WEBHOOK": "@lead_notification_webhook"
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    }
+  ]
+}
