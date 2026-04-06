@@ -16,6 +16,16 @@
 
 ## Session Log
 
+### Session 8 — 2026-04-06 (mobile responsive orbital)
+- On ≤860px viewports outer ring (info cards) is hidden, canvas shrinks to 340×340
+- Inner tech-tag ring stays visible on mobile, fits cleanly without overflow
+- Uses matchMedia listener so layout responds to live viewport resizes
+- Desktop unchanged — both rings visible on 500×500 canvas
+
+### Session 7 — 2026-04-06 (counter-clockwise outer ring)
+- Outer ring (info cards) now rotates counter-clockwise: `(a - SPEED2 + 360) % 360`
+- Inner ring (tech tags) continues clockwise — opposing directions add visual interest
+
 ### Session 6 — 2026-04-06 (info cards join orbital)
 - Added INFO_CARDS array with 3 entries (Brain AI, 4+ yrs AI in Production, Curitiba Brazil)
 - Cards orbit on outer ring (RADIUS2 = 210px) driven by same setInterval, speed 0.18°/tick
