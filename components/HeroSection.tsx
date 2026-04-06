@@ -42,7 +42,16 @@ const SPEED2 = 0.18;      // slightly slower for cards
 export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
   const [angle, setAngle] = useState(0);
   const [angle2, setAngle2] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const rafRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 860px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     rafRef.current = setInterval(() => {
@@ -190,12 +199,12 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
           className="hero-photo"
           style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}
         >
-          {/* Orbital scene — fixed 500×500 canvas to fit both rings */}
+          {/* Orbital scene — 500×500 desktop, 340×340 mobile */}
           <div
             style={{
               position: "relative",
-              width: 500,
-              height: 500,
+              width: isMobile ? 340 : 500,
+              height: isMobile ? 340 : 500,
               flexShrink: 0,
             }}
           >
@@ -215,21 +224,23 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               }}
             />
 
-            {/* Outer orbit ring (info cards) */}
-            <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: RADIUS2 * 2,
-                height: RADIUS2 * 2,
-                marginTop: -RADIUS2,
-                marginLeft: -RADIUS2,
-                borderRadius: "50%",
-                border: "1px dashed rgba(0,0,0,0.07)",
-                pointerEvents: "none",
-              }}
-            />
+            {/* Outer orbit ring (info cards) — desktop only */}
+            {!isMobile && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  width: RADIUS2 * 2,
+                  height: RADIUS2 * 2,
+                  marginTop: -RADIUS2,
+                  marginLeft: -RADIUS2,
+                  borderRadius: "50%",
+                  border: "1px dashed rgba(0,0,0,0.07)",
+                  pointerEvents: "none",
+                }}
+              />
+            )}
 
             {/* Orbiting tags — JS-driven x/y like the reference */}
             {ORBIT_TAGS.map((tag, i) => {
@@ -286,8 +297,8 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               );
             })}
 
-            {/* Outer ring: orbiting info cards */}
-            {INFO_CARDS.map((card) => {
+            {/* Outer ring: orbiting info cards — desktop only */}
+            {!isMobile && INFO_CARDS.map((card) => {
               const deg = (card.startDeg + angle2) % 360;
               const rad = (deg * Math.PI) / 180;
               const x = RADIUS2 * Math.cos(rad);
