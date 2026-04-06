@@ -16,6 +16,14 @@
 
 ## Session Log
 
+### Session 14 — 2026-04-06 (YouTube title corrections)
+- Updated 4 video titles to match real YouTube page titles (read from screenshot)
+- 3oXyXOxIM2g → "Vibe Coding Levels 1–5" (EN)
+- fDRRQTpcLhc → "3 Ferramentas de IA para Editar Vídeos" (PT)
+- Y8hKX9iY40s → "Como Rodar DeepSeek R1 Grátis" (PT)
+- Ujd-FXNT6Ms → "Crie um SDR com IA" (PT)
+- x5D24tXGcVQ and vxrO7Vs4EPA pending user confirmation of real titles
+
 ### Session 13 — 2026-04-06 (gaps + orbital tag updates)
 - Gaps section: replaced "AWS Certifications" with "Business Intelligence" — honest framing that ClickHouse/BigQuery exposure exists but BI tooling is not a focus area
 - Orbital tags: removed MCP, added Neo4j (simpleicons logo) and Vector DB (Pinecone logo)
