@@ -16,6 +16,15 @@
 
 ## Session Log
 
+### Session 11 — 2026-04-06 (YouTube section reorder + new videos)
+- Moved YouTubeSection before PortfolioSection in page.tsx (now: Experience → YouTube → Portfolio → Skills → Education)
+- Added lang field to YouTubeVideo interface ("en" | "pt")
+- Added EN/PT-BR badge to each video card (blue for EN, neutral for PT-BR)
+- Expanded VIDEOS array to 6 entries, sorted newest-first:
+  - 3oXyXOxIM2g (EN) — most recent
+  - fDRRQTpcLhc (PT), Y8hKX9iY40s (PT), Ujd-FXNT6Ms (PT)
+  - x5D24tXGcVQ (EN), vxrO7Vs4EPA (PT) — original two, now at bottom
+
 ### Session 10 — 2026-04-06 (pre-publish cleanup + README)
 - Rewrote README.md: recruiter-focused, SEO-optimized, profile photo, badges, architecture diagram, full stack table, project structure, why-this-exists section
 - Removed unused default Next.js public SVGs (file.svg, globe.svg, next.svg, vercel.svg, window.svg)
