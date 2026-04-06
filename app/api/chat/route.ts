@@ -37,7 +37,7 @@ const GUARDRAIL_PATTERNS = [
   },
 ];
 
-const CALENDLY_MSG = `That's a great conversation to have directly with me. Here's my calendar: ${process.env.CALENDLY_URL || "ferott@gmail.com"}`;
+const CALENDLY_MSG = `That's a great conversation to have directly with me. Here's my calendar: ${process.env.BOOKING_URL || "ferott@gmail.com"}`;
 
 function checkGuardrails(
   message: string
@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json(
       {
         error: "rate_limited",
-        message: `We've covered a lot of ground! Fernando would love to continue this conversation directly. Here's his calendar: ${process.env.CALENDLY_URL || "ferott@gmail.com"}`,
+        message: `We've covered a lot of ground! Fernando would love to continue this conversation directly. Here's his calendar: ${process.env.BOOKING_URL || "ferott@gmail.com"}`,
       },
       { status: 429 }
     );
@@ -205,8 +205,8 @@ export async function POST(request: NextRequest) {
   void (async () => {
     try {
       // Check if Supabase is configured
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      const supabaseUrl = process.env.SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SECRET_KEY;
 
       let contextDocs = "";
 
