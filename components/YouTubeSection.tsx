@@ -19,20 +19,20 @@ const VIDEOS: YouTubeVideo[] = [
   },
   {
     id: "fDRRQTpcLhc",
-    title: "3 Ferramentas de IA para Editar Vídeos",
-    description: "Crie e edite vídeos rápido usando IA — horas viraram minutos com essas três ferramentas.",
+    title: "3 AI Tools to Edit Videos Fast",
+    description: "Create and edit videos in minutes using AI — a hands-on walkthrough of three tools that cut production time drastically.",
     lang: "pt",
   },
   {
     id: "Y8hKX9iY40s",
-    title: "Como Rodar DeepSeek R1 Grátis",
-    description: "Instale e rode o DeepSeek R1 localmente no Windows, Mac ou Linux — sem custos de API.",
+    title: "How to Run DeepSeek R1 for Free",
+    description: "Install and run DeepSeek R1 locally on Windows, Mac, or Linux — no API costs, full privacy.",
     lang: "pt",
   },
   {
     id: "Ujd-FXNT6Ms",
-    title: "Crie um SDR com IA",
-    description: "Como construir um agente de IA que qualifica leads e agenda reuniões por telefone automaticamente.",
+    title: "Build an AI SDR That Qualifies & Books Calls",
+    description: "How to build an AI agent that qualifies leads and schedules meetings by phone — fully automated.",
     lang: "pt",
   },
   {
@@ -43,7 +43,7 @@ const VIDEOS: YouTubeVideo[] = [
   },
   {
     id: "vxrO7Vs4EPA",
-    title: "Otimiza AI — Episode 2",
+    title: "AI Automation Strategies for Business",
     description: "Deep dive into AI automation strategies for real business workflows.",
     lang: "pt",
   },
