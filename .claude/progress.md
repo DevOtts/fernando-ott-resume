@@ -16,6 +16,12 @@
 
 ## Session Log
 
+### Session 4 — 2026-04-06 (orbit animation fix)
+- Fixed hero orbital: replaced two-animation approach (arm rotate + counter-rotate) with single `hero-orbit` keyframe using chained transforms: `rotate(0deg) translateX(130px) rotate(0deg)` → `rotate(360deg) translateX(130px) rotate(-360deg)`
+- Tags now correctly travel in a circle with upright text from frame 0
+- Used negative `animationDelay` per tag to pre-offset each evenly around the ring without a static transform override
+- Restored 3 floating cards (Brain AI, 4+ yrs AI in Production, Curitiba Brazil) outside the orbital scene div
+
 ### Session 3 — 2026-04-06 (UI enhancements)
 - Hero: replaced static floating cards with orbital animation around circular profile photo (8 tech tags: Anthropic, LangChain, AWS, Next.js, OpenSearch, Docker, MCP, Python — with logos)
 - Hero: updated YouTube link to @otimiza-ai, removed email from social links

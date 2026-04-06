@@ -17,14 +17,18 @@ const ORBIT_TAGS = [
   { label: "Python", logo: "https://cdn.simpleicons.org/python/3776AB" },
 ];
 
+const ORBIT_DURATION = 28; // seconds for one full revolution
+
 function injectHeroKeyframes() {
   if (typeof document === "undefined") return;
   if (document.getElementById("hero-orbit-keyframes")) return;
   const style = document.createElement("style");
   style.id = "hero-orbit-keyframes";
   style.textContent = `
-    @keyframes hero-orbit-cw  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
-    @keyframes hero-orbit-ccw { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
+    @keyframes hero-orbit {
+      from { transform: rotate(0deg) translateX(130px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(130px) rotate(-360deg); }
+    }
   `;
   document.head.appendChild(style);
 }
@@ -36,13 +40,8 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/feott/" },
     { label: "GitHub", href: "https://github.com/devotts" },
     { label: "YouTube", href: "https://www.youtube.com/@otimiza-ai" },
-    {
-      label: "8FAI Profile ↗",
-      href: "https://www.8figureagency.co/fernando-ott",
-    },
+    { label: "8FAI Profile ↗", href: "https://www.8figureagency.co/fernando-ott" },
   ];
-
-  const RADIUS = 130;
 
   return (
     <section
@@ -55,14 +54,12 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
       {/* Background gradient blob */}
       <div
         style={{
-          content: "",
           position: "absolute",
           top: -200,
           right: -200,
           width: 700,
           height: 700,
-          background:
-            "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)",
           borderRadius: "50%",
           pointerEvents: "none",
         }}
@@ -74,14 +71,13 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
           maxWidth: 1180,
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "1fr 420px",
+          gridTemplateColumns: "1fr 460px",
           gap: "4rem",
           alignItems: "center",
         }}
       >
         {/* Left: text */}
         <div style={{ position: "relative", zIndex: 1 }}>
-          {/* Open to opportunities badge */}
           <div
             style={{
               display: "inline-flex",
@@ -188,17 +184,17 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Right: orbital photo */}
+        {/* Right: orbital photo + floating cards */}
         <div
           className="hero-photo"
           style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}
         >
-          {/* Orbital container */}
+          {/* Orbital scene */}
           <div
             style={{
               position: "relative",
-              width: RADIUS * 2 + 80,
-              height: RADIUS * 2 + 80,
+              width: 340,
+              height: 340,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -208,20 +204,18 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
             <div
               style={{
                 position: "absolute",
-                width: RADIUS * 2,
-                height: RADIUS * 2,
+                inset: 0,
                 borderRadius: "50%",
                 border: "1px dashed var(--border)",
                 pointerEvents: "none",
               }}
             />
 
-            {/* Orbiting tech tags */}
+            {/* Each tag: rotate arm, translate out to radius, counter-rotate tag to stay upright */}
             {ORBIT_TAGS.map((tag, i) => {
               const startDeg = (i / ORBIT_TAGS.length) * 360;
-              const duration = 22 + i * 1.5;
-              const dir = i % 2 === 0 ? "hero-orbit-cw" : "hero-orbit-ccw";
-              const counterDir = dir === "hero-orbit-cw" ? "hero-orbit-ccw" : "hero-orbit-cw";
+              // Use negative delay so tags appear already spread out from the start
+              const delay = -((startDeg / 360) * ORBIT_DURATION);
 
               return (
                 <div
@@ -232,17 +226,15 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
                     left: "50%",
                     width: 0,
                     height: 0,
-                    transform: `rotate(${startDeg}deg)`,
-                    animation: `${dir} ${duration}s linear infinite`,
+                    // Single animation: rotate arm → translate out → counter-rotate label
+                    animation: `hero-orbit ${ORBIT_DURATION}s linear infinite`,
+                    animationDelay: `${delay}s`,
                   }}
                 >
                   <div
                     style={{
                       position: "absolute",
-                      left: RADIUS,
-                      top: 0,
-                      transform: `translate(-50%, -50%) rotate(-${startDeg}deg)`,
-                      animation: `${counterDir} ${duration}s linear infinite`,
+                      transform: "translate(-50%, -50%)",
                       display: "flex",
                       alignItems: "center",
                       gap: 5,
@@ -255,12 +247,18 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
                       background: "#fff",
                       color: "var(--text-mid)",
                       border: "1px solid var(--border-light)",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                     }}
                   >
                     {tag.logo && (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img src={tag.logo} alt="" width={12} height={12} style={{ objectFit: "contain", flexShrink: 0 }} />
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={tag.logo}
+                        alt=""
+                        width={12}
+                        height={12}
+                        style={{ objectFit: "contain", flexShrink: 0 }}
+                      />
                     )}
                     {tag.label}
                   </div>
@@ -268,7 +266,7 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               );
             })}
 
-            {/* Center: profile photo */}
+            {/* Center: circular profile photo */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://media.licdn.com/dms/image/v2/D4D03AQGLRfIttnbNkA/profile-displayphoto-scale_400_400/B4DZrLOHGnG8Ag-/0/1764346067628?e=1776902400&v=beta&t=SBczeajmRTKGsCVbCaaun0QQD1NfASdxhaz7k8tcB6M"
@@ -285,6 +283,69 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               }}
             />
           </div>
+
+          {/* Floating cards — positioned relative to the hero-photo wrapper */}
+          <div
+            className="photo-card"
+            style={{
+              position: "absolute",
+              background: "#fff",
+              border: "1px solid var(--border-light)",
+              borderRadius: 12,
+              padding: "10px 16px",
+              fontSize: "0.78rem",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+              zIndex: 10,
+              whiteSpace: "nowrap",
+              bottom: 0,
+              left: -10,
+              color: "var(--accent)",
+              fontWeight: 600,
+            }}
+          >
+            🧠 Architect of Brain AI
+          </div>
+
+          <div
+            className="photo-card"
+            style={{
+              position: "absolute",
+              background: "#fff",
+              border: "1px solid var(--border-light)",
+              borderRadius: 12,
+              padding: "10px 16px",
+              fontSize: "0.78rem",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+              zIndex: 10,
+              whiteSpace: "nowrap",
+              top: 10,
+              right: -10,
+              color: "var(--green)",
+              fontWeight: 600,
+            }}
+          >
+            ✓ 4+ yrs AI in Production
+          </div>
+
+          <div
+            className="photo-card"
+            style={{
+              position: "absolute",
+              background: "#fff",
+              border: "1px solid var(--border-light)",
+              borderRadius: 12,
+              padding: "10px 16px",
+              fontSize: "0.78rem",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+              zIndex: 10,
+              whiteSpace: "nowrap",
+              bottom: 60,
+              right: -20,
+              color: "var(--text-mid)",
+            }}
+          >
+            Curitiba, Brazil · Remote
+          </div>
         </div>
       </div>
 
@@ -297,6 +358,9 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
           .hero-photo {
             order: -1;
             margin-bottom: 1rem;
+          }
+          .photo-card {
+            display: none !important;
           }
         }
       `}</style>
