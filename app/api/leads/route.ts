@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
   if (!supabaseUrl || !supabaseKey) {
     // Supabase not configured — log and return success to not break UX
-    console.error("Supabase not configured, lead not saved:", { name, email, company, intent });
+    console.error("Supabase not configured — lead not saved");
     return NextResponse.json({ success: true });
   }
 

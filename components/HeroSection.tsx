@@ -14,12 +14,12 @@ interface OrbitalTag {
 const ORBIT_TAGS: OrbitalTag[] = [
   { label: "Anthropic", logo: "https://cdn.simpleicons.org/anthropic/000000" },
   { label: "LangChain", logo: "https://cdn.simpleicons.org/langchain/1C3C3C" },
-  { label: "AWS",       logo: "https://cdn.simpleicons.org/amazonaws/FF9900" },
-  { label: "Next.js",   logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
-  { label: "OpenSearch",logo: "https://cdn.simpleicons.org/opensearch/005EB8" },
-  { label: "Docker",    logo: "https://cdn.simpleicons.org/docker/2496ED" },
-  { label: "MCP",       logo: null },
-  { label: "Python",    logo: "https://cdn.simpleicons.org/python/3776AB" },
+  { label: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png" },
+  { label: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
+  { label: "Hugging Face", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcHc3LEYy9t1hlr-9kUbZ6_hJpu0J4Qyslug&s" },
+  { label: "Docker", logo: "https://cdn.simpleicons.org/docker/2496ED" },
+  { label: "MCP", logo: "https://cdn.sanity.io/images/fxdpen95/production/286312bc09b5f29fc0b346c391b831eaa19ce02f-1059x812.png" },
+  { label: "Python", logo: "https://cdn.simpleicons.org/python/3776AB" },
 ];
 
 interface InfoCard {
@@ -29,9 +29,10 @@ interface InfoCard {
 }
 
 const INFO_CARDS: InfoCard[] = [
-  { label: "🧠 Architect of Brain AI",   color: "var(--accent)",   startDeg: 60  },
-  { label: "✓ 4+ yrs AI in Production",  color: "var(--green)",    startDeg: 180 },
-  { label: "Curitiba, Brazil · Remote",   color: "var(--text-mid)", startDeg: 300 },
+  { label: "🧠 AI Architect", color: "var(--accent)", startDeg: 90 },
+  { label: "✓ 4+ yrs AI in Production", color: "var(--green)", startDeg: 180 },
+  { label: "Curitiba, Brazil · Remote", color: "var(--text-mid)", startDeg: 270 },
+  { label: "✓ 16+ yrs in Software", color: "var(--green)", startDeg: 0 }
 ];
 
 const RADIUS = 148;       // tech tags ring
@@ -62,9 +63,9 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
   }, []);
 
   const socialLinks = [
-    { label: "LinkedIn",     href: "https://www.linkedin.com/in/feott/" },
-    { label: "GitHub",       href: "https://github.com/devotts" },
-    { label: "YouTube",      href: "https://www.youtube.com/@otimiza-ai" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/feott/" },
+    { label: "GitHub", href: "https://github.com/devotts" },
+    { label: "YouTube", href: "https://www.youtube.com/@otimiza-ai" },
     { label: "8FAI Profile ↗", href: "https://www.8figureagency.co/fernando-ott" },
   ];
 
@@ -249,7 +250,7 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               // Depth: items at bottom (sin>0) are "closer" → more opaque & slightly bigger
               const depth = (1 + Math.sin(rad)) / 2; // 0…1
               const opacity = 0.45 + 0.55 * depth;
-              const scale  = 0.85 + 0.2 * depth;
+              const scale = 0.85 + 0.2 * depth;
               const zIndex = Math.round(10 + 20 * depth);
 
               return (
@@ -303,7 +304,7 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               const y = RADIUS2 * Math.sin(rad);
               const depth = (1 + Math.sin(rad)) / 2;
               const opacity = 0.5 + 0.5 * depth;
-              const scale  = 0.88 + 0.16 * depth;
+              const scale = 0.88 + 0.16 * depth;
               const zIndex = Math.round(5 + 15 * depth);
 
               return (

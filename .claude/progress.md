@@ -16,6 +16,11 @@
 
 ## Session Log
 
+### Session 10 — 2026-04-06 (pre-publish cleanup + README)
+- Rewrote README.md: recruiter-focused, SEO-optimized, profile photo, badges, architecture diagram, full stack table, project structure, why-this-exists section
+- Removed unused default Next.js public SVGs (file.svg, globe.svg, next.svg, vercel.svg, window.svg)
+- Fixed leads/route.ts console.error: removed PII (email/name) from error log message
+
 ### Session 9 — 2026-04-06 (re-enable outer ring on mobile for review)
 - Removed !isMobile gates from outer orbit ring and info cards
 - Both rings now visible on all viewports for user review
