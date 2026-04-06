@@ -224,23 +224,21 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               }}
             />
 
-            {/* Outer orbit ring (info cards) — desktop only */}
-            {!isMobile && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  width: RADIUS2 * 2,
-                  height: RADIUS2 * 2,
-                  marginTop: -RADIUS2,
-                  marginLeft: -RADIUS2,
-                  borderRadius: "50%",
-                  border: "1px dashed rgba(0,0,0,0.07)",
-                  pointerEvents: "none",
-                }}
-              />
-            )}
+            {/* Outer orbit ring (info cards) */}
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                width: RADIUS2 * 2,
+                height: RADIUS2 * 2,
+                marginTop: -RADIUS2,
+                marginLeft: -RADIUS2,
+                borderRadius: "50%",
+                border: "1px dashed rgba(0,0,0,0.07)",
+                pointerEvents: "none",
+              }}
+            />
 
             {/* Orbiting tags — JS-driven x/y like the reference */}
             {ORBIT_TAGS.map((tag, i) => {
@@ -297,8 +295,8 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               );
             })}
 
-            {/* Outer ring: orbiting info cards — desktop only */}
-            {!isMobile && INFO_CARDS.map((card) => {
+            {/* Outer ring: orbiting info cards */}
+            {INFO_CARDS.map((card) => {
               const deg = (card.startDeg + angle2) % 360;
               const rad = (deg * Math.PI) / 180;
               const x = RADIUS2 * Math.cos(rad);

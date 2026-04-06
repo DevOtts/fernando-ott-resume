@@ -16,6 +16,11 @@
 
 ## Session Log
 
+### Session 9 — 2026-04-06 (re-enable outer ring on mobile for review)
+- Removed !isMobile gates from outer orbit ring and info cards
+- Both rings now visible on all viewports for user review
+- Canvas remains 340×340 on mobile, 500×500 on desktop
+
 ### Session 8 — 2026-04-06 (mobile responsive orbital)
 - On ≤860px viewports outer ring (info cards) is hidden, canvas shrinks to 340×340
 - Inner tech-tag ring stays visible on mobile, fits cleanly without overflow
