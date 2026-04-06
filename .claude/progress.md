@@ -3,8 +3,8 @@
 ## Status
 - **Project:** Fernando Ott Interactive Resume
 - **Started:** 2026-04-06
-- **Features:** 0 / 34 completed
-- **Last session:** none
+- **Features:** 35 / 35 completed
+- **Last session:** Session 12 — 2026-04-06
 - **Current blocker:** none
 
 ## Pending before full launch
@@ -15,6 +15,26 @@
 - [ ] PostHog key added to `.env.local`
 
 ## Session Log
+
+### Session 12 — 2026-04-06 (SEO + GEO enhancement — F035)
+- Replaced favicon.ico with Fernando's GitHub avatar (https://avatars.githubusercontent.com/u/851664)
+  - `app/icon.png` — 192×192 (browser tab icon, Next.js convention)
+  - `app/apple-icon.png` — 180×180 (Apple touch icon)
+  - `public/og-image.png` — 512×512 (OG/Twitter card image)
+- Enhanced `app/layout.tsx` metadata:
+  - `metadataBase` set to https://fernandoott.com
+  - Full `openGraph` profile with image
+  - Full `twitter` card config (summary with image)
+  - `keywords` array targeting AI/ML search terms
+  - `robots` config for max Googlebot indexing
+  - `alternates.canonical` set
+- Added two JSON-LD schemas injected in `<head>` for GEO (AI search engine citation):
+  - `Person` schema: name, jobTitle, knowsAbout (7 AI topics), sameAs (GitHub + LinkedIn), address
+  - `WebSite` schema: describes the interactive AI resume
+- Updated `app/robots.txt/route.ts` with explicit AI bot allowlist:
+  - GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, Bingbot
+- Created `app/sitemap.ts` — auto-generates `/sitemap.xml` via Next.js MetadataRoute
+- Build verified clean: all routes pass, `/sitemap.xml`, `/icon.png`, `/apple-icon.png` present
 
 ### Session 11 — 2026-04-06 (YouTube section reorder + new videos)
 - Moved YouTubeSection before PortfolioSection in page.tsx (now: Experience → YouTube → Portfolio → Skills → Education)

@@ -1,8 +1,8 @@
 {
   "project": "fernando-ott-resume",
   "created": "2026-04-06",
-  "total": 34,
-  "completed": 34,
+  "total": 35,
+  "completed": 35,
   "features": [
     { "id": "F001", "name": "Next.js project scaffold", "group": "config", "status": "pass", "spec": "Bootstrap Next.js 14 App Router + Tailwind + TypeScript strict + pnpm.", "depends_on": [], "test": "pnpm dev starts on localhost:3000 without errors" },
     { "id": "F002", "name": "Font & design token setup", "group": "frontend", "status": "pass", "spec": "Load Instrument Serif, Satoshi, IBM Plex Mono. CSS custom properties matching mockup hex values exactly.", "depends_on": ["F001"], "test": "Fonts render in browser. Color tokens match mockup." },
@@ -37,6 +37,9 @@
     { "id": "F031", "name": "Responsive design pass", "group": "frontend", "status": "pass", "spec": "Full audit at 375px, 768px, 1280px. Chat panel full-width on mobile.", "depends_on": ["F003","F004","F005","F006","F007","F008","F009","F010","F014","F016","F026"], "test": "Playwright screenshots taken at 375x667 and 1280x800." },
     { "id": "F032", "name": "Performance & SEO", "group": "config", "status": "pass", "spec": "Metadata: title, description. robots.txt. next/image domains configured.", "depends_on": ["F004"], "test": "Metadata set. robots.txt route returns correct content." },
     { "id": "F033", "name": "Vercel deployment config", "group": "config", "status": "pass", "spec": "vercel.json with env var mapping. Build: pnpm build.", "depends_on": ["F001"], "test": "vercel.json created with all required configuration." },
-    { "id": "F034", "name": "Security hardening", "group": "backend", "status": "pass", "spec": "Validate Content-Type on API routes. CORS restricted. Prompt injection detection. Security headers.", "depends_on": ["F020","F022"], "test": "Content-Type validated on all API routes. Security headers in next.config.ts." }
-  ]
+    { "id": "F034", "name": "Security hardening", "group": "backend", "status": "pass", "spec": "Validate Content-Type on API routes. CORS restricted. Prompt injection detection. Security headers.", "depends_on": ["F020","F022"], "test": "Content-Type validated on all API routes. Security headers in next.config.ts." },
+    { "id": "F035", "name": "SEO + GEO enhancement", "group": "config", "status": "pass", "spec": "Full SEO: Open Graph, Twitter card, keywords, robots meta, canonical URL. GEO: Person + WebSite JSON-LD schema, explicit AI bot allow in robots.txt. Favicon from GitHub avatar. Sitemap.xml auto-generated.", "depends_on": ["F032"], "test": "Build passes. /sitemap.xml, /robots.txt, /icon.png, /apple-icon.png all present. JSON-LD in <head>." }
+  ],
+  "total": 35,
+  "completed": 35
 }

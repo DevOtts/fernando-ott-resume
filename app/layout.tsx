@@ -18,10 +18,123 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const BASE_URL = "https://fernandoott.com";
+
 export const metadata: Metadata = {
-  title: "Fernando Ott — Head of AI & AI Architect",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Fernando Ott — Head of AI & AI Architect",
+    template: "%s | Fernando Ott",
+  },
   description:
-    "Fernando Ott is a Head of AI and AI Architect with 16+ years of engineering experience. He designs multi-agent AI systems that run in production and move the needle for clients.",
+    "Fernando Ott is a Head of AI and AI Architect with 16+ years of engineering experience and 4+ years shipping multi-agent AI systems to production. Based in Brazil, working globally.",
+  keywords: [
+    "Fernando Ott",
+    "Head of AI",
+    "AI Architect",
+    "multi-agent AI systems",
+    "LangChain",
+    "AI engineer",
+    "machine learning engineer",
+    "AI consultant",
+    "generative AI",
+    "LLM",
+    "RAG",
+    "AI product development",
+    "Brazil AI engineer",
+  ],
+  authors: [{ name: "Fernando Ott", url: BASE_URL }],
+  creator: "Fernando Ott",
+  publisher: "Fernando Ott",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "profile",
+    locale: "en_US",
+    url: BASE_URL,
+    siteName: "Fernando Ott",
+    title: "Fernando Ott — Head of AI & AI Architect",
+    description:
+      "16+ years of engineering, 4+ years shipping multi-agent AI systems to production. I design AI that moves the needle for clients.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 512,
+        height: 512,
+        alt: "Fernando Ott — Head of AI & AI Architect",
+      },
+    ],
+    firstName: "Fernando",
+    lastName: "Ott",
+    username: "fernandoott",
+    gender: "male",
+  },
+  twitter: {
+    card: "summary",
+    title: "Fernando Ott — Head of AI & AI Architect",
+    description:
+      "16+ years of engineering, 4+ years shipping multi-agent AI to production. AI Architect & Head of AI.",
+    images: ["/og-image.png"],
+    creator: "@fernandoott",
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  verification: {
+    // Add Google Search Console / Bing verification tokens here when available
+    // google: "xxxx",
+    // other: { "msvalidate.01": "xxxx" },
+  },
+};
+
+// JSON-LD structured data for GEO (AI search engine citation)
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Fernando Ott",
+  url: BASE_URL,
+  image: `${BASE_URL}/og-image.png`,
+  jobTitle: "Head of AI & AI Architect",
+  description:
+    "Fernando Ott is a Head of AI and AI Architect with 16+ years of software engineering experience and 4+ years shipping multi-agent AI systems to production environments.",
+  knowsAbout: [
+    "Multi-agent AI systems",
+    "Large Language Models",
+    "RAG (Retrieval-Augmented Generation)",
+    "LangChain",
+    "AI product development",
+    "Machine learning in production",
+    "Generative AI",
+  ],
+  sameAs: [
+    "https://github.com/fernandoott",
+    "https://linkedin.com/in/fernandoott",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Curitiba",
+    addressCountry: "BR",
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Fernando Ott — Interactive AI Resume",
+  url: BASE_URL,
+  description:
+    "Interactive resume and AI clone of Fernando Ott, Head of AI & AI Architect. Chat with an AI version of Fernando, explore his experience building multi-agent systems.",
+  author: { "@type": "Person", name: "Fernando Ott" },
+  inLanguage: "en",
 };
 
 export default function RootLayout({
@@ -39,6 +152,14 @@ export default function RootLayout({
         <link
           href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body>
