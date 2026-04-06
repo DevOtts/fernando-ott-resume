@@ -16,6 +16,10 @@
 
 ## Session Log
 
+### Session 15 — 2026-04-06 (YouTube titles translated to English)
+- All 6 video card titles now in English; PT-BR/EN badge retained to indicate video language
+- Translated: "3 Ferramentas..." → "3 AI Tools to Edit Videos Fast", "Como Rodar DeepSeek R1 Grátis" → "How to Run DeepSeek R1 for Free", "Crie um SDR com IA" → "Build an AI SDR That Qualifies & Books Calls", "Otimiza AI — Episode 2" → "AI Automation Strategies for Business"
+
 ### Session 14 — 2026-04-06 (YouTube title corrections)
 - Updated 4 video titles to match real YouTube page titles (read from screenshot)
 - 3oXyXOxIM2g → "Vibe Coding Levels 1–5" (EN)
