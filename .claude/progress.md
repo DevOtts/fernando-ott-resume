@@ -16,6 +16,13 @@
 
 ## Session Log
 
+### Session 6 — 2026-04-06 (info cards join orbital)
+- Added INFO_CARDS array with 3 entries (Brain AI, 4+ yrs AI in Production, Curitiba Brazil)
+- Cards orbit on outer ring (RADIUS2 = 210px) driven by same setInterval, speed 0.18°/tick
+- Tech tags remain on inner ring (RADIUS = 148px) at 0.25°/tick — rings drift independently
+- Same depth illusion applied to cards (opacity + scale + shadow scale with sin(angle))
+- Removed static absolutely-positioned floating card divs and photo-card CSS rule
+
 ### Session 5 — 2026-04-06 (radial orbital timeline effect)
 - Replaced CSS keyframe orbit with JS-driven trigonometric positioning (setInterval 50ms tick)
 - Matches radial-orbital-timeline pattern: angle increments each tick, x/y from cos/sin
