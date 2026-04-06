@@ -31,13 +31,13 @@ export default function Home() {
         <Divider />
         <ExperienceSection />
         <Divider />
+        <YouTubeSection />
+        <Divider />
         <PortfolioSection />
         <Divider />
         <SkillsSection />
         <Divider />
         <EducationSection />
-        <Divider />
-        <YouTubeSection />
         <CTASection onChatOpen={() => setChatOpen(true)} />
       </main>
       <Footer />

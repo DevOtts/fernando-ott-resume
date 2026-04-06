@@ -6,19 +6,46 @@ interface YouTubeVideo {
   id: string;
   title: string;
   description: string;
+  lang: "en" | "pt";
 }
 
-// Add more videos here — just the YouTube video ID and metadata
+// Most recent first. Add new videos at the top of this array.
 const VIDEOS: YouTubeVideo[] = [
+  {
+    id: "3oXyXOxIM2g",
+    title: "Building AI Agents That Actually Work",
+    description: "A practical walkthrough of production multi-agent architecture — what works, what doesn't, and why most demos never ship.",
+    lang: "en",
+  },
+  {
+    id: "fDRRQTpcLhc",
+    title: "Como Construir Agentes de IA em Produção",
+    description: "Arquitetura de agentes de IA para sistemas reais — orquestração, RAG e guardrails em produção.",
+    lang: "pt",
+  },
+  {
+    id: "Y8hKX9iY40s",
+    title: "LangChain na Prática",
+    description: "LangChain LCEL na prática: chains, RAG pipelines e ferramentas para automação de workflows com IA.",
+    lang: "pt",
+  },
+  {
+    id: "Ujd-FXNT6Ms",
+    title: "Introdução ao Otimiza AI",
+    description: "Primeiro episódio do canal: o que é automação com IA e por que a maioria das empresas está fazendo errado.",
+    lang: "pt",
+  },
   {
     id: "x5D24tXGcVQ",
     title: "AI Agents in Production",
     description: "Building and deploying multi-agent systems that actually work at scale.",
+    lang: "en",
   },
   {
     id: "vxrO7Vs4EPA",
     title: "Otimiza AI — Episode 2",
     description: "Deep dive into AI automation strategies for real business workflows.",
+    lang: "pt",
   },
 ];
 
@@ -130,6 +157,22 @@ function VideoCard({ video }: { video: YouTubeVideo }) {
 
       {/* Card body */}
       <div style={{ padding: "1rem 1.25rem 1.25rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: "0.5rem" }}>
+          <span
+            style={{
+              fontSize: "0.62rem",
+              fontFamily: "var(--mono)",
+              fontWeight: 600,
+              padding: "2px 7px",
+              borderRadius: 4,
+              background: video.lang === "en" ? "var(--accent-light)" : "var(--bg-alt)",
+              color: video.lang === "en" ? "var(--accent)" : "var(--text-soft)",
+              border: "1px solid var(--border-light)",
+            }}
+          >
+            {video.lang === "en" ? "EN" : "PT-BR"}
+          </span>
+        </div>
         <p
           style={{
             fontSize: "0.88rem",
