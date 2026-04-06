@@ -170,15 +170,16 @@ function PortfolioCard({
       >
         {num}
       </div>
-      <div
+      <h3
         style={{
           fontFamily: "var(--serif)",
           fontSize: "1.5rem",
           marginBottom: "0.15rem",
+          fontWeight: "normal",
         }}
       >
         {title}
-      </div>
+      </h3>
       <div
         style={{
           fontSize: "0.82rem",

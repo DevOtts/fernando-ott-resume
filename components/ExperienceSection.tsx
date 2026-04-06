@@ -159,16 +159,17 @@ export function ExperienceSection() {
             </div>
 
             <div>
-              <div
+              <h3
                 style={{
                   fontFamily: "var(--serif)",
                   fontSize: "1.4rem",
                   letterSpacing: "-0.01em",
                   marginBottom: "0.75rem",
+                  fontWeight: "normal",
                 }}
               >
                 {exp.role}
-              </div>
+              </h3>
               <p
                 style={{
                   fontSize: "0.92rem",

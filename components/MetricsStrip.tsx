@@ -11,6 +11,7 @@ const metrics = [
 export function MetricsStrip() {
   return (
     <section style={{ paddingTop: 0, maxWidth: 1180, margin: "0 auto", padding: "0 2rem" }}>
+      <h2 className="sr-only">Key Metrics</h2>
       <div
         className="reveal metrics-strip"
         style={{
