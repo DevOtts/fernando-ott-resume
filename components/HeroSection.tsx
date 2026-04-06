@@ -22,16 +22,32 @@ const ORBIT_TAGS: OrbitalTag[] = [
   { label: "Python",    logo: "https://cdn.simpleicons.org/python/3776AB" },
 ];
 
-const RADIUS = 148;
-const SPEED = 0.25; // degrees per frame (50 ms tick)
+interface InfoCard {
+  label: string;
+  color: string;
+  startDeg: number; // initial angle offset so cards are spread out
+}
+
+const INFO_CARDS: InfoCard[] = [
+  { label: "🧠 Architect of Brain AI",   color: "var(--accent)",   startDeg: 60  },
+  { label: "✓ 4+ yrs AI in Production",  color: "var(--green)",    startDeg: 180 },
+  { label: "Curitiba, Brazil · Remote",   color: "var(--text-mid)", startDeg: 300 },
+];
+
+const RADIUS = 148;       // tech tags ring
+const RADIUS2 = 210;      // info cards ring (outer)
+const SPEED = 0.25;       // degrees per tick for tech tags
+const SPEED2 = 0.18;      // slightly slower for cards
 
 export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
   const [angle, setAngle] = useState(0);
+  const [angle2, setAngle2] = useState(0);
   const rafRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     rafRef.current = setInterval(() => {
       setAngle((a) => (a + SPEED) % 360);
+      setAngle2((a) => (a + SPEED2) % 360);
     }, 50);
     return () => { if (rafRef.current) clearInterval(rafRef.current); };
   }, []);
@@ -174,16 +190,16 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
           className="hero-photo"
           style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}
         >
-          {/* Orbital scene — fixed 400×400 canvas */}
+          {/* Orbital scene — fixed 500×500 canvas to fit both rings */}
           <div
             style={{
               position: "relative",
-              width: 400,
-              height: 400,
+              width: 500,
+              height: 500,
               flexShrink: 0,
             }}
           >
-            {/* Orbit ring */}
+            {/* Inner orbit ring (tech tags) */}
             <div
               style={{
                 position: "absolute",
@@ -195,6 +211,22 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
                 marginLeft: -RADIUS,
                 borderRadius: "50%",
                 border: "1px dashed rgba(0,0,0,0.12)",
+                pointerEvents: "none",
+              }}
+            />
+
+            {/* Outer orbit ring (info cards) */}
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                width: RADIUS2 * 2,
+                height: RADIUS2 * 2,
+                marginTop: -RADIUS2,
+                marginLeft: -RADIUS2,
+                borderRadius: "50%",
+                border: "1px dashed rgba(0,0,0,0.07)",
                 pointerEvents: "none",
               }}
             />
@@ -254,6 +286,46 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
               );
             })}
 
+            {/* Outer ring: orbiting info cards */}
+            {INFO_CARDS.map((card) => {
+              const deg = (card.startDeg + angle2) % 360;
+              const rad = (deg * Math.PI) / 180;
+              const x = RADIUS2 * Math.cos(rad);
+              const y = RADIUS2 * Math.sin(rad);
+              const depth = (1 + Math.sin(rad)) / 2;
+              const opacity = 0.5 + 0.5 * depth;
+              const scale  = 0.88 + 0.16 * depth;
+              const zIndex = Math.round(5 + 15 * depth);
+
+              return (
+                <div
+                  key={card.label}
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%)) scale(${scale})`,
+                    opacity,
+                    zIndex,
+                    transition: "opacity 0.05s, transform 0.05s",
+                    whiteSpace: "nowrap",
+                    fontSize: "0.75rem",
+                    fontWeight: 600,
+                    padding: "8px 14px",
+                    borderRadius: 12,
+                    background: "#fff",
+                    color: card.color,
+                    border: "1px solid var(--border-light)",
+                    boxShadow: `0 ${3 + 6 * depth}px ${12 + 12 * depth}px rgba(0,0,0,${0.04 + 0.07 * depth})`,
+                    cursor: "default",
+                    userSelect: "none",
+                  }}
+                >
+                  {card.label}
+                </div>
+              );
+            })}
+
             {/* Center: circular profile photo with pulse rings */}
             <div
               style={{
@@ -301,68 +373,6 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Floating info cards */}
-          <div
-            className="photo-card"
-            style={{
-              position: "absolute",
-              background: "#fff",
-              border: "1px solid var(--border-light)",
-              borderRadius: 12,
-              padding: "10px 16px",
-              fontSize: "0.78rem",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.07)",
-              zIndex: 40,
-              whiteSpace: "nowrap",
-              bottom: 16,
-              left: 0,
-              color: "var(--accent)",
-              fontWeight: 600,
-            }}
-          >
-            🧠 Architect of Brain AI
-          </div>
-
-          <div
-            className="photo-card"
-            style={{
-              position: "absolute",
-              background: "#fff",
-              border: "1px solid var(--border-light)",
-              borderRadius: 12,
-              padding: "10px 16px",
-              fontSize: "0.78rem",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.07)",
-              zIndex: 40,
-              whiteSpace: "nowrap",
-              top: 24,
-              right: 0,
-              color: "var(--green)",
-              fontWeight: 600,
-            }}
-          >
-            ✓ 4+ yrs AI in Production
-          </div>
-
-          <div
-            className="photo-card"
-            style={{
-              position: "absolute",
-              background: "#fff",
-              border: "1px solid var(--border-light)",
-              borderRadius: 12,
-              padding: "10px 16px",
-              fontSize: "0.78rem",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.07)",
-              zIndex: 40,
-              whiteSpace: "nowrap",
-              bottom: 80,
-              right: 0,
-              color: "var(--text-mid)",
-            }}
-          >
-            Curitiba, Brazil · Remote
-          </div>
         </div>
       </div>
 
@@ -374,7 +384,6 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
         @media (max-width: 860px) {
           .hero-in { grid-template-columns: 1fr !important; text-align: center; }
           .hero-photo { order: -1; margin-bottom: 1rem; }
-          .photo-card { display: none !important; }
         }
       `}</style>
     </section>
