@@ -15,6 +15,11 @@ const education = [
       "Start-Up Chile · DotForge Impact (UK) · Start You Up (Brazil)",
   },
   {
+    title: "Yunus & Youth Fellow",
+    detail: "Social Business · Alumni · Global Fellowship",
+    url: "https://yunusandyouth.com/project/fernando-ott/",
+  },
+  {
     title: "Award",
     detail: "Startup Weekend Winner",
   },
@@ -32,12 +37,12 @@ const personalDetails = [
   },
   {
     title: "Notice Period",
-    detail: "1 month",
+    detail: "2 weeks",
   },
   {
     title: "Technical Content",
     detail:
-      'YouTube "Devops Attempt" (pt-BR) — AI systems, agent architectures, automation',
+      'Youtube Devotts & Otimiza_ai — AI systems, agent architectures, automation',
   },
 ];
 
@@ -84,7 +89,7 @@ export function EducationSection() {
       >
         <div>
           {education.map((item) => (
-            <InfoBlock key={item.title} title={item.title} detail={item.detail} />
+            <InfoBlock key={item.title} title={item.title} detail={item.detail} url={"url" in item ? item.url : undefined} />
           ))}
         </div>
         <div>
@@ -103,7 +108,7 @@ export function EducationSection() {
   );
 }
 
-function InfoBlock({ title, detail }: { title: string; detail: string }) {
+function InfoBlock({ title, detail, url }: { title: string; detail: string; url?: string }) {
   return (
     <div style={{ marginBottom: "1.75rem" }}>
       <h3
@@ -113,7 +118,16 @@ function InfoBlock({ title, detail }: { title: string; detail: string }) {
           marginBottom: "0.15rem",
         }}
       >
-        {title}
+        {url ? (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dashed var(--border-light)" }}
+          >
+            {title} ↗
+          </a>
+        ) : title}
       </h3>
       <p style={{ fontSize: "0.85rem", color: "var(--text-soft)" }}>{detail}</p>
     </div>
