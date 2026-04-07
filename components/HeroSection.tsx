@@ -42,10 +42,15 @@ const SPEED = 0.25;       // degrees per tick for tech tags
 const SPEED2 = 0.18;      // slightly slower for cards
 
 export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
+  const [mounted, setMounted] = useState(false);
   const [angle, setAngle] = useState(0);
   const [angle2, setAngle2] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const rafRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 860px)");
@@ -243,7 +248,7 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
             />
 
             {/* Orbiting tags — JS-driven x/y like the reference */}
-            {ORBIT_TAGS.map((tag, i) => {
+            {mounted && ORBIT_TAGS.map((tag, i) => {
               const deg = ((i / ORBIT_TAGS.length) * 360 + angle) % 360;
               const rad = (deg * Math.PI) / 180;
               const x = RADIUS * Math.cos(rad);
@@ -298,7 +303,7 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
             })}
 
             {/* Outer ring: orbiting info cards */}
-            {INFO_CARDS.map((card) => {
+            {mounted && INFO_CARDS.map((card) => {
               const deg = (card.startDeg + angle2) % 360;
               const rad = (deg * Math.PI) / 180;
               const x = RADIUS2 * Math.cos(rad);

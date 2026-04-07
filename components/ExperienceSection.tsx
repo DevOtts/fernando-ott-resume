@@ -23,17 +23,6 @@ const experiences = [
     ],
   },
   {
-    dates: "Nov 2016 — Jul 2017",
-    company: "Bonuts",
-    location: "Curitiba, BR",
-    role: "CTO & Co-Founder",
-    desc: "Built a photo mobile app (iOS + Android) that rewarded users for posting branded-frame photos — brands paid $0.10–$5.00 per approved post for social buzz and virality. Grew to 10K users before Instagram and Snapchat commoditized the space.",
-    tags: ["Xamarin", "ASP.NET / C#", "MongoDB", "AWS", "iOS", "Android"],
-    press: [
-      { name: "Projeto Draft", url: "https://www.projetodraft.com/bonuts-um-app-que-faz-marketing-com-filtros-de-fotos-e-recompensa-o-usuario/" },
-    ],
-  },
-  {
     dates: "Jul 2022 — Jun 2025",
     company: "KeHE Distributors",
     location: "Naperville, IL · Remote",
@@ -73,6 +62,17 @@ const experiences = [
       { name: "DotForge", location: "UK", flag: "🇬🇧", url: "https://dotforge.com/" },
       { name: "Start-Up Chile", location: "Chile", flag: "🇨🇱", url: "https://startupchile.org/" },
       { name: "Yunus & Youth", location: "Global", flag: "🌍", url: "https://yunusandyouth.com/project/fernando-ott/" },
+    ],
+  },
+  {
+    dates: "Nov 2016 — Jul 2017",
+    company: "Bonuts",
+    location: "Curitiba, BR",
+    role: "CTO & Co-Founder",
+    desc: "Built a photo mobile app (iOS + Android) that rewarded users for posting branded-frame photos — brands paid $0.10–$5.00 per approved post for social buzz and virality. Grew to 10K users before Instagram and Snapchat commoditized the space.",
+    tags: ["Xamarin", "ASP.NET / C#", "MongoDB", "AWS", "iOS", "Android"],
+    press: [
+      { name: "Projeto Draft", url: "https://www.projetodraft.com/bonuts-um-app-que-faz-marketing-com-filtros-de-fotos-e-recompensa-o-usuario/" },
     ],
   },
   {

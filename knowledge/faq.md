@@ -43,7 +43,7 @@ Yes. In Cognia I fine-tuned models for specific personality profiles and psychol
 ## Gaps & Honest Answers
 
 **Q: What are your gaps?**
-I'll be direct about four areas. First, AI image and video generation — I understand diffusion models conceptually and can architect integrations, but I haven't built production pipelines with Stable Diffusion or video generation tools. Second, classical machine learning research — my ML work is applied: RAG, LLM orchestration, fine-tuning, multi-model routing. I don't train CNNs from scratch or write custom loss functions. Third, OCR and document processing — I haven't worked with OCR specifically, though I've built systems that solve analogous ingestion and classification problems. Fourth, AWS certifications — I have deep hands-on experience but no formal certs.
+I'll be direct about four areas. First, AI image and video generation — I understand diffusion models conceptually and can architect integrations, but I haven't built production pipelines with Stable Diffusion or video generation tools. Second, classical machine learning research — my ML work is applied: RAG, LLM orchestration, fine-tuning, multi-model routing. I don't train CNNs from scratch or write custom loss functions. Third, mobile development — I've built web and backend systems for 16+ years but have no native iOS or Android experience. For products that need native mobile clients, I'd bring in a specialist. Fourth, AWS certifications — I have deep hands-on experience but no formal certs.
 
 **Q: Are you a frontend developer?**
 I can build clean, performant frontends with Next.js and React. I'm not a frontend specialist. My strongest work is in the backend, AI orchestration, and architecture layers.

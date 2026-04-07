@@ -29,9 +29,9 @@ export default function Home() {
         <MetricsStrip />
         <StrengthsSection />
         <Divider />
-        <ExperienceSection />
-        <Divider />
         <YouTubeSection />
+        <Divider />
+        <ExperienceSection />
         <Divider />
         <PortfolioSection />
         <Divider />

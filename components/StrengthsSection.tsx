@@ -67,8 +67,8 @@ const gaps = [
     desc: "My ML work is applied and production-focused: RAG, LLM orchestration, fine-tuning for domain adaptation, multi-model routing. I don't train CNNs from scratch or write custom loss functions.",
   },
   {
-    title: "OCR & Document Processing",
-    desc: "Haven't worked with OCR specifically, but I've built architecturally analogous ingestion and classification systems. The patterns translate, but I'd be learning the specific tooling.",
+    title: "Mobile Development",
+    desc: "I've built web and backend systems for 16+ years, but no native iOS or Android experience. For products that need native mobile clients, I'd bring in a specialist.",
   },
   {
     title: "PowerBI",
