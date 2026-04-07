@@ -16,6 +16,14 @@
 
 ## Session Log
 
+### Session 16 — 2026-04-07 (SEO/GEO audit + heading hierarchy + YouTube content polish)
+- Audited full SEO/GEO state — identified heading hierarchy gaps and missing GEO optimizations
+- Fixed heading hierarchy (ExperienceSection + PortfolioSection): job role titles and project titles changed from `<div>` to `<h3>` with `font-weight: normal` to preserve visual appearance
+- MetricsStrip: added visually-hidden `<h2>Key Metrics</h2>` for crawler context; added `.sr-only` utility to globals.css
+- Favicon updated from GitHub plain avatar to branded circular profile sticker image (630×636 PNG with tech logos); generated `app/icon.png` (192px) and `app/apple-icon.png` (180px)
+- YouTube section: shortened all 6 video descriptions to 1-2 sentences for UI fit; translated 4 PT-BR titles and descriptions to English while keeping `lang: "pt"` badge so visitors know the video is in Portuguese
+- Build verified clean throughout; all changes committed with descriptive messages
+
 ### Session 15 — 2026-04-06 (YouTube titles translated to English)
 - All 6 video card titles now in English; PT-BR/EN badge retained to indicate video language
 - Translated: "3 Ferramentas..." → "3 AI Tools to Edit Videos Fast", "Como Rodar DeepSeek R1 Grátis" → "How to Run DeepSeek R1 for Free", "Crie um SDR com IA" → "Build an AI SDR That Qualifies & Books Calls", "Otimiza AI — Episode 2" → "AI Automation Strategies for Business"
