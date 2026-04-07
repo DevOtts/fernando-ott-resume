@@ -5,7 +5,7 @@ const metrics = [
   { value: "4+", label: "Years AI/ML in Prod" },
   { value: "20-30h", label: "Saved / Client / Week" },
   { value: "14×", label: "Search Speed Boost" },
-  { value: "2×", label: "Sales Conversion Lift" },
+  { value: "2", label: "New Lives in the World" },
 ];
 
 export function MetricsStrip() {
