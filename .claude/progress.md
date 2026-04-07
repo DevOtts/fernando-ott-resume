@@ -16,6 +16,11 @@
 
 ## Session Log
 
+### Session 21 — 2026-04-07 (metrics strip overhaul)
+- Replaced "20-30h Saved / Client / Week" with "98 People Led in Career"
+- Replaced "14× Search Speed Boost" with "$550K VC Raised"
+- Strip now shows: 16+ yrs engineering, 4+ yrs AI/ML, 98 people led, $550K VC raised, 2 new lives in the world
+
 ### Session 20 — 2026-04-07 (human touch on metrics strip)
 - Replaced last KPI "2× Sales Conversion Lift" with "2 New Lives in the World" — Fernando's 2 kids, adds humanity to the metrics strip
 
