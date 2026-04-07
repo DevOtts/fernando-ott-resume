@@ -16,6 +16,9 @@
 
 ## Session Log
 
+### Session 23 — 2026-04-07 (metric: $550K VC Raised → 25M+ Users Reached in Prod)
+- Replaced "$550K VC Raised" with "25M+ Users Reached in Prod" — better signals engineering scale to hiring audience
+
 ### Session 22 — 2026-04-07 (press links on experience cards)
 - Added "Press" pill strip to Polen (Rede Globo/RPC + Bossa Invest) and Bonuts (Projeto Draft)
 - Press strips render with same linked pill + hover style as accelerator badges

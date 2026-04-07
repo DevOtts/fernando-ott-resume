@@ -2,9 +2,9 @@
 
 const metrics = [
   { value: "16+", label: "Years Engineering" },
-  { value: "4+", label: "Years AI/ML in Prod" },
+  { value: "4+", label: "Years AI in Production" },
   { value: "98", label: "People Led in Career" },
-  { value: "$550K", label: "VC Raised" },
+  { value: "25M+", label: "Users Reached in Prod" },
   { value: "2", label: "New Lives in the World" },
 ];
 
