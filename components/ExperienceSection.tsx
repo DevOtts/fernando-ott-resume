@@ -23,6 +23,14 @@ const experiences = [
     ],
   },
   {
+    dates: "Nov 2016 — Jul 2017",
+    company: "Bonuts",
+    location: "Curitiba, BR",
+    role: "CTO & Co-Founder",
+    desc: "Built a photo mobile app (iOS + Android) that rewarded users for posting branded-frame photos — brands paid $0.10–$5.00 per approved post for social buzz and virality. Grew to 10K users before Instagram and Snapchat commoditized the space.",
+    tags: ["Xamarin", "ASP.NET / C#", "MongoDB", "AWS", "iOS", "Android"],
+  },
+  {
     dates: "Jul 2022 — Jun 2025",
     company: "KeHE Distributors",
     location: "Naperville, IL · Remote",
@@ -44,7 +52,7 @@ const experiences = [
     company: "Polen",
     location: "Curitiba, BR & International",
     role: "CTO & Co-Founder",
-    desc: "Built the first social impact Open API in Latin America from scratch. Raised $550K in VC, scaled to 5,000+ companies and 25M+ users, donated $1.5M+ through the platform. Managed ~20 people, implemented OKR and Scrum across the entire org. Migrated from monolith to microservices (Docker, Kubernetes, Google Cloud). Served as CEO for 2 years before transitioning to CTO. Accelerated in Chile, UK, and Brazil.",
+    desc: "Built the first social impact Open API in Latin America from scratch. Raised $550K in VC, scaled to 5,000+ companies and 25M+ users, donated $1.5M+ through the platform. Managed ~20 people, implemented OKR and Scrum across the entire org. Migrated from monolith to microservices (Docker, Kubernetes, Google Cloud). Served as CEO for 2 years before transitioning to CTO.",
     tags: [
       "C# / .NET",
       "Angular",
@@ -52,6 +60,11 @@ const experiences = [
       "Docker",
       "Kubernetes",
       "Google Cloud",
+    ],
+    accelerators: [
+      { name: "Start You Up", location: "Brazil", flag: "🇧🇷" },
+      { name: "DotForge", location: "UK", flag: "🇬🇧" },
+      { name: "Start-Up Chile", location: "Chile", flag: "🇨🇱" },
     ],
   },
   {
@@ -220,6 +233,55 @@ export function ExperienceSection() {
                   </span>
                 ))}
               </div>
+
+              {"accelerators" in exp && exp.accelerators && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                    gap: "0.5rem",
+                    marginTop: "1.25rem",
+                    paddingTop: "1rem",
+                    borderTop: "1px solid var(--border-light)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--mono)",
+                      fontSize: "0.65rem",
+                      color: "var(--text-faint)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                      marginRight: "0.25rem",
+                    }}
+                  >
+                    Selected for
+                  </span>
+                  {(exp.accelerators as { name: string; location: string; flag: string }[]).map((a) => (
+                    <span
+                      key={a.name}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.3rem",
+                        fontFamily: "var(--mono)",
+                        fontSize: "0.72rem",
+                        fontWeight: 500,
+                        padding: "3px 10px",
+                        borderRadius: 20,
+                        background: "var(--bg-alt)",
+                        border: "1px solid var(--border-light)",
+                        color: "var(--text-mid)",
+                      }}
+                    >
+                      <span>{a.flag}</span>
+                      <span>{a.name}</span>
+                      <span style={{ color: "var(--text-faint)", fontWeight: 400 }}>· {a.location}</span>
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}
