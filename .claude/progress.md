@@ -16,6 +16,11 @@
 
 ## Session Log
 
+### Session 18 — 2026-04-07 (Vercel deployment config)
+- Removed `env` block from `vercel.json` — the `@secret_reference` syntax requires Vercel CLI secrets, conflicting with dashboard-added env vars
+- Env vars should be added manually in Vercel Dashboard using exact names from `.env.example`
+- Key name mapping clarified: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `BOOKING_URL` (not old `CALENDLY_URL`/`NEXT_PUBLIC_` prefixed names in vercel.json)
+
 ### Session 17 — 2026-04-07 (experience section expansion)
 - Added 3 early-career roles replacing bundled "Enterprise Retail" entry: Many To One Consulting (Jan–Aug 2012, Tech Lead), BuscaPé (Jun–Dec 2011, Middle Developer), FCamara Consulting (Jan 2010–Apr 2011, Middle Developer)
 - Added Bonuts CTO role (Nov 2016–Jul 2017): photo reward mobile app, 10K users, Xamarin/AWS/MongoDB — shows founder versatility and mobile experience
