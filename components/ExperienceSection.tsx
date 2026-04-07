@@ -29,6 +29,9 @@ const experiences = [
     role: "CTO & Co-Founder",
     desc: "Built a photo mobile app (iOS + Android) that rewarded users for posting branded-frame photos — brands paid $0.10–$5.00 per approved post for social buzz and virality. Grew to 10K users before Instagram and Snapchat commoditized the space.",
     tags: ["Xamarin", "ASP.NET / C#", "MongoDB", "AWS", "iOS", "Android"],
+    press: [
+      { name: "Projeto Draft", url: "https://www.projetodraft.com/bonuts-um-app-que-faz-marketing-com-filtros-de-fotos-e-recompensa-o-usuario/" },
+    ],
   },
   {
     dates: "Jul 2022 — Jun 2025",
@@ -60,6 +63,10 @@ const experiences = [
       "Docker",
       "Kubernetes",
       "Google Cloud",
+    ],
+    press: [
+      { name: "Rede Globo / RPC", url: "https://redeglobo.globo.com/rpc/realities/rocket-startup/sociedade/noticia/orbita-sociedade-conheca-mais-sobre-a-startup-polen.ghtml" },
+      { name: "Bossa Invest", url: "https://bossainvest.com/startup-de-impacto-social-recebe-aporte/" },
     ],
     accelerators: [
       { name: "Start You Up", location: "Brazil", flag: "🇧🇷", url: "https://www.startyouup.com.br/" },
@@ -234,6 +241,68 @@ export function ExperienceSection() {
                   </span>
                 ))}
               </div>
+
+              {"press" in exp && exp.press && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                    gap: "0.5rem",
+                    marginTop: "1.25rem",
+                    paddingTop: "1rem",
+                    borderTop: "1px solid var(--border-light)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--mono)",
+                      fontSize: "0.65rem",
+                      color: "var(--text-faint)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                      marginRight: "0.25rem",
+                    }}
+                  >
+                    Press
+                  </span>
+                  {(exp.press as { name: string; url: string }[]).map((p) => (
+                    <a
+                      key={p.name}
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.25rem",
+                        fontFamily: "var(--mono)",
+                        fontSize: "0.72rem",
+                        fontWeight: 500,
+                        padding: "3px 10px",
+                        borderRadius: 20,
+                        background: "var(--bg-alt)",
+                        border: "1px solid var(--border-light)",
+                        color: "var(--text-mid)",
+                        textDecoration: "none",
+                        transition: "border-color 0.2s, color 0.2s",
+                      }}
+                      onMouseEnter={(e) => {
+                        const el = e.currentTarget as HTMLAnchorElement;
+                        el.style.borderColor = "var(--accent)";
+                        el.style.color = "var(--accent)";
+                      }}
+                      onMouseLeave={(e) => {
+                        const el = e.currentTarget as HTMLAnchorElement;
+                        el.style.borderColor = "var(--border-light)";
+                        el.style.color = "var(--text-mid)";
+                      }}
+                    >
+                      {p.name} ↗
+                    </a>
+                  ))}
+                </div>
+              )}
 
               {"accelerators" in exp && exp.accelerators && (
                 <div
