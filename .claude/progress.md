@@ -16,6 +16,19 @@
 
 ## Session Log
 
+### Session 26 — 2026-04-07 (OG social banner)
+- Replaced public/og-image.png with proper 1200×630 social sharing banner
+- Fixed og:type from 'profile' → 'website'
+- Updated og:image dimensions to 1200×630
+- Changed twitter:card from 'summary' → 'summary_large_image' (renders full banner on X/Twitter)
+- Updated OG + Twitter descriptions to match banner copy
+
+### Session 25 — 2026-04-07 (SEO/GEO heading hierarchy + YouTube content)
+- Fixed heading hierarchy: ExperienceSection job titles div → h3, PortfolioSection project titles div → h3
+- Added visually-hidden h2 "Key Metrics" to MetricsStrip for crawler context; added .sr-only utility to globals.css
+- YouTubeSection: trimmed all 6 descriptions to 1–2 sentences; translated 4 PT-BR titles to English (kept lang="pt" badge)
+- favicon updated to circular branded profile photo (app/icon.png 192px, app/apple-icon.png 180px)
+
 ### Session 24 — 2026-04-07 (README CTA badge)
 - Added prominent "🌐 fernandoott.com — Talk with My AI Clone" badge to README header above social links row
 
