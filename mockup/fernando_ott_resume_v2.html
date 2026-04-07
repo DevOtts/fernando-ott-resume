@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Ott — Head of AI & AI Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Satoshi:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--bg-alt:#F0F0EC;--bg-card:#fff;--bg-dark:#0C0C0E;
+  --accent:#2563EB;--accent-light:#DBEAFE;--accent-dark:#1D4ED8;
+  --green:#16A34A;--green-light:#DCFCE7;
+  --orange:#EA580C;--orange-light:#FFF7ED;
+  --text:#1A1A1A;--text-mid:#4A4A4A;--text-soft:#7A7A7A;--text-faint:#A0A0A0;
+  --border:#E5E5E0;--border-light:#EDEDEA;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Satoshi',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
+  --r:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.85);backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid var(--border-light)}
+.nav-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px}
+.nav-logo{font-family:var(--serif);font-size:1.25rem;color:var(--text);text-decoration:none;letter-spacing:-0.03em}
+.nav-logo i{color:var(--accent)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{color:var(--text-soft);text-decoration:none;font-size:0.82rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.btn-chat-nav{display:flex;align-items:center;gap:6px;background:var(--bg-dark);color:#fff;border:none;padding:7px 16px;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all 0.25s}
+.btn-chat-nav:hover{background:#2A2A30;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+
+.hero{padding:8rem 2rem 4rem;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,0.06) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center}
+.hero-text{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-light);color:var(--green);font-size:0.78rem;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:1.75rem}
+.hero-badge::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,0.35)}50%{box-shadow:0 0 0 6px rgba(22,163,74,0)}}
+.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.2rem);line-height:1.08;letter-spacing:-0.04em;margin-bottom:0.4rem}
+.hero h1 i{font-style:italic;color:var(--accent)}
+.hero-title{font-size:1.15rem;color:var(--text-mid);margin-bottom:1.25rem;font-weight:400}
+.hero-desc{font-size:1rem;color:var(--text-soft);max-width:540px;line-height:1.75;margin-bottom:2rem}
+.hero-links{display:flex;flex-wrap:wrap;gap:0.6rem}
+.hero-links a{display:flex;align-items:center;gap:5px;font-size:0.8rem;font-weight:500;color:var(--text-soft);text-decoration:none;padding:7px 14px;border:1px solid var(--border);border-radius:8px;transition:all 0.2s;background:#fff}
+.hero-links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.hero-photo{position:relative;display:flex;justify-content:center}
+.hero-photo img{width:300px;height:300px;border-radius:20px;object-fit:cover;border:4px solid #fff;box-shadow:0 20px 60px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04);position:relative;z-index:1}
+.photo-card{position:absolute;background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:10px 16px;font-size:0.78rem;box-shadow:0 8px 32px rgba(0,0,0,0.06);z-index:2;white-space:nowrap}
+.photo-card.c1{bottom:-10px;left:-20px;color:var(--accent);font-weight:600}
+.photo-card.c2{top:20px;right:-30px;color:var(--green);font-weight:600}
+.photo-card.c3{bottom:60px;right:-40px;color:var(--text-mid)}
+@media(max-width:860px){.hero-in{grid-template-columns:1fr;text-align:center}.hero-photo{order:-1;margin-bottom:1rem}.hero-photo img{width:200px;height:200px}.photo-card{display:none}.hero-desc{margin-left:auto;margin-right:auto}.hero-links{justify-content:center}.nav-links{display:none}.two-col,.strength-grid,.portfolio-grid,.skills-grid{grid-template-columns:1fr!important}.gap-row{grid-template-columns:1fr!important}}
+
+section{max-width:1180px;margin:0 auto;padding:5rem 2rem}
+.section-tag{font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.6rem;font-weight:500}
+h2{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);letter-spacing:-0.03em;line-height:1.15;margin-bottom:0.5rem}
+h2 i{font-style:italic}
+.section-sub{font-size:1rem;color:var(--text-soft);max-width:600px;margin-bottom:2.5rem;line-height:1.7}
+
+.metrics-strip{background:var(--bg-dark);border-radius:16px;display:grid;grid-template-columns:repeat(5,1fr);overflow:hidden}
+.ms-item{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,0.06);transition:background 0.3s}
+.ms-item:last-child{border-right:none}
+.ms-item:hover{background:rgba(255,255,255,0.03)}
+.ms-val{font-family:var(--serif);font-size:2.2rem;color:#fff;letter-spacing:-0.02em}
+.ms-label{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:4px;text-transform:uppercase;letter-spacing:0.1em}
+@media(max-width:700px){.metrics-strip{grid-template-columns:repeat(2,1fr)}.ms-item:nth-child(5){grid-column:span 2}}
+
+.strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.str-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--r);padding:1.75rem;transition:all 0.3s;position:relative;overflow:hidden}
+.str-card:hover{border-color:var(--accent);box-shadow:0 8px 40px rgba(37,99,235,0.06);transform:translateY(-3px)}
+.str-icon{font-size:1.5rem;margin-bottom:0.75rem;display:block}
+.str-card h3{font-family:var(--serif);font-size:1.15rem;margin-bottom:0.5rem;letter-spacing:-0.01em}
+.str-card p{font-size:0.88rem;color:var(--text-soft);line-height:1.65}
+.str-level{position:absolute;top:1rem;right:1rem;font-family:var(--mono);font-size:0.65rem;padding:3px 8px;border-radius:4px;font-weight:500}
+.str-level.expert{background:var(--green-light);color:var(--green)}
+.str-level.strong{background:var(--accent-light);color:var(--accent)}
+
+.gaps-section{background:var(--bg-alt);border-radius:16px;padding:3rem;margin-top:2rem}
+.gaps-section h3{font-family:var(--serif);font-size:1.5rem;margin-bottom:0.5rem}
+.gaps-section .sub{font-size:0.9rem;color:var(--text-soft);margin-bottom:1.5rem}
+.gap-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.gap-item{display:flex;gap:12px;align-items:flex-start;font-size:0.88rem;color:var(--text-mid);line-height:1.6}
+.gap-icon{flex-shrink:0;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;margin-top:2px;background:var(--orange-light);color:var(--orange)}
+
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--border-light)}
+.exp-item:last-child{border-bottom:none}
+.exp-meta{position:sticky;top:80px;align-self:start}
+.exp-dates{font-family:var(--mono);font-size:0.78rem;color:var(--text-faint)}
+.exp-co{font-weight:600;font-size:0.95rem;margin-top:0.25rem}
+.exp-loc{font-size:0.8rem;color:var(--text-soft)}
+.exp-role{font-family:var(--serif);font-size:1.4rem;letter-spacing:-0.01em;margin-bottom:0.75rem}
+.exp-desc{font-size:0.92rem;color:var(--text-mid);line-height:1.8;max-width:650px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:1rem}
+.exp-tag{font-family:var(--mono);font-size:0.68rem;padding:3px 9px;border-radius:4px;background:var(--bg-alt);color:var(--text-soft)}
+@media(max-width:700px){.exp-item{grid-template-columns:1fr;gap:0.75rem}.exp-meta{position:static}}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.pf-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--r);padding:2rem;position:relative;overflow:hidden;transition:all 0.35s}
+.pf-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#7C3AED);opacity:0;transition:opacity 0.3s}
+.pf-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+.pf-card:hover::after{opacity:1}
+.pf-num{font-family:var(--mono);font-size:0.68rem;color:var(--text-faint);margin-bottom:0.6rem}
+.pf-title{font-family:var(--serif);font-size:1.5rem;margin-bottom:0.15rem}
+.pf-sub{font-size:0.82rem;color:var(--accent);margin-bottom:0.75rem;font-weight:500}
+.pf-desc{font-size:0.88rem;color:var(--text-soft);line-height:1.7;margin-bottom:1rem}
+.pf-metric{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:0.76rem;padding:5px 12px;border-radius:6px;background:var(--green-light);color:var(--green);font-weight:500}
+
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.sk-group{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--r);padding:1.75rem}
+.sk-group h3{font-family:var(--mono);font-size:0.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border-light);font-weight:500}
+.sk-items{display:flex;flex-wrap:wrap;gap:0.35rem}
+.sk-item{font-size:0.8rem;padding:4px 11px;border-radius:5px;background:var(--bg-alt);color:var(--text-mid);transition:all 0.2s;border:1px solid transparent}
+.sk-item:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.info-bl{margin-bottom:1.75rem}
+.info-bl h3{font-family:var(--serif);font-size:1.05rem;margin-bottom:0.15rem}
+.info-bl p{font-size:0.85rem;color:var(--text-soft)}
+
+.cta-section{background:var(--bg-dark);border-radius:20px;padding:4rem;text-align:center;margin:3rem 2rem;max-width:1180px;margin-left:auto;margin-right:auto}
+.cta-section h2{color:#fff;margin-bottom:0.75rem}
+.cta-section p{color:rgba(255,255,255,0.5);margin-bottom:2rem;font-size:0.95rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btn{padding:12px 28px;border-radius:10px;font-size:0.9rem;font-weight:600;text-decoration:none;font-family:var(--sans);cursor:pointer;transition:all 0.25s;border:none;display:inline-flex;align-items:center;gap:8px}
+.cta-btn.primary{background:#fff;color:var(--bg-dark)}
+.cta-btn.primary:hover{background:#E8E8E8;transform:translateY(-2px)}
+.cta-btn.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.2)}
+.cta-btn.secondary:hover{border-color:rgba(255,255,255,0.5)}
+
+footer{text-align:center;padding:2rem;color:var(--text-faint);font-size:0.78rem;border-top:1px solid var(--border-light)}
+footer a{color:var(--accent);text-decoration:none}
+.sep{width:100%;max-width:1180px;margin:0 auto;height:1px;background:var(--border-light)}
+
+.chat-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);backdrop-filter:blur(6px);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.chat-overlay.open{opacity:1;pointer-events:all}
+.chat-panel{position:fixed;right:-500px;top:0;bottom:0;width:min(480px,100vw);background:var(--bg);border-left:1px solid var(--border);z-index:201;display:flex;flex-direction:column;transition:right 0.4s cubic-bezier(0.32,0.72,0,1);box-shadow:-20px 0 60px rgba(0,0,0,0.08)}
+.chat-panel.open{right:0}
+.ch-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-shrink:0;background:#fff}
+.ch-info h3{font-family:var(--serif);font-size:1.1rem;display:flex;align-items:center;gap:8px}
+.ch-info p{font-size:0.75rem;color:var(--text-soft);margin-top:2px}
+.ch-close{background:none;border:1px solid var(--border);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;color:var(--text-soft);transition:all 0.2s}
+.ch-close:hover{border-color:var(--accent);color:var(--accent)}
+.ch-msgs{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.msg{max-width:88%;padding:11px 15px;border-radius:14px;font-size:0.88rem;line-height:1.6;animation:msgIn 0.3s ease-out}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{background:#fff;border:1px solid var(--border-light);align-self:flex-start;border-bottom-left-radius:4px;color:var(--text-mid)}
+.msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.typing{background:#fff;border:1px solid var(--border-light);align-self:flex-start;border-bottom-left-radius:4px}
+.typing-dots{display:flex;gap:4px;padding:4px 0}
+.typing-dots span{width:6px;height:6px;background:var(--text-faint);border-radius:50%;animation:dot 1.4s infinite both}
+.typing-dots span:nth-child(2){animation-delay:0.2s}
+.typing-dots span:nth-child(3){animation-delay:0.4s}
+@keyframes dot{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
+.quick-qs{padding:0 1.5rem 0.75rem;display:flex;flex-wrap:wrap;gap:0.35rem;flex-shrink:0}
+.qq{font-size:0.75rem;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--text-soft);cursor:pointer;font-family:var(--sans);transition:all 0.2s}
+.qq:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.ch-input{padding:1rem 1.5rem;border-top:1px solid var(--border-light);display:flex;gap:0.6rem;flex-shrink:0;background:#fff}
+.ch-input input{flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;font-size:0.88rem;font-family:var(--sans);outline:none;transition:border-color 0.2s}
+.ch-input input:focus{border-color:var(--accent)}
+.ch-input input::placeholder{color:var(--text-faint)}
+.ch-send{background:var(--bg-dark);border:none;color:#fff;width:42px;height:42px;border-radius:10px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.ch-send:hover{background:#333}
+.ch-send:disabled{opacity:0.3;cursor:not-allowed}
+
+.reveal{opacity:0;transform:translateY(24px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#" class="nav-logo">Fernando<i>Ott</i></a>
+    <ul class="nav-links">
+      <li><a href="#strengths">Strengths</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+    <button class="btn-chat-nav" onclick="toggleChat()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Talk to My AI Clone
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-text">
+      <div class="hero-badge">Open to new opportunities</div>
+      <h1>Fernando <i>Ott</i></h1>
+      <p class="hero-title">Head of AI &amp; AI Architect at 8 Figure Agency</p>
+      <p class="hero-desc">I design multi-agent AI systems that plug into real business tools, understand context, and make decisions autonomously. My thing is turning complex AI ideas into platforms that actually run in production and move the needle for clients. 16+ years shipping software, 4+ years deploying AI at scale.</p>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/feott/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/devotts" target="_blank">GitHub</a>
+        <a href="https://www.youtube.com/@devotts_ai/videos" target="_blank">YouTube</a>
+        <a href="https://www.8figureagency.co/fernando-ott" target="_blank">8FAI Profile ↗</a>
+        <a href="mailto:ferott@gmail.com">ferott@gmail.com</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://media.licdn.com/dms/image/v2/D4D03AQGLRfIttnbNkA/profile-displayphoto-scale_400_400/B4DZrLOHGnG8Ag-/0/1764346067628?e=1776902400&v=beta&t=SBczeajmRTKGsCVbCaaun0QQD1NfASdxhaz7k8tcB6M" alt="Fernando Ott" onerror="this.src='/mnt/user-data/uploads/1775492906090_image.png'">
+      <div class="photo-card c1">🧠 Architect of Brain AI</div>
+      <div class="photo-card c2">✓ 4+ yrs AI in Production</div>
+      <div class="photo-card c3">Curitiba, Brazil · Remote</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="metrics-strip reveal">
+    <div class="ms-item"><div class="ms-val">16+</div><div class="ms-label">Years Engineering</div></div>
+    <div class="ms-item"><div class="ms-val">4+</div><div class="ms-label">Years AI/ML in Prod</div></div>
+    <div class="ms-item"><div class="ms-val">20-30h</div><div class="ms-label">Saved / Client / Week</div></div>
+    <div class="ms-item"><div class="ms-val">14×</div><div class="ms-label">Search Speed Boost</div></div>
+    <div class="ms-item"><div class="ms-val">2×</div><div class="ms-label">Sales Conversion Lift</div></div>
+  </div>
+</section>
+
+<section id="strengths">
+  <div class="reveal">
+    <div class="section-tag">What I Bring</div>
+    <h2>Where I'm <i>strongest</i></h2>
+    <p class="section-sub">These aren't buzzwords. They're the things I've done consistently across startups, enterprise, and AI systems for over a decade.</p>
+  </div>
+  <div class="strength-grid reveal">
+    <div class="str-card"><span class="str-level expert">Expert</span><span class="str-icon">🏗️</span><h3>AI Systems Architecture</h3><p>I design multi-agent platforms from scratch. Brain is a multi-tenant OS with vector, graph, and structured stores, LLM orchestration, ingestion pipelines, and production observability. I think in platforms, not scripts.</p></div>
+    <div class="str-card"><span class="str-level expert">Expert</span><span class="str-icon">🌉</span><h3>Business ↔ Engineering Bridge</h3><p>I translate what a company needs into what the engineering team builds. This is the "click" that most developers miss. I've done it as CTO, Tech Lead at a NASDAQ company, and Head of AI at an agency.</p></div>
+    <div class="str-card"><span class="str-level expert">Expert</span><span class="str-icon">👥</span><h3>People Management</h3><p>I've managed nearly 20 people directly. Teaching juniors, managing senior egos, keeping motivation high. The code is simpler than people, but it's really satisfying when you figure out your way to lead and the team appreciates it.</p></div>
+    <div class="str-card"><span class="str-level expert">Expert</span><span class="str-icon">🤝</span><h3>Client Conversation &amp; Management</h3><p>From agencies to NASDAQ enterprises, I sit with clients, understand their context, map AI to their workflows, and deliver measurable outcomes. Not demos, not slide decks. Real results they can see in their numbers.</p></div>
+    <div class="str-card"><span class="str-level expert">Expert</span><span class="str-icon">🔧</span><h3>LLM Orchestration &amp; Agentic AI</h3><p>LangChain, CrewAI, MCP Server, multi-model pipelines, RAG, tool use, guardrails. I define prompting patterns, retrieval logic, evaluation frameworks, and failure modes. This is what I do daily in production.</p></div>
+    <div class="str-card"><span class="str-level strong">Strong</span><span class="str-icon">🚀</span><h3>POC → Production Delivery</h3><p>Brain went from whiteboard to multi-tenant production in months. KeHE search went from broken to 14x faster. Polen went from idea to 25M users. I take things from zero to one and then from one to scale.</p></div>
+    <div class="str-card"><span class="str-level expert">Expert</span><span class="str-icon">📐</span><h3>Scalable Platform Thinking</h3><p>I don't build one-off automations. I build platforms. Multi-tenant isolation, reusable agent patterns, metadata-driven configuration. Adding a new client to Brain doesn't require custom engineering, just configuration.</p></div>
+    <div class="str-card"><span class="str-level strong">Strong</span><span class="str-icon">☁️</span><h3>AWS Production Workloads</h3><p>At KeHE, AWS was the backbone: Lambdas, SQS, S3, DynamoDB, OpenSearch, CodeBuild, CloudWatch. I've designed and deployed AI/ML workloads end-to-end on AWS. No certifications yet, but deep hands-on experience.</p></div>
+    <div class="str-card"><span class="str-level strong">Strong</span><span class="str-icon">🎯</span><h3>Startup Founder Mindset</h3><p>I've co-founded, raised VC ($550K), served as CEO and CTO, lived through accelerators in 3 countries. I know the rhythm of fast delivery and user-first thinking. I can balance business urgency with technical integrity.</p></div>
+  </div>
+
+  <div class="gaps-section reveal">
+    <h3>Where I'm honest about gaps</h3>
+    <p class="sub">No one is strong at everything. Here's where I'm growing and what I consciously delegate.</p>
+    <div class="gap-row">
+      <div class="gap-item"><div class="gap-icon">△</div><div><strong>AI Image &amp; Video Generation</strong> — I understand the concepts and can architect integrations, but I haven't built production pipelines with diffusion models, Stable Diffusion, or video generation tools. I'd delegate this to a specialist.</div></div>
+      <div class="gap-item"><div class="gap-icon">△</div><div><strong>Classical ML / Deep Learning Research</strong> — My ML work is applied and production-focused: RAG, LLM orchestration, fine-tuning for domain adaptation, multi-model routing. I don't train CNNs from scratch or write custom loss functions.</div></div>
+      <div class="gap-item"><div class="gap-icon">△</div><div><strong>OCR &amp; Document Processing</strong> — Haven't worked with OCR specifically, but I've built architecturally analogous ingestion and classification systems. The patterns translate, but I'd be learning the specific tooling.</div></div>
+      <div class="gap-item"><div class="gap-icon">△</div><div><strong>AWS Certifications</strong> — I've used AWS extensively in production (Lambdas, SQS, S3, DynamoDB, OpenSearch, CloudWatch), but don't hold formal certifications yet.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="experience">
+  <div class="reveal">
+    <div class="section-tag">Career Timeline</div>
+    <h2>Where I've <i>built things</i></h2>
+    <p class="section-sub">Brain and my current AI leadership work lead everything. Prior roles demonstrate range, resilience, and a consistent pattern of shipping at scale.</p>
+  </div>
+  <div class="reveal">
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-dates">Jul 2025 — Present</div><div class="exp-co">8 Figure Agency</div><div class="exp-loc">Santa Monica, CA · Remote</div></div>
+      <div><div class="exp-role">Head of AI &amp; AI Architect</div><div class="exp-desc">I lead the design and execution of Brain, our multi-tenant AI platform connecting to client tools (CRMs, ads platforms, Slack, meetings, data warehouses). My role sits at the intersection of product, architecture, and team leadership. I define the technical direction, set delivery standards, and manage a team of AI engineers and researchers. I set LLM strategy (model selection, prompting patterns, tool use, retrieval, guardrails), evaluation frameworks, and production observability with Grafana, Datadog, and LangSmith. The goal: grounding AI work in business impact, not demos.</div><div class="exp-tags"><span class="exp-tag">Python</span><span class="exp-tag">Next.js</span><span class="exp-tag">LangChain</span><span class="exp-tag">CrewAI</span><span class="exp-tag">MCP Server</span><span class="exp-tag">Vector DBs</span><span class="exp-tag">MongoDB</span><span class="exp-tag">Supabase</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">AWS</span><span class="exp-tag">Grafana</span><span class="exp-tag">Datadog</span></div></div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-dates">Jul 2022 — Jun 2025</div><div class="exp-co">KeHE Distributors</div><div class="exp-loc">Naperville, IL · Remote</div></div>
+      <div><div class="exp-role">Tech Lead &amp; Architect</div><div class="exp-desc">Led the transformation of the e-commerce search platform for a NASDAQ-listed, $8B+ revenue food distributor. Guided the team through a POC, selected OpenSearch on AWS, and delivered a 14x search speed improvement and 2x sales conversion lift processing millions of daily queries. Also reduced B2B client onboarding from 15 minutes to 2 minutes. Managed multiple teams across retailer and back-office operations.</div><div class="exp-tags"><span class="exp-tag">AWS</span><span class="exp-tag">OpenSearch</span><span class="exp-tag">.NET 8</span><span class="exp-tag">Angular</span><span class="exp-tag">DynamoDB</span><span class="exp-tag">SQS</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">Datadog</span></div></div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-dates">Nov 2013 — Aug 2024</div><div class="exp-co">Polen</div><div class="exp-loc">Curitiba, BR &amp; International</div></div>
+      <div><div class="exp-role">CTO &amp; Co-Founder</div><div class="exp-desc">Built the first social impact Open API in Latin America from scratch. Raised $550K in VC, scaled to 5,000+ companies and 25M+ users, donated $1.5M+ through the platform. Managed ~20 people, implemented OKR and Scrum across the entire org. Migrated from monolith to microservices (Docker, Kubernetes, Google Cloud). Served as CEO for 2 years before transitioning to CTO. Accelerated in Chile, UK, and Brazil.</div><div class="exp-tags"><span class="exp-tag">C# / .NET</span><span class="exp-tag">Angular</span><span class="exp-tag">MongoDB</span><span class="exp-tag">Docker</span><span class="exp-tag">Kubernetes</span><span class="exp-tag">Google Cloud</span></div></div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-dates">2008 — 2013</div><div class="exp-co">Enterprise Retail</div><div class="exp-loc">São Paulo &amp; Curitiba</div></div>
+      <div><div class="exp-role">Developer → Technical Lead</div><div class="exp-desc">Foundational years at Walmart Brazil, BuscaPé (anti-fraud), PRNewswire, FCamara, MPS. Systems handling millions of transactions. SQL performance optimization, unit testing, CI. Started managing teams with Scrum. Built discipline in performance engineering, scalability, and clean code.</div><div class="exp-tags"><span class="exp-tag">ASP.NET / C#</span><span class="exp-tag">SQL Server</span><span class="exp-tag">jQuery</span><span class="exp-tag">Scrum</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="portfolio">
+  <div class="reveal">
+    <div class="section-tag">Production Systems</div>
+    <h2>What I've <i>shipped</i></h2>
+    <p class="section-sub">Four production AI/ML systems, each from architecture to deployment. Real users, real data, real outcomes.</p>
+  </div>
+  <div class="portfolio-grid reveal">
+    <div class="pf-card"><div class="pf-num">01</div><div class="pf-title">Brain</div><div class="pf-sub">8 Figure Agency — Multi-Agent AI Platform</div><div class="pf-desc">Multi-tenant, multi-agent OS connecting to CRMs, ads platforms, Slack, meetings, and data warehouses. Vector + graph + structured stores, LLM orchestration, reusable agent patterns, production observability. Whiteboard to multi-client production in months.</div><div class="pf-metric">↓ 20-30 hrs / client / week</div></div>
+    <div class="pf-card"><div class="pf-num">02</div><div class="pf-title">KeHE Search</div><div class="pf-sub">OpenSearch B2B E-commerce · AWS</div><div class="pf-desc">AI-powered search for a NASDAQ-listed food distributor handling millions of daily queries. Architected POC to production, created flexible architecture enabling Ads in search results.</div><div class="pf-metric">14× speed · 2× conversion</div></div>
+    <div class="pf-card"><div class="pf-num">03</div><div class="pf-title">Cognia</div><div class="pf-sub">AI Psychologist MVP — Multi-Model Safety</div><div class="pf-desc">Primary LLM for responses, fine-tuned models for personality and domain knowledge, smaller LLMs for toxicity screening, human-in-the-loop routing after 3 validation checks. End-to-end architecture to deployment.</div><div class="pf-metric">Multi-model safety pipeline</div></div>
+    <div class="pf-card"><div class="pf-num">04</div><div class="pf-title">TaskClaw</div><div class="pf-sub">Open Source — AI Task Platform</div><div class="pf-desc">Self-hostable Kanban + AI chat + knowledge management with bidirectional Notion/ClickUp sync. Public codebase demonstrating AI integration patterns.</div><div style="margin-top:0.75rem"><a href="https://github.com/DevOtts/taskclaw" target="_blank" style="color:var(--accent);font-family:var(--mono);font-size:0.8rem;text-decoration:none;border-bottom:1px dashed var(--accent)">github.com/DevOtts/taskclaw ↗</a></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="skills">
+  <div class="reveal"><div class="section-tag">Technical Toolkit</div><h2>What I <i>work with</i></h2></div>
+  <div class="skills-grid reveal">
+    <div class="sk-group"><h3>AI / ML / LLM</h3><div class="sk-items"><span class="sk-item">LangChain</span><span class="sk-item">LangSmith</span><span class="sk-item">CrewAI</span><span class="sk-item">MCP Server</span><span class="sk-item">Anthropic Claude</span><span class="sk-item">OpenAI</span><span class="sk-item">Mistral</span><span class="sk-item">LLaMA / Ollama</span><span class="sk-item">Vector DBs</span><span class="sk-item">Knowledge Graphs</span><span class="sk-item">RAG Pipelines</span><span class="sk-item">Multi-Agent Architectures</span><span class="sk-item">Prompt Engineering</span><span class="sk-item">Fine-Tuning</span><span class="sk-item">N8N</span></div></div>
+    <div class="sk-group"><h3>Backend & Infrastructure</h3><div class="sk-items"><span class="sk-item">Python</span><span class="sk-item">.NET / C#</span><span class="sk-item">Node.js</span><span class="sk-item">PostgreSQL</span><span class="sk-item">MongoDB</span><span class="sk-item">Supabase</span><span class="sk-item">DynamoDB</span><span class="sk-item">OpenSearch</span><span class="sk-item">AWS (Lambda, SQS, S3)</span><span class="sk-item">Docker</span><span class="sk-item">Kubernetes</span><span class="sk-item">CI/CD</span></div></div>
+    <div class="sk-group"><h3>Frontend & Observability</h3><div class="sk-items"><span class="sk-item">Next.js</span><span class="sk-item">React</span><span class="sk-item">TypeScript</span><span class="sk-item">Angular</span><span class="sk-item">Grafana</span><span class="sk-item">Datadog</span><span class="sk-item">LangSmith</span><span class="sk-item">CloudWatch</span><span class="sk-item">SonarQube</span></div></div>
+    <div class="sk-group"><h3>Leadership & Process</h3><div class="sk-items"><span class="sk-item">AI Strategy & Roadmap</span><span class="sk-item">Architecture Decision Records</span><span class="sk-item">Team Management (20+)</span><span class="sk-item">Scrum / Kanban</span><span class="sk-item">OKR</span><span class="sk-item">Sprint Planning & DoD</span><span class="sk-item">Stakeholder Communication</span><span class="sk-item">Technical Mentoring</span></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<section id="education">
+  <div class="reveal"><div class="section-tag">Background</div><h2>Education &amp; <i>Details</i></h2></div>
+  <div class="two-col reveal">
+    <div>
+      <div class="info-bl"><h3>B.Sc. Computer Science</h3><p>Universidade Federal do Paraná (UFPR) · 2007—2011</p></div>
+      <div class="info-bl"><h3>Microsoft Student to Business (S2B)</h3><p>C# Program · 2008</p></div>
+      <div class="info-bl"><h3>Startup Accelerators</h3><p>Start-Up Chile · DotForge Impact (UK) · Start You Up (Brazil)</p></div>
+      <div class="info-bl"><h3>Award</h3><p>Startup Weekend Winner</p></div>
+    </div>
+    <div>
+      <div class="info-bl"><h3>Location</h3><p>Curitiba, Paraná, Brazil · Remote, open to global</p></div>
+      <div class="info-bl"><h3>Languages</h3><p>Portuguese (Native) · English (Full Professional) · Spanish (Working)</p></div>
+      <div class="info-bl"><h3>Notice Period</h3><p>1 month</p></div>
+      <div class="info-bl"><h3>Technical Content</h3><p>YouTube "Devops Attempt" (pt-BR) — AI systems, agent architectures, automation</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section reveal">
+  <h2>Let's talk about your <i style="color:var(--accent-light)">AI challenges</i></h2>
+  <p>I'm looking for the right AI leadership role. If you're building agentic systems and need someone who ships, let's connect.</p>
+  <div class="cta-btns">
+    <a href="mailto:ferott@gmail.com" class="cta-btn primary">✉ Email Me</a>
+    <a href="https://www.linkedin.com/in/feott/" target="_blank" class="cta-btn secondary">LinkedIn →</a>
+    <button class="cta-btn secondary" onclick="toggleChat()">💬 Talk to My AI Clone</button>
+  </div>
+</div>
+
+<footer>
+  <p>Fernando Ott · Head of AI &amp; AI Architect · <a href="mailto:ferott@gmail.com">ferott@gmail.com</a> · <a href="https://www.linkedin.com/in/feott/">LinkedIn</a> · <a href="https://github.com/devotts">GitHub</a></p>
+  <p style="margin-top:6px">This resume features an AI chat clone powered by Claude.</p>
+</footer>
+
+<div class="chat-overlay" id="chatOverlay" onclick="toggleChat()"></div>
+<div class="chat-panel" id="chatPanel">
+  <div class="ch-header">
+    <div class="ch-info"><h3><span style="width:7px;height:7px;background:var(--green);border-radius:50%;display:inline-block;animation:pulse 2s infinite"></span> Fernando's AI Clone</h3><p>Ask anything about my experience, projects, or approach</p></div>
+    <button class="ch-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="ch-msgs" id="chatMessages">
+    <div class="msg bot">Hey! I'm Fernando's virtual clone. Ask me anything about my career, how Brain works, my leadership style, technical decisions, or what I'm looking for next. I'll answer the way Fernando actually talks.</div>
+  </div>
+  <div class="quick-qs" id="quickQs">
+    <button class="qq" onclick="askQ(this)">How does Brain work?</button>
+    <button class="qq" onclick="askQ(this)">Leadership style?</button>
+    <button class="qq" onclick="askQ(this)">Biggest challenge?</button>
+    <button class="qq" onclick="askQ(this)">Why looking for new role?</button>
+    <button class="qq" onclick="askQ(this)">What are your gaps?</button>
+  </div>
+  <div class="ch-input">
+    <input type="text" id="chatInput" placeholder="Ask Fernando's clone anything..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="ch-send" id="sendBtn" onclick="sendMsg()">→</button>
+  </div>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function toggleChat(){document.getElementById('chatOverlay').classList.toggle('open');document.getElementById('chatPanel').classList.toggle('open')}
+function askQ(b){document.getElementById('chatInput').value=b.textContent;sendMsg()}
+const CTX=`You are Fernando Ott's virtual clone on his interactive resume. Answer in first person as Fernando would. Be confident, technical, direct, conversational. Never use em dashes. Never use "spearheaded", "leveraged", "fostered", "delved". Keep answers concise (2-4 sentences for simple questions, up to a paragraph for complex ones).
+
+KEY FACTS:
+- Head of AI and AI Architect at 8 Figure Agency since July 2025. Designed and built Brain: multi-tenant, multi-agent AI platform connecting CRMs, ads, Slack, meetings, data warehouses.
+- Brain: vector + graph + structured stores, LLM orchestration (LangChain/CrewAI), reusable agent patterns, MCP Server, observability (Grafana/Datadog/LangSmith). Cut 20-30 hrs/client/week.
+- Tech Lead at KeHE (NASDAQ, $8B+, 3 years): OpenSearch platform, 14x speed, 2x conversion, millions daily queries. B2B onboarding 15min to 2min.
+- CTO/Co-founder Polen (~10 years): first social impact Open API in LatAm, 5000+ companies, 25M+ users, $550K VC, CEO for 2 years then CTO.
+- Built Cognia: multi-model AI psychologist with safety layers, toxicity checks, human-in-the-loop.
+- Built TaskClaw: open-source Kanban + AI chat + Notion/ClickUp sync.
+- 16+ years engineering, 4+ AI/ML production. Based Curitiba Brazil, remote, open to global.
+- STRENGTHS: AI architecture, business-engineering bridge, people management (~20 people), client management, LLM orchestration, POC to production, platform thinking, AWS, startup founder.
+- GAPS: No AI image/video generation experience. Applied ML not research ML. No OCR/IDP. No AWS certs.
+- WANTS: AI Architect, Head of AI, VP AI roles. Fast AI adoption cycles. The right role, not any role.
+- PERSONALITY: Direct, honest, references real systems. Says "I figured out". Gives credit to teams. Biggest challenge was Polen scaling + learning to manage people.`;
+let hist=[];
+async function sendMsg(){const inp=document.getElementById('chatInput'),txt=inp.value.trim();if(!txt)return;addMsg(txt,'user');inp.value='';document.getElementById('sendBtn').disabled=true;document.getElementById('quickQs').style.display='none';const typ=addTyp();hist.push({role:'user',content:txt});try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:CTX,messages:hist})});const d=await r.json(),reply=d.content.map(c=>c.text||'').join('');hist.push({role:'assistant',content:reply});typ.remove();addMsg(reply,'bot')}catch(e){typ.remove();addMsg("Having trouble connecting. Email me at ferott@gmail.com or reach out on LinkedIn.",'bot')}document.getElementById('sendBtn').disabled=false}
+function addMsg(t,type){const c=document.getElementById('chatMessages'),m=document.createElement('div');m.className='msg '+type;m.textContent=t;c.appendChild(m);c.scrollTop=c.scrollHeight;return m}
+function addTyp(){const c=document.getElementById('chatMessages'),m=document.createElement('div');m.className='msg typing';m.innerHTML='<div class="typing-dots"><span></span><span></span><span></span></div>';c.appendChild(m);c.scrollTop=c.scrollHeight;return m}
+</script>
+</body>
+</html>

@@ -71,7 +71,7 @@ const gaps = [
     desc: "Haven't worked with OCR specifically, but I've built architecturally analogous ingestion and classification systems. The patterns translate, but I'd be learning the specific tooling.",
   },
   {
-    title: "Business Intelligence",
+    title: "PowerBI",
     desc: "I've queried ClickHouse and BigQuery in production contexts, but BI tooling — dashboards, data modelling, semantic layers — has never been my focus. Not where I want to specialize.",
   },
 ];
@@ -233,13 +233,13 @@ function StrengthCard({
   const levelStyles =
     level === "expert"
       ? {
-          background: "var(--green-light)",
-          color: "var(--green)",
-        }
+        background: "var(--green-light)",
+        color: "var(--green)",
+      }
       : {
-          background: "var(--accent-light)",
-          color: "var(--accent)",
-        };
+        background: "var(--accent-light)",
+        color: "var(--accent)",
+      };
 
   return (
     <div
