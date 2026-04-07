@@ -16,6 +16,9 @@
 
 ## Session Log
 
+### Session 24 — 2026-04-07 (README CTA badge)
+- Added prominent "🌐 fernandoott.com — Talk with My AI Clone" badge to README header above social links row
+
 ### Session 23 — 2026-04-07 (metric: $550K VC Raised → 25M+ Users Reached in Prod)
 - Replaced "$550K VC Raised" with "25M+ Users Reached in Prod" — better signals engineering scale to hiring audience
 
