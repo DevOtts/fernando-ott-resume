@@ -16,6 +16,11 @@
 
 ## Session Log
 
+### Session 17 — 2026-04-07 (experience section expansion)
+- Added 3 early-career roles replacing bundled "Enterprise Retail" entry: Many To One Consulting (Jan–Aug 2012, Tech Lead), BuscaPé (Jun–Dec 2011, Middle Developer), FCamara Consulting (Jan 2010–Apr 2011, Middle Developer)
+- Added Bonuts CTO role (Nov 2016–Jul 2017): photo reward mobile app, 10K users, Xamarin/AWS/MongoDB — shows founder versatility and mobile experience
+- Added "Selected for" accelerator badge strip to Polen entry: 🇧🇷 Start You Up, 🇬🇧 DotForge, 🇨🇱 Start-Up Chile — rendered as pill badges with flag + name + location, separated by a top border divider inside the card
+
 ### Session 16 — 2026-04-07 (SEO/GEO audit + heading hierarchy + YouTube content polish)
 - Audited full SEO/GEO state — identified heading hierarchy gaps and missing GEO optimizations
 - Fixed heading hierarchy (ExperienceSection + PortfolioSection): job role titles and project titles changed from `<div>` to `<h3>` with `font-weight: normal` to preserve visual appearance
