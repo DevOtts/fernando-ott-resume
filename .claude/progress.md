@@ -19,6 +19,7 @@
 ### Session 19 — 2026-04-07 (accelerator links + Yunus & Youth)
 - All 3 accelerator badges on Polen entry are now clickable links (Start You Up, DotForge, Start-Up Chile) with hover accent effect
 - Added Yunus & Youth as 4th badge — links to Fernando's personal profile (yunusandyouth.com/project/fernando-ott/), uses downloaded logo (public/yunus-youth-logo.png) instead of emoji
+- Added "Yunus & Youth Fellow" entry to Education section with dashed link + ↗ indicator; InfoBlock component updated to accept optional url prop
 
 ### Session 18 — 2026-04-07 (Vercel deployment config)
 - Removed `env` block from `vercel.json` — the `@secret_reference` syntax requires Vercel CLI secrets, conflicting with dashboard-added env vars
