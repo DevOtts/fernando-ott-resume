@@ -62,9 +62,10 @@ const experiences = [
       "Google Cloud",
     ],
     accelerators: [
-      { name: "Start You Up", location: "Brazil", flag: "🇧🇷" },
-      { name: "DotForge", location: "UK", flag: "🇬🇧" },
-      { name: "Start-Up Chile", location: "Chile", flag: "🇨🇱" },
+      { name: "Start You Up", location: "Brazil", flag: "🇧🇷", url: "https://www.startyouup.com.br/" },
+      { name: "DotForge", location: "UK", flag: "🇬🇧", url: "https://dotforge.com/" },
+      { name: "Start-Up Chile", location: "Chile", flag: "🇨🇱", url: "https://startupchile.org/" },
+      { name: "Yunus & Youth", location: "Global", flag: "🌍", url: "https://yunusandyouth.com/project/fernando-ott/" },
     ],
   },
   {
@@ -258,9 +259,12 @@ export function ExperienceSection() {
                   >
                     Selected for
                   </span>
-                  {(exp.accelerators as { name: string; location: string; flag: string }[]).map((a) => (
-                    <span
+                  {(exp.accelerators as { name: string; location: string; flag: string; url: string }[]).map((a) => (
+                    <a
                       key={a.name}
+                      href={a.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -273,12 +277,29 @@ export function ExperienceSection() {
                         background: "var(--bg-alt)",
                         border: "1px solid var(--border-light)",
                         color: "var(--text-mid)",
+                        textDecoration: "none",
+                        transition: "border-color 0.2s, color 0.2s",
+                      }}
+                      onMouseEnter={(e) => {
+                        const el = e.currentTarget as HTMLAnchorElement;
+                        el.style.borderColor = "var(--accent)";
+                        el.style.color = "var(--accent)";
+                      }}
+                      onMouseLeave={(e) => {
+                        const el = e.currentTarget as HTMLAnchorElement;
+                        el.style.borderColor = "var(--border-light)";
+                        el.style.color = "var(--text-mid)";
                       }}
                     >
-                      <span>{a.flag}</span>
+                      {a.name === "Yunus & Youth" ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src="/yunus-youth-logo.png" alt="Yunus & Youth" style={{ width: 14, height: 14, borderRadius: 2, objectFit: "cover" }} />
+                      ) : (
+                        <span>{a.flag}</span>
+                      )}
                       <span>{a.name}</span>
                       <span style={{ color: "var(--text-faint)", fontWeight: 400 }}>· {a.location}</span>
-                    </span>
+                    </a>
                   ))}
                 </div>
               )}
