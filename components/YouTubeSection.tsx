@@ -13,39 +13,39 @@ interface YouTubeVideo {
 const VIDEOS: YouTubeVideo[] = [
   {
     id: "3oXyXOxIM2g",
-    title: "Vibe Coding Levels 1–5",
-    description: "Most devs are stuck at level 3. A breakdown of the 5 levels of AI-assisted coding and where engineers actually plateau.",
+    title: "Vibe Coding Levels 1–5: Most Devs Are Stuck at 3",
+    description: "A breakdown of the 5 levels of vibe coding — from manual copy-paste to fully autonomous agent teams. Includes a live demo of my /launch skill spawning parallel agents to build 17 integrations end-to-end.",
     lang: "en",
   },
   {
     id: "fDRRQTpcLhc",
-    title: "3 AI Tools to Edit Videos Fast",
-    description: "Create and edit videos in minutes using AI — a hands-on walkthrough of three tools that cut production time drastically.",
+    title: "Create & Edit Videos Fast with These 3 AI Tools (Hack #03)",
+    description: "How I edit long videos in 20 minutes using Tella, CapCut, and Captions — automatic cuts, shorts generation, and a stress-free workflow for YouTube and TikTok.",
     lang: "pt",
   },
   {
     id: "Y8hKX9iY40s",
-    title: "How to Run DeepSeek R1 for Free",
-    description: "Install and run DeepSeek R1 locally on Windows, Mac, or Linux — no API costs, full privacy.",
+    title: "How to Install and Run DeepSeek R1 for Free on Windows/Mac/Linux (Better than ChatGPT?)",
+    description: "Step-by-step guide to running DeepSeek R1 locally with Ollama and Open WebUI — no cloud, no monthly fees, full privacy. Includes a head-to-head performance comparison with ChatGPT.",
     lang: "pt",
   },
   {
     id: "Ujd-FXNT6Ms",
-    title: "Build an AI SDR That Qualifies & Books Calls",
-    description: "How to build an AI agent that qualifies leads and schedules meetings by phone — fully automated.",
+    title: "How to Build an AI SDR: Qualifies and Books via Phone and WhatsApp",
+    description: "How to build a voice AI assistant that calls leads on WhatsApp and phone, qualifies them automatically, and books a closing meeting — built with VAPI, N8N, and OpenAI.",
     lang: "pt",
   },
   {
     id: "x5D24tXGcVQ",
-    title: "AI Agents in Production",
-    description: "Building and deploying multi-agent systems that actually work at scale.",
+    title: "Using CloudFormation to Deploy a Docker .NET 6 App to AWS ECS + Fargate",
+    description: "Automate the full AWS ECS infrastructure — ECR, Task Definition, Cluster, and Security Group — using a CloudFormation template instead of manual dashboard clicks.",
     lang: "en",
   },
   {
     id: "vxrO7Vs4EPA",
-    title: "AI Automation Strategies for Business",
-    description: "Deep dive into AI automation strategies for real business workflows.",
-    lang: "pt",
+    title: "Deploy a Docker .NET 6 App to AWS using ECS",
+    description: "End-to-end walkthrough: create a .NET 6 project, Dockerize it, push the image to ECR, and run it on AWS ECS with a proper Task Definition and Security Group.",
+    lang: "en",
   },
 ];
 
