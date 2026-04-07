@@ -16,6 +16,11 @@
 
 ## Session Log
 
+### Session 22 — 2026-04-07 (press links on experience cards)
+- Added "Press" pill strip to Polen (Rede Globo/RPC + Bossa Invest) and Bonuts (Projeto Draft)
+- Press strips render with same linked pill + hover style as accelerator badges
+- Discussed replacing $550K VC Raised metric — pending user decision (candidate: 25M+ Users Reached in Prod)
+
 ### Session 21 — 2026-04-07 (metrics strip overhaul)
 - Replaced "20-30h Saved / Client / Week" with "98 People Led in Career"
 - Replaced "14× Search Speed Boost" with "$550K VC Raised"
