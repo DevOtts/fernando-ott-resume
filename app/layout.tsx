@@ -58,31 +58,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    type: "profile",
+    type: "website",
     locale: "en_US",
     url: BASE_URL,
     siteName: "Fernando Ott",
     title: "Fernando Ott — Head of AI & AI Architect",
     description:
-      "16+ years of engineering, 4+ years shipping multi-agent AI systems to production. I design AI that moves the needle for clients.",
+      "I design multi-agent AI systems that plug into real business tools and make decisions autonomously. 16+ years engineering, 4+ years AI in production.",
     images: [
       {
         url: "/og-image.png",
-        width: 512,
-        height: 512,
+        width: 1200,
+        height: 630,
         alt: "Fernando Ott — Head of AI & AI Architect",
       },
     ],
-    firstName: "Fernando",
-    lastName: "Ott",
-    username: "fernandoott",
-    gender: "male",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Fernando Ott — Head of AI & AI Architect",
     description:
-      "16+ years of engineering, 4+ years shipping multi-agent AI to production. AI Architect & Head of AI.",
+      "I design multi-agent AI systems that plug into real business tools and make decisions autonomously.",
     images: ["/og-image.png"],
     creator: "@fernandoott",
   },
