@@ -10,6 +10,10 @@
 </p>
 
 <p align="center">
+  <a href="https://fernandoott.com"><img src="https://img.shields.io/badge/🌐%20fernandoott.com-Talk%20with%20My%20AI%20Clone-2563EB?style=for-the-badge" alt="fernandoott.com — Talk with My AI Clone"/></a>
+</p>
+
+<p align="center">
   <a href="https://www.linkedin.com/in/feott/"><img src="https://img.shields.io/badge/LinkedIn-feott-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
   <a href="https://github.com/devotts"><img src="https://img.shields.io/badge/GitHub-devotts-181717?style=flat&logo=github&logoColor=white" alt="GitHub"/></a>
   <a href="https://www.youtube.com/@otimiza-ai"><img src="https://img.shields.io/badge/YouTube-Otimiza%20AI-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube"/></a>
