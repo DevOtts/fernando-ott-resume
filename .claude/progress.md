@@ -23,6 +23,12 @@
 - Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
 - Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
 
+### Session 34 — 2026-04-08 (chat UX polish: spacing, volume hint, name, ?chat fix)
+- Fixed `?chat` URL param regression: added `useEffect` in ChatPanel to react when `skipVoice` flips true after mount (was initializing state before param resolved)
+- Increased `.chat-md p` margin 0.5em → 1em for proper paragraph breathing room
+- Added 🔊 volume hint banner on name collection screen (blue accent pill)
+- Updated `prompts/system.md`: use recruiter name in first response + naturally every ~5 messages
+
 ### Session 33 — 2026-04-08 (chat UX: markdown rendering + concise tone)
 - Installed `react-markdown`; assistant messages now render markdown (bold, bullets, code)
 - Added `.chat-md` CSS styles to globals.css for clean markdown inside chat bubbles
