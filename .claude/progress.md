@@ -23,6 +23,13 @@
 - Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
 - Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
 
+### Session 31 — 2026-04-08 (Supabase CLI fix + migrations applied + ingest working)
+- Fixed Supabase CLI not finding migrations: project lacked `supabase/config.toml`
+- Ran `supabase init` to generate proper config, re-linked project
+- Applied both migrations: 001_init.sql (knowledge_chunks + leads) + 002_chat_sessions.sql
+- `pnpm ingest` now works: 85 chunks across 6 knowledge files ingested into pgvector
+- Stack fully operational end-to-end
+
 ### Session 30 — 2026-04-08 (chat session persistence to Supabase)
 - New migration: `supabase/migrations/002_chat_sessions.sql` — `chat_sessions` table + `append_chat_message` RPC
 - New lib: `lib/chat-session-db.ts` — `upsertChatSession` + `appendChatMessage` helpers (graceful no-op when Supabase unconfigured)
