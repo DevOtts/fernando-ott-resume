@@ -277,9 +277,11 @@ ${contextDocs ? `RELEVANT CONTEXT FROM FERNANDO'S KNOWLEDGE BASE:\n${contextDocs
 
       let assistantReply = "";
       for await (const chunk of streamResult) {
-        assistantReply += chunk;
+        // Strip em dashes server-side as a hard post-processing rule
+        const clean = chunk.replace(/ — /g, ". ").replace(/—/g, ",");
+        assistantReply += clean;
         streamController!.enqueue(
-          encoder.encode(`data: ${JSON.stringify({ text: chunk })}\n\n`)
+          encoder.encode(`data: ${JSON.stringify({ text: clean })}\n\n`)
         );
       }
 
@@ -293,7 +295,7 @@ ${contextDocs ? `RELEVANT CONTEXT FROM FERNANDO'S KNOWLEDGE BASE:\n${contextDocs
       // Generate contextual follow-up suggestions (non-blocking, best-effort)
       try {
         const suggestModel = new ChatOpenAI({
-          modelName: "anthropic/claude-haiku-4-5-20251001",
+          modelName: "anthropic/claude-haiku-4.5",
           openAIApiKey: process.env.OPENROUTER_API_KEY ?? "placeholder",
           configuration: {
             baseURL: "https://openrouter.ai/api/v1",
