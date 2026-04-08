@@ -175,16 +175,36 @@ pnpm ingest       # Re-embed knowledge/ into pgvector
 
 ## AI Knowledge Base
 
-The chat clone pulls context from `knowledge/` via Supabase pgvector RAG:
+The chat clone pulls context from `knowledge/` via Supabase pgvector RAG.
+
+**The `knowledge/` folder is gitignored** — content is private and never pushed to the public repo. The data lives in Supabase only.
+
+### Expected files (keep locally, never commit)
 
 | File | Contents |
 |---|---|
 | `career.md` | Roles, companies, outcomes, metrics |
 | `technical.md` | Architecture patterns, stack opinions, production AI experience |
 | `personality.md` | Background, interests, what drives Fernando |
-| `faq.md` | Common recruiter questions with natural answers |
+| `faq.md` | Common recruiter questions with honest answers |
 
-Update flow: edit a `.md` file → `pnpm ingest` → changes live in chat immediately.
+Add any additional `.md` files to `knowledge/` — `pnpm ingest` picks up everything in the folder automatically.
+
+### Ingestion
+
+```bash
+# Requires OPENROUTER_API_KEY, SUPABASE_URL, SUPABASE_SECRET_KEY in .env.local
+pnpm ingest
+```
+
+This clears all existing chunks and re-embeds every file in `knowledge/`. Run it whenever you update or add a file.
+
+### If setting up from scratch
+
+1. Create your `knowledge/` markdown files locally (not committed)
+2. Set up Supabase — run `supabase/migrations/001_init.sql` in your project
+3. Add Supabase + OpenRouter keys to `.env.local`
+4. Run `pnpm ingest`
 
 The system prompt at [`prompts/system.md`](../prompts/system.md) is committed publicly — prompt engineering is part of the portfolio signal.
 
