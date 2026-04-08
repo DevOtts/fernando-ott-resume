@@ -16,6 +16,12 @@
 
 ## Session Log
 
+### Session 28 — 2026-04-08 (knowledge DB architecture decision)
+- Researched notebooklm-py as alternative knowledge DB — ruled out: browser-cookie auth incompatible with Vercel serverless, no streaming, unofficial API
+- Decision: keep Supabase pgvector + knowledge/*.md architecture
+- Plan agreed: move knowledge/*.md out of public repo via .gitignore + git rm --cached; data lives in Supabase only
+- Implementation pending user confirmation (next session)
+
 ### Session 27 — 2026-04-08 (direct-to-chat URL param)
 - Added `?chat` URL param: visiting `/?chat` bypasses name collection + voice intro
 - `page.tsx`: reads `searchParams`, auto-opens panel, passes `skipVoice` prop
