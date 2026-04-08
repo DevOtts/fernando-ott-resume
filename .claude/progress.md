@@ -23,6 +23,10 @@
 - Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
 - Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
 
+### Session 35 — 2026-04-08 (hydration fix + em dash hard ban)
+- Fixed hydration error: ColorZilla browser extension injects `cz-shortcut-listen` on `<body>` causing SSR/client mismatch; added `suppressHydrationWarning` to `<body>` in layout.tsx
+- Strengthened em dash rule in system.md: changed to bold hard rule "Absolutely no em dashes ( — or --). Never."
+
 ### Session 34 — 2026-04-08 (chat UX polish: spacing, volume hint, name, ?chat fix)
 - Fixed `?chat` URL param regression: added `useEffect` in ChatPanel to react when `skipVoice` flips true after mount (was initializing state before param resolved)
 - Increased `.chat-md p` margin 0.5em → 1em for proper paragraph breathing room
