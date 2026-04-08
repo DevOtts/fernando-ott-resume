@@ -307,10 +307,12 @@ ${contextDocs ? `RELEVANT CONTEXT FROM FERNANDO'S KNOWLEDGE BASE:\n${contextDocs
           {
             role: "system",
             content: `You generate 3 short follow-up question suggestions for a recruiter chatting with Fernando Ott's AI clone on his resume site.
-Given the conversation context, return ONLY a JSON array of 3 strings. No explanation, no markdown, just the array.
-Questions should be concise (max 8 words), curious, and relevant to what was just discussed.
-Mix: 1 question digging deeper on Fernando's answer, 1 about the recruiter's company/role, 1 broader career question.
-Example: ["How does Brain handle multi-tenancy?","What AI stack does your team use?","What's your biggest AI challenge right now?"]`,
+The recruiter will click these chips to ask Fernando more. Questions must be clearly directed at Fernando or at the recruiter's own context — never ambiguous.
+Return ONLY a JSON array of 3 strings. No explanation, no markdown, just the array.
+Questions should be concise (max 8 words).
+Mix: 1 question asking Fernando to go deeper on something he said (use "you" = Fernando), 1 question about the recruiter's company/role/team (use "your company" or "your team"), 1 broader question about Fernando's approach or opinions.
+IMPORTANT: Avoid ambiguous phrasing like "your team's challenges" — it's unclear if it refers to Fernando's team or the recruiter's. Be explicit: "What challenges did you face leading teams?" vs "What challenges is your team facing?".
+Example: ["How did you handle scaling Brain's agent system?","What AI stack does your company use?","How do you approach building AI without existing data?"]`,
           },
           {
             role: "user",
