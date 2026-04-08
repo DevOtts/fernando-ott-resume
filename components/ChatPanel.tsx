@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import ReactMarkdown from "react-markdown";
 import { trackEvent } from "@/lib/analytics";
 import { OrbitalVoiceIntro } from "@/components/OrbitalVoiceIntro";
 
@@ -15,6 +16,7 @@ type ChatState = "name-collection" | "voice-intro" | "chat";
 interface ChatPanelProps {
   isOpen: boolean;
   onClose: () => void;
+  skipVoice?: boolean;
 }
 
 const QUICK_QUESTIONS = [
@@ -25,14 +27,19 @@ const QUICK_QUESTIONS = [
   "What's your biggest career achievement?",
 ];
 
-export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
-  const [chatState, setChatState] = useState<ChatState>("name-collection");
+export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
+  const [chatState, setChatState] = useState<ChatState>(skipVoice ? "chat" : "name-collection");
   const [recruiterName, setRecruiterName] = useState("");
   const [nameInput, setNameInput] = useState("");
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(
+    skipVoice
+      ? [{ role: "assistant", content: "Hey! I'm Fernando's AI clone. I know his career, projects, and thinking inside out. What would you like to know?" }]
+      : []
+  );
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showQuickQs, setShowQuickQs] = useState(true);
+  const [suggestions, setSuggestions] = useState<string[]>(QUICK_QUESTIONS);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -55,6 +62,14 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
       inputRef.current?.focus();
     }
   }, [isOpen, chatState]);
+
+  // React to skipVoice becoming true after mount (e.g. ?chat URL param)
+  useEffect(() => {
+    if (skipVoice && chatState === "name-collection") {
+      setChatState("chat");
+      setMessages([{ role: "assistant", content: "Hey! I'm Fernando's AI clone. I know his career, projects, and thinking inside out. What would you like to know?" }]);
+    }
+  }, [skipVoice, chatState]);
 
   const handleNameSubmit = () => {
     const name = nameInput.trim();
@@ -79,7 +94,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
       if (!msg || isLoading) return;
 
       setInputValue("");
-      setShowQuickQs(false);
+      setShowQuickQs(false); // hide during loading, restored when suggestions arrive
       setIsLoading(true);
       trackEvent("message_sent", { question: msg });
 
@@ -136,7 +151,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
               const data = line.slice(6);
               if (data === "[DONE]") continue;
               try {
-                const parsed = JSON.parse(data) as { text?: string };
+                const parsed = JSON.parse(data) as { text?: string; suggestions?: string[] };
                 if (parsed.text) {
                   accumulatedContent += parsed.text;
                   setMessages((prev) => {
@@ -150,6 +165,10 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
                     }
                     return updated;
                   });
+                }
+                if (parsed.suggestions && parsed.suggestions.length > 0) {
+                  setSuggestions(parsed.suggestions);
+                  setShowQuickQs(true);
                 }
               } catch {
                 // Non-JSON line, skip
@@ -322,6 +341,25 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
                 your name?
               </p>
             </div>
+            {/* Volume hint */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.6rem 1rem",
+                background: "var(--accent-light, #DBEAFE)",
+                borderRadius: 10,
+                fontSize: "0.78rem",
+                color: "var(--accent)",
+                maxWidth: 360,
+                width: "100%",
+                justifyContent: "center",
+              }}
+            >
+              <span style={{ fontSize: "1rem" }}>🔊</span>
+              <span>Turn up your volume — you&apos;ll get a voice intro</span>
+            </div>
             <div
               style={{
                 display: "flex",
@@ -453,6 +491,10 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
                         />
                       ))}
                     </div>
+                  ) : msg.role === "assistant" ? (
+                    <div className="chat-md">
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+                    </div>
                   ) : (
                     msg.content
                   )}
@@ -461,8 +503,8 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick questions */}
-            {showQuickQs && messages.length <= 1 && (
+            {/* Suggested questions — always visible, updates after each response */}
+            {showQuickQs && !isLoading && (
               <div
                 style={{
                   padding: "0 1.5rem 0.75rem",
@@ -472,7 +514,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
                   flexShrink: 0,
                 }}
               >
-                {QUICK_QUESTIONS.map((q) => (
+                {suggestions.map((q) => (
                   <button
                     key={q}
                     onClick={() => void sendMessage(q)}

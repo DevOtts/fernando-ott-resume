@@ -30,6 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# knowledge base — private content, ingested into Supabase pgvector locally
+knowledge/
+
 # env files — commit .env.example, never commit secrets
 .env
 .env.local

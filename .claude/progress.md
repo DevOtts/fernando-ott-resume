@@ -16,6 +16,68 @@
 
 ## Session Log
 
+### Session 29 — 2026-04-08 (knowledge/ moved out of public repo)
+- Added `knowledge/` to `.gitignore` — content is private, never pushed to public repo
+- Ran `git rm --cached` on 4 tracked files (career.md, faq.md, personality.md, technical.md)
+- Interview_Questions_2026.md was never tracked — already safe
+- Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
+- Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
+
+### Session 36 — 2026-04-08 (dynamic suggestions + Fernando interviews recruiters)
+- system.md: clone always ends responses with a contextual follow-up question; added bank of recruiter-qualifying questions (AI maturity, stack, remote, "what competitors don't do", why role is open)
+- /api/chat: after streaming answer, makes fast Haiku call to generate 3 contextual follow-up chip suggestions; sends as SSE `suggestions` event before [DONE]
+- ChatPanel: `suggestions` state replaces static QUICK_QUESTIONS; chips update after each turn; hidden during loading, restored when suggestions arrive
+
+### Session 35 — 2026-04-08 (hydration fix + em dash hard ban)
+- Fixed hydration error: ColorZilla browser extension injects `cz-shortcut-listen` on `<body>` causing SSR/client mismatch; added `suppressHydrationWarning` to `<body>` in layout.tsx
+- Strengthened em dash rule in system.md: changed to bold hard rule "Absolutely no em dashes ( — or --). Never."
+
+### Session 34 — 2026-04-08 (chat UX polish: spacing, volume hint, name, ?chat fix)
+- Fixed `?chat` URL param regression: added `useEffect` in ChatPanel to react when `skipVoice` flips true after mount (was initializing state before param resolved)
+- Increased `.chat-md p` margin 0.5em → 1em for proper paragraph breathing room
+- Added 🔊 volume hint banner on name collection screen (blue accent pill)
+- Updated `prompts/system.md`: use recruiter name in first response + naturally every ~5 messages
+
+### Session 33 — 2026-04-08 (chat UX: markdown rendering + concise tone)
+- Installed `react-markdown`; assistant messages now render markdown (bold, bullets, code)
+- Added `.chat-md` CSS styles to globals.css for clean markdown inside chat bubbles
+- Updated `prompts/system.md`: removed "plain text only" rule, added markdown guidance, enforced concise answers (lead with best example, 1-3 sentences for simple, bullets OR short paragraph for complex)
+- Fixed Next.js static build error: extracted `useSearchParams` into `ChatParamHandler` component wrapped in `<Suspense>` — `pnpm build` now passes clean
+- Build and typecheck both clean; committed in 1b7e174
+
+### Session 32 — 2026-04-08 (chat tone + formatting — pending skill install)
+- Chat working end-to-end but responses are too verbose and unformatted
+- User wants to improve tone (less AI slop) and add markdown formatting to responses
+- Pending: user installing 'Chat Response Generator' skill via npx skills add
+
+### Session 31 — 2026-04-08 (Supabase CLI fix + LangChain OpenRouter fix)
+- Fixed Supabase CLI not finding migrations: project lacked `supabase/config.toml`
+- Ran `supabase init` to generate proper config, re-linked project
+- Applied both migrations: 001_init.sql (knowledge_chunks + leads) + 002_chat_sessions.sql
+- `pnpm ingest` now works: 85 chunks across 6 knowledge files ingested into pgvector
+- Fixed LangChain credential error: `ChatOpenAI` + `OpenAIEmbeddings` were failing with "Missing credentials" because they check `OPENAI_API_KEY` env var at construction; fixed by passing key via `configuration.apiKey` (OpenAI ClientOptions) with a placeholder for `openAIApiKey`
+- Chat fully operational, streaming RAG responses confirmed working
+
+### Session 30 — 2026-04-08 (chat session persistence to Supabase)
+- New migration: `supabase/migrations/002_chat_sessions.sql` — `chat_sessions` table + `append_chat_message` RPC
+- New lib: `lib/chat-session-db.ts` — `upsertChatSession` + `appendChatMessage` helpers (graceful no-op when Supabase unconfigured)
+- `/api/voice-intro`: upserts session with recruiter name as soon as user submits it
+- `/api/chat`: upserts session on every request; saves user message immediately + assistant reply after stream completes
+- Funnel now captures: who typed a name, full conversation per session, message count, timestamps
+- Run `supabase db push` to apply migration before next ingest
+
+### Session 28 — 2026-04-08 (knowledge DB architecture decision)
+- Researched notebooklm-py as alternative knowledge DB — ruled out: browser-cookie auth incompatible with Vercel serverless, no streaming, unofficial API
+- Decision: keep Supabase pgvector + knowledge/*.md architecture
+- Plan agreed: move knowledge/*.md out of public repo via .gitignore + git rm --cached; data lives in Supabase only
+- Implementation pending user confirmation (next session)
+
+### Session 27 — 2026-04-08 (direct-to-chat URL param)
+- Added `?chat` URL param: visiting `/?chat` bypasses name collection + voice intro
+- `page.tsx`: reads `searchParams`, auto-opens panel, passes `skipVoice` prop
+- `ChatPanel.tsx`: accepts `skipVoice?: boolean`; initializes state as `"chat"` + pre-loads greeting when true
+- Useful for sharing a direct chat link without the intro flow
+
 ### Session 26 — 2026-04-07 (OG social banner)
 - Replaced public/og-image.png with proper 1200×630 social sharing banner
 - Fixed og:type from 'profile' → 'website'

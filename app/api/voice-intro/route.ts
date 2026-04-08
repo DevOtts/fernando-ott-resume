@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { v4 as uuidv4 } from "uuid";
 import { getSession, updateSession } from "@/lib/session-store";
+import { upsertChatSession } from "@/lib/chat-session-db";
 
 const VOICE_SCRIPT_TEMPLATE = (name: string) =>
   `Hey ${name}, I'm Fernando — or well, his AI clone. I know his career inside out, his projects, his thinking. Ask me anything — what he's built, how he leads, what gets him excited. Let's figure out if there's a fit.`;
@@ -83,8 +84,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Mark voice as used
-    updateSession(sessionId, { voiceUsed: true });
+    // Mark voice as used and persist session with recruiter name
+    updateSession(sessionId, { voiceUsed: true, recruiterName: name.trim() });
+    void upsertChatSession(sessionId, name.trim());
 
     // Stream audio back
     const response = new NextResponse(elevenLabsResponse.body, {

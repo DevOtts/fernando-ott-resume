@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, Suspense } from "react";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { MetricsStrip } from "@/components/MetricsStrip";
@@ -13,15 +13,25 @@ import { YouTubeSection } from "@/components/YouTubeSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { ChatPanel } from "@/components/ChatPanel";
+import { ChatParamHandler } from "@/components/ChatParamHandler";
 import { ExitIntentModal } from "@/components/ExitIntentModal";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Divider } from "@/components/Divider";
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false);
+  const [skipVoice, setSkipVoice] = useState(false);
+
+  const handleSkipVoice = useCallback(() => {
+    setSkipVoice(true);
+    setChatOpen(true);
+  }, []);
 
   return (
     <>
+      <Suspense fallback={null}>
+        <ChatParamHandler onSkipVoice={handleSkipVoice} />
+      </Suspense>
       <ScrollReveal />
       <Navigation onChatOpen={() => setChatOpen(true)} />
       <main>
@@ -41,7 +51,7 @@ export default function Home() {
         <CTASection onChatOpen={() => setChatOpen(true)} />
       </main>
       <Footer />
-      <ChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} />
+      <ChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} skipVoice={skipVoice} />
       <ExitIntentModal />
     </>
   );

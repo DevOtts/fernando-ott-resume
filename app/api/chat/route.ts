@@ -15,6 +15,7 @@ import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 import path from "path";
 import { getSession, updateSession, MAX_MESSAGES } from "@/lib/session-store";
+import { upsertChatSession, appendChatMessage } from "@/lib/chat-session-db";
 
 // Guardrail patterns
 const GUARDRAIL_PATTERNS = [
@@ -138,6 +139,9 @@ export async function POST(request: NextRequest) {
   // Update recruiter name if provided
   if (recruiterName) {
     updateSession(sessionId, { recruiterName });
+    void upsertChatSession(sessionId, recruiterName);
+  } else {
+    void upsertChatSession(sessionId);
   }
 
   // Check guardrails
@@ -181,6 +185,13 @@ export async function POST(request: NextRequest) {
     recruiterMessageCount: newRecruiterCount,
   });
 
+  // Persist user message to Supabase
+  void appendChatMessage(sessionId, {
+    role: "user",
+    content: message,
+    timestamp: new Date().toISOString(),
+  });
+
   // Load system prompt
   const systemPromptContent = loadSystemPrompt();
   const currentSession = getSession(sessionId);
@@ -214,9 +225,10 @@ export async function POST(request: NextRequest) {
         try {
           const supabaseClient = createClient(supabaseUrl, supabaseKey);
           const embeddings = new OpenAIEmbeddings({
-            openAIApiKey: process.env.OPENROUTER_API_KEY,
+            openAIApiKey: process.env.OPENROUTER_API_KEY ?? "placeholder",
             configuration: {
               baseURL: "https://openrouter.ai/api/v1",
+              apiKey: process.env.OPENROUTER_API_KEY,
             },
             modelName: "text-embedding-ada-002",
           });
@@ -237,9 +249,10 @@ export async function POST(request: NextRequest) {
 
       const model = new ChatOpenAI({
         modelName: "anthropic/claude-sonnet-4-5",
-        openAIApiKey: process.env.OPENROUTER_API_KEY,
+        openAIApiKey: process.env.OPENROUTER_API_KEY ?? "placeholder",
         configuration: {
           baseURL: "https://openrouter.ai/api/v1",
+          apiKey: process.env.OPENROUTER_API_KEY,
         },
         streaming: true,
       });
@@ -262,10 +275,62 @@ ${contextDocs ? `RELEVANT CONTEXT FROM FERNANDO'S KNOWLEDGE BASE:\n${contextDocs
 
       const streamResult = await chain.stream({ input: message });
 
+      let assistantReply = "";
       for await (const chunk of streamResult) {
+        // Strip em dashes server-side as a hard post-processing rule
+        const clean = chunk.replace(/ — /g, ". ").replace(/—/g, ",");
+        assistantReply += clean;
         streamController!.enqueue(
-          encoder.encode(`data: ${JSON.stringify({ text: chunk })}\n\n`)
+          encoder.encode(`data: ${JSON.stringify({ text: clean })}\n\n`)
         );
+      }
+
+      // Persist assistant reply to Supabase
+      void appendChatMessage(sessionId, {
+        role: "assistant",
+        content: assistantReply,
+        timestamp: new Date().toISOString(),
+      });
+
+      // Generate contextual follow-up suggestions (non-blocking, best-effort)
+      try {
+        const suggestModel = new ChatOpenAI({
+          modelName: "anthropic/claude-haiku-4.5",
+          openAIApiKey: process.env.OPENROUTER_API_KEY ?? "placeholder",
+          configuration: {
+            baseURL: "https://openrouter.ai/api/v1",
+            apiKey: process.env.OPENROUTER_API_KEY,
+          },
+          streaming: false,
+        });
+        const suggestResult = await suggestModel.invoke([
+          {
+            role: "system",
+            content: `You generate 3 short follow-up question suggestions for a recruiter chatting with Fernando Ott's AI clone on his resume site.
+The recruiter will click these chips to ask Fernando more. Questions must be clearly directed at Fernando or at the recruiter's own context — never ambiguous.
+Return ONLY a JSON array of 3 strings. No explanation, no markdown, just the array.
+Questions should be concise (max 8 words).
+Mix: 1 question asking Fernando to go deeper on something he said (use "you" = Fernando), 1 question about the recruiter's company/role/team (use "your company" or "your team"), 1 broader question about Fernando's approach or opinions.
+IMPORTANT: Avoid ambiguous phrasing like "your team's challenges" — it's unclear if it refers to Fernando's team or the recruiter's. Be explicit: "What challenges did you face leading teams?" vs "What challenges is your team facing?".
+Example: ["How did you handle scaling Brain's agent system?","What AI stack does your company use?","How do you approach building AI without existing data?"]`,
+          },
+          {
+            role: "user",
+            content: `Recruiter asked: "${message}"\nFernando answered: "${assistantReply.slice(0, 300)}"`,
+          },
+        ]);
+        const raw = typeof suggestResult.content === "string" ? suggestResult.content.trim() : "";
+        const start = raw.indexOf("[");
+        const end = raw.lastIndexOf("]");
+        const match = start !== -1 && end !== -1 ? [raw.slice(start, end + 1)] : null;
+        if (match) {
+          const suggestions = JSON.parse(match[0]) as string[];
+          streamController!.enqueue(
+            encoder.encode(`data: ${JSON.stringify({ suggestions })}\n\n`)
+          );
+        }
+      } catch {
+        // Suggestions are non-critical, silently skip on failure
       }
     } catch (err) {
       const errorMsg =
