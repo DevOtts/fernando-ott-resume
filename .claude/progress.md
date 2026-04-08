@@ -23,12 +23,18 @@
 - Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
 - Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
 
-### Session 31 — 2026-04-08 (Supabase CLI fix + migrations applied + ingest working)
+### Session 32 — 2026-04-08 (chat tone + formatting — pending skill install)
+- Chat working end-to-end but responses are too verbose and unformatted
+- User wants to improve tone (less AI slop) and add markdown formatting to responses
+- Pending: user installing 'Chat Response Generator' skill via npx skills add
+
+### Session 31 — 2026-04-08 (Supabase CLI fix + LangChain OpenRouter fix)
 - Fixed Supabase CLI not finding migrations: project lacked `supabase/config.toml`
 - Ran `supabase init` to generate proper config, re-linked project
 - Applied both migrations: 001_init.sql (knowledge_chunks + leads) + 002_chat_sessions.sql
 - `pnpm ingest` now works: 85 chunks across 6 knowledge files ingested into pgvector
-- Stack fully operational end-to-end
+- Fixed LangChain credential error: `ChatOpenAI` + `OpenAIEmbeddings` were failing with "Missing credentials" because they check `OPENAI_API_KEY` env var at construction; fixed by passing key via `configuration.apiKey` (OpenAI ClientOptions) with a placeholder for `openAIApiKey`
+- Chat fully operational, streaming RAG responses confirmed working
 
 ### Session 30 — 2026-04-08 (chat session persistence to Supabase)
 - New migration: `supabase/migrations/002_chat_sessions.sql` — `chat_sessions` table + `append_chat_message` RPC
