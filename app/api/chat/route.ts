@@ -15,6 +15,7 @@ import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 import path from "path";
 import { getSession, updateSession, MAX_MESSAGES } from "@/lib/session-store";
+import { upsertChatSession, appendChatMessage } from "@/lib/chat-session-db";
 
 // Guardrail patterns
 const GUARDRAIL_PATTERNS = [
@@ -138,6 +139,9 @@ export async function POST(request: NextRequest) {
   // Update recruiter name if provided
   if (recruiterName) {
     updateSession(sessionId, { recruiterName });
+    void upsertChatSession(sessionId, recruiterName);
+  } else {
+    void upsertChatSession(sessionId);
   }
 
   // Check guardrails
@@ -179,6 +183,13 @@ export async function POST(request: NextRequest) {
   updateSession(sessionId, {
     messageCount: session.messageCount + 1,
     recruiterMessageCount: newRecruiterCount,
+  });
+
+  // Persist user message to Supabase
+  void appendChatMessage(sessionId, {
+    role: "user",
+    content: message,
+    timestamp: new Date().toISOString(),
   });
 
   // Load system prompt
@@ -262,11 +273,20 @@ ${contextDocs ? `RELEVANT CONTEXT FROM FERNANDO'S KNOWLEDGE BASE:\n${contextDocs
 
       const streamResult = await chain.stream({ input: message });
 
+      let assistantReply = "";
       for await (const chunk of streamResult) {
+        assistantReply += chunk;
         streamController!.enqueue(
           encoder.encode(`data: ${JSON.stringify({ text: chunk })}\n\n`)
         );
       }
+
+      // Persist assistant reply to Supabase
+      void appendChatMessage(sessionId, {
+        role: "assistant",
+        content: assistantReply,
+        timestamp: new Date().toISOString(),
+      });
     } catch (err) {
       const errorMsg =
         "Having trouble connecting right now. Email Fernando directly at ferott@gmail.com or reach out on LinkedIn.";

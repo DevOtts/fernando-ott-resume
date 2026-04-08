@@ -23,6 +23,14 @@
 - Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
 - Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
 
+### Session 30 — 2026-04-08 (chat session persistence to Supabase)
+- New migration: `supabase/migrations/002_chat_sessions.sql` — `chat_sessions` table + `append_chat_message` RPC
+- New lib: `lib/chat-session-db.ts` — `upsertChatSession` + `appendChatMessage` helpers (graceful no-op when Supabase unconfigured)
+- `/api/voice-intro`: upserts session with recruiter name as soon as user submits it
+- `/api/chat`: upserts session on every request; saves user message immediately + assistant reply after stream completes
+- Funnel now captures: who typed a name, full conversation per session, message count, timestamps
+- Run `supabase db push` to apply migration before next ingest
+
 ### Session 28 — 2026-04-08 (knowledge DB architecture decision)
 - Researched notebooklm-py as alternative knowledge DB — ruled out: browser-cookie auth incompatible with Vercel serverless, no streaming, unofficial API
 - Decision: keep Supabase pgvector + knowledge/*.md architecture
