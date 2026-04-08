@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import ReactMarkdown from "react-markdown";
 import { trackEvent } from "@/lib/analytics";
 import { OrbitalVoiceIntro } from "@/components/OrbitalVoiceIntro";
 
@@ -457,6 +458,10 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
                           }}
                         />
                       ))}
+                    </div>
+                  ) : msg.role === "assistant" ? (
+                    <div className="chat-md">
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
                   ) : (
                     msg.content
