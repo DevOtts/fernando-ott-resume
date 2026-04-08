@@ -16,6 +16,13 @@
 
 ## Session Log
 
+### Session 29 — 2026-04-08 (knowledge/ moved out of public repo)
+- Added `knowledge/` to `.gitignore` — content is private, never pushed to public repo
+- Ran `git rm --cached` on 4 tracked files (career.md, faq.md, personality.md, technical.md)
+- Interview_Questions_2026.md was never tracked — already safe
+- Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
+- Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
+
 ### Session 28 — 2026-04-08 (knowledge DB architecture decision)
 - Researched notebooklm-py as alternative knowledge DB — ruled out: browser-cookie auth incompatible with Vercel serverless, no streaming, unofficial API
 - Decision: keep Supabase pgvector + knowledge/*.md architecture
