@@ -23,6 +23,11 @@
 - Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
 - Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
 
+### Session 36 — 2026-04-08 (dynamic suggestions + Fernando interviews recruiters)
+- system.md: clone always ends responses with a contextual follow-up question; added bank of recruiter-qualifying questions (AI maturity, stack, remote, "what competitors don't do", why role is open)
+- /api/chat: after streaming answer, makes fast Haiku call to generate 3 contextual follow-up chip suggestions; sends as SSE `suggestions` event before [DONE]
+- ChatPanel: `suggestions` state replaces static QUICK_QUESTIONS; chips update after each turn; hidden during loading, restored when suggestions arrive
+
 ### Session 35 — 2026-04-08 (hydration fix + em dash hard ban)
 - Fixed hydration error: ColorZilla browser extension injects `cz-shortcut-listen` on `<body>` causing SSR/client mismatch; added `suppressHydrationWarning` to `<body>` in layout.tsx
 - Strengthened em dash rule in system.md: changed to bold hard rule "Absolutely no em dashes ( — or --). Never."
