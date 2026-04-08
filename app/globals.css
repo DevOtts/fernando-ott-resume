@@ -153,7 +153,7 @@ body {
 
 /* Markdown rendering inside chat bubbles */
 .chat-md p {
-  margin: 0 0 0.5em 0;
+  margin: 0 0 1em 0;
 }
 .chat-md p:last-child {
   margin-bottom: 0;

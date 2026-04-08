@@ -62,6 +62,14 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
     }
   }, [isOpen, chatState]);
 
+  // React to skipVoice becoming true after mount (e.g. ?chat URL param)
+  useEffect(() => {
+    if (skipVoice && chatState === "name-collection") {
+      setChatState("chat");
+      setMessages([{ role: "assistant", content: "Hey! I'm Fernando's AI clone. I know his career, projects, and thinking inside out. What would you like to know?" }]);
+    }
+  }, [skipVoice, chatState]);
+
   const handleNameSubmit = () => {
     const name = nameInput.trim();
     if (!name) return;
@@ -327,6 +335,25 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
                 I&apos;m Fernando&apos;s AI clone. Before we chat, what&apos;s
                 your name?
               </p>
+            </div>
+            {/* Volume hint */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.6rem 1rem",
+                background: "var(--accent-light, #DBEAFE)",
+                borderRadius: 10,
+                fontSize: "0.78rem",
+                color: "var(--accent)",
+                maxWidth: 360,
+                width: "100%",
+                justifyContent: "center",
+              }}
+            >
+              <span style={{ fontSize: "1rem" }}>🔊</span>
+              <span>Turn up your volume — you&apos;ll get a voice intro</span>
             </div>
             <div
               style={{
