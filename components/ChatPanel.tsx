@@ -39,6 +39,7 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showQuickQs, setShowQuickQs] = useState(true);
+  const [suggestions, setSuggestions] = useState<string[]>(QUICK_QUESTIONS);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -93,7 +94,7 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
       if (!msg || isLoading) return;
 
       setInputValue("");
-      setShowQuickQs(false);
+      setShowQuickQs(false); // hide during loading, restored when suggestions arrive
       setIsLoading(true);
       trackEvent("message_sent", { question: msg });
 
@@ -150,7 +151,7 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
               const data = line.slice(6);
               if (data === "[DONE]") continue;
               try {
-                const parsed = JSON.parse(data) as { text?: string };
+                const parsed = JSON.parse(data) as { text?: string; suggestions?: string[] };
                 if (parsed.text) {
                   accumulatedContent += parsed.text;
                   setMessages((prev) => {
@@ -164,6 +165,10 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
                     }
                     return updated;
                   });
+                }
+                if (parsed.suggestions && parsed.suggestions.length > 0) {
+                  setSuggestions(parsed.suggestions);
+                  setShowQuickQs(true);
                 }
               } catch {
                 // Non-JSON line, skip
@@ -498,8 +503,8 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick questions */}
-            {showQuickQs && messages.length <= 1 && (
+            {/* Suggested questions — always visible, updates after each response */}
+            {showQuickQs && !isLoading && (
               <div
                 style={{
                   padding: "0 1.5rem 0.75rem",
@@ -509,7 +514,7 @@ export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
                   flexShrink: 0,
                 }}
               >
-                {QUICK_QUESTIONS.map((q) => (
+                {suggestions.map((q) => (
                   <button
                     key={q}
                     onClick={() => void sendMessage(q)}

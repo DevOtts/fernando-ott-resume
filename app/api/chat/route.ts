@@ -289,6 +289,45 @@ ${contextDocs ? `RELEVANT CONTEXT FROM FERNANDO'S KNOWLEDGE BASE:\n${contextDocs
         content: assistantReply,
         timestamp: new Date().toISOString(),
       });
+
+      // Generate contextual follow-up suggestions (non-blocking, best-effort)
+      try {
+        const suggestModel = new ChatOpenAI({
+          modelName: "anthropic/claude-haiku-4-5-20251001",
+          openAIApiKey: process.env.OPENROUTER_API_KEY ?? "placeholder",
+          configuration: {
+            baseURL: "https://openrouter.ai/api/v1",
+            apiKey: process.env.OPENROUTER_API_KEY,
+          },
+          streaming: false,
+        });
+        const suggestResult = await suggestModel.invoke([
+          {
+            role: "system",
+            content: `You generate 3 short follow-up question suggestions for a recruiter chatting with Fernando Ott's AI clone on his resume site.
+Given the conversation context, return ONLY a JSON array of 3 strings. No explanation, no markdown, just the array.
+Questions should be concise (max 8 words), curious, and relevant to what was just discussed.
+Mix: 1 question digging deeper on Fernando's answer, 1 about the recruiter's company/role, 1 broader career question.
+Example: ["How does Brain handle multi-tenancy?","What AI stack does your team use?","What's your biggest AI challenge right now?"]`,
+          },
+          {
+            role: "user",
+            content: `Recruiter asked: "${message}"\nFernando answered: "${assistantReply.slice(0, 300)}"`,
+          },
+        ]);
+        const raw = typeof suggestResult.content === "string" ? suggestResult.content.trim() : "";
+        const start = raw.indexOf("[");
+        const end = raw.lastIndexOf("]");
+        const match = start !== -1 && end !== -1 ? [raw.slice(start, end + 1)] : null;
+        if (match) {
+          const suggestions = JSON.parse(match[0]) as string[];
+          streamController!.enqueue(
+            encoder.encode(`data: ${JSON.stringify({ suggestions })}\n\n`)
+          );
+        }
+      } catch {
+        // Suggestions are non-critical, silently skip on failure
+      }
     } catch (err) {
       const errorMsg =
         "Having trouble connecting right now. Email Fernando directly at ferott@gmail.com or reach out on LinkedIn.";
