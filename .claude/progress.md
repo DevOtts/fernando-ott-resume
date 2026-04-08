@@ -23,6 +23,13 @@
 - Updated `docs/PROJECT.md` with full knowledge base setup section: gitignore rationale, ingestion instructions, from-scratch setup steps
 - Data lives in Supabase pgvector only; `pnpm ingest` is the local-only sync step
 
+### Session 33 — 2026-04-08 (chat UX: markdown rendering + concise tone)
+- Installed `react-markdown`; assistant messages now render markdown (bold, bullets, code)
+- Added `.chat-md` CSS styles to globals.css for clean markdown inside chat bubbles
+- Updated `prompts/system.md`: removed "plain text only" rule, added markdown guidance, enforced concise answers (lead with best example, 1-3 sentences for simple, bullets OR short paragraph for complex)
+- Fixed Next.js static build error: extracted `useSearchParams` into `ChatParamHandler` component wrapped in `<Suspense>` — `pnpm build` now passes clean
+- Build and typecheck both clean; committed in 1b7e174
+
 ### Session 32 — 2026-04-08 (chat tone + formatting — pending skill install)
 - Chat working end-to-end but responses are too verbose and unformatted
 - User wants to improve tone (less AI slop) and add markdown formatting to responses
