@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { MetricsStrip } from "@/components/MetricsStrip";
@@ -19,6 +20,12 @@ import { Divider } from "@/components/Divider";
 
 export default function Home() {
   const [chatOpen, setChatOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const skipVoice = searchParams.get("chat") !== null;
+
+  useEffect(() => {
+    if (skipVoice) setChatOpen(true);
+  }, [skipVoice]);
 
   return (
     <>
@@ -41,7 +48,7 @@ export default function Home() {
         <CTASection onChatOpen={() => setChatOpen(true)} />
       </main>
       <Footer />
-      <ChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} />
+      <ChatPanel isOpen={chatOpen} onClose={() => setChatOpen(false)} skipVoice={skipVoice} />
       <ExitIntentModal />
     </>
   );

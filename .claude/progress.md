@@ -16,6 +16,12 @@
 
 ## Session Log
 
+### Session 27 — 2026-04-08 (direct-to-chat URL param)
+- Added `?chat` URL param: visiting `/?chat` bypasses name collection + voice intro
+- `page.tsx`: reads `searchParams`, auto-opens panel, passes `skipVoice` prop
+- `ChatPanel.tsx`: accepts `skipVoice?: boolean`; initializes state as `"chat"` + pre-loads greeting when true
+- Useful for sharing a direct chat link without the intro flow
+
 ### Session 26 — 2026-04-07 (OG social banner)
 - Replaced public/og-image.png with proper 1200×630 social sharing banner
 - Fixed og:type from 'profile' → 'website'

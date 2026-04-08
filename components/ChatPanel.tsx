@@ -15,6 +15,7 @@ type ChatState = "name-collection" | "voice-intro" | "chat";
 interface ChatPanelProps {
   isOpen: boolean;
   onClose: () => void;
+  skipVoice?: boolean;
 }
 
 const QUICK_QUESTIONS = [
@@ -25,11 +26,15 @@ const QUICK_QUESTIONS = [
   "What's your biggest career achievement?",
 ];
 
-export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
-  const [chatState, setChatState] = useState<ChatState>("name-collection");
+export function ChatPanel({ isOpen, onClose, skipVoice }: ChatPanelProps) {
+  const [chatState, setChatState] = useState<ChatState>(skipVoice ? "chat" : "name-collection");
   const [recruiterName, setRecruiterName] = useState("");
   const [nameInput, setNameInput] = useState("");
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>(
+    skipVoice
+      ? [{ role: "assistant", content: "Hey! I'm Fernando's AI clone. I know his career, projects, and thinking inside out. What would you like to know?" }]
+      : []
+  );
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showQuickQs, setShowQuickQs] = useState(true);
