@@ -225,9 +225,10 @@ export async function POST(request: NextRequest) {
         try {
           const supabaseClient = createClient(supabaseUrl, supabaseKey);
           const embeddings = new OpenAIEmbeddings({
-            openAIApiKey: process.env.OPENROUTER_API_KEY,
+            openAIApiKey: process.env.OPENROUTER_API_KEY ?? "placeholder",
             configuration: {
               baseURL: "https://openrouter.ai/api/v1",
+              apiKey: process.env.OPENROUTER_API_KEY,
             },
             modelName: "text-embedding-ada-002",
           });
@@ -248,9 +249,10 @@ export async function POST(request: NextRequest) {
 
       const model = new ChatOpenAI({
         modelName: "anthropic/claude-sonnet-4-5",
-        openAIApiKey: process.env.OPENROUTER_API_KEY,
+        openAIApiKey: process.env.OPENROUTER_API_KEY ?? "placeholder",
         configuration: {
           baseURL: "https://openrouter.ai/api/v1",
+          apiKey: process.env.OPENROUTER_API_KEY,
         },
         streaming: true,
       });
