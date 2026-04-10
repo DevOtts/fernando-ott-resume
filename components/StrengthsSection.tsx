@@ -10,7 +10,7 @@ const strengths = [
   {
     icon: "🌉",
     title: "Business ↔ Engineering Bridge",
-    desc: "I translate what a company needs into what the engineering team builds. This is the \"click\" that most developers miss. I've done it as CTO, Tech Lead at a NASDAQ company, and Head of AI at an agency.",
+    desc: "I translate what a company needs into what the engineering team builds — defining AI strategy, setting the AI roadmap, and driving AI transformation and digital transformation initiatives. This is the \"click\" that most developers miss. I've done it as CTO, Tech Lead at a NASDAQ company, and Head of AI at an agency.",
     level: "expert" as const,
   },
   {
@@ -22,13 +22,13 @@ const strengths = [
   {
     icon: "🤝",
     title: "Client Conversation & Management",
-    desc: "From agencies to NASDAQ enterprises, I sit with clients, understand their context, map AI to their workflows, and deliver measurable outcomes. Not demos, not slide decks. Real results they can see in their numbers.",
+    desc: "From agencies to NASDAQ enterprises, I sit with clients, understand their context, and drive AI enablement across their organizations. Stakeholder management, mapping AI to workflows, implementing AI governance frameworks, and delivering measurable outcomes. Not demos, not slide decks. Real results they can see in their numbers.",
     level: "expert" as const,
   },
   {
     icon: "🔧",
     title: "LLM Orchestration & Agentic AI",
-    desc: "LangChain, CrewAI, MCP Server, multi-model pipelines, RAG, tool use, guardrails. I define prompting patterns, retrieval logic, evaluation frameworks, and failure modes. This is what I do daily in production.",
+    desc: "LangChain, CrewAI, MCP Server, multi-model pipelines, RAG, NLP, context engineering, tool use, guardrails. I define prompting patterns, retrieval logic, evaluation frameworks, and failure modes. This is what I do daily in production generative AI systems.",
     level: "expert" as const,
   },
   {
