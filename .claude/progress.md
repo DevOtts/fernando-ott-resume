@@ -3,8 +3,8 @@
 ## Status
 - **Project:** Fernando Ott Interactive Resume
 - **Started:** 2026-04-06
-- **Features:** 35 / 35 completed
-- **Last session:** Session 12 — 2026-04-06
+- **Features:** 36 / 36 completed
+- **Last session:** Session 37 — 2026-04-10
 - **Current blocker:** none
 
 ## Pending before full launch
@@ -15,6 +15,18 @@
 - [ ] PostHog key added to `.env.local`
 
 ## Session Log
+
+### Session 37 — 2026-04-10 (dual-target SEO/GEO — Head of AI + AI Engineer)
+**F036 — Dual-target SEO/GEO optimization**
+- **Title tag** (page, OG, Twitter): updated to `Fernando Ott — Head of AI | AI Engineer & Architect` — captures 10K+ AI Engineer listings in addition to Head of AI
+- **Meta description**: added "AI Engineer" and "generative AI" explicitly
+- **Keywords**: expanded from 13 → 29 terms (added AI Engineer, Senior/Staff AI Engineer, AI Strategy, AI Governance, AI Roadmap, AI Transformation, Digital Transformation, AI Enablement, Agentic AI, NLP, MLOps, Deep Learning, Context Engineering, Stakeholder Management, Python, production AI, GenAI)
+- **Person schema** (`app/layout.tsx`): fixed `sameAs` URLs (LinkedIn `feott`, GitHub `DevOtts`, added both YouTube channels); added `worksFor` (8 Figure Agency), `alumniOf` (UFPR); added dual `hasOccupation` array for Head of AI + AI Engineer; expanded `knowsAbout` from 7 → 28 terms
+- **FAQ schema** (new `FAQPage` JSON-LD): 5 Q&As covering both Head of AI and AI Engineer intents — injected as third `<script type="application/ld+json">` in `<head>` (+40% AI citation visibility per Princeton GEO research)
+- **HeroSection**: subtitle updated to `Head of AI & AI Engineer at 8 Figure Agency`; description enriched with bridge statement "I lead AI strategy and build production AI systems with Python, LangChain, and RAG daily" + "agentic AI" + "generative AI"
+- **SkillsSection**: AI/ML group gained Agentic AI, Context Engineering, NLP / Natural Language Processing, Deep Learning; Backend group gained MLOps; Leadership group gained AI Governance, AI Enablement, AI Transformation, Digital Transformation, Stakeholder Management, Cross-functional Leadership
+- **StrengthsSection**: Business Bridge description adds AI strategy/roadmap/transformation; Client Management adds AI enablement + stakeholder management + AI governance; LLM Orchestration adds NLP + context engineering
+- Build and typecheck pass clean
 
 ### Session 29 — 2026-04-08 (knowledge/ moved out of public repo)
 - Added `knowledge/` to `.gitignore` — content is private, never pushed to public repo

@@ -150,15 +150,17 @@ export function HeroSection({ onChatOpen: _onChatOpen }: HeroSectionProps) {
           </h1>
 
           <p style={{ fontSize: "1.15rem", color: "var(--text-mid)", marginBottom: "1.25rem", fontWeight: 400 }}>
-            Head of AI &amp; AI Architect at 8 Figure Agency
+            Head of AI &amp; AI Engineer at 8 Figure Agency
           </p>
 
           <p style={{ fontSize: "1rem", color: "var(--text-soft)", maxWidth: 540, lineHeight: 1.75, marginBottom: "2rem" }}>
-            I design multi-agent AI systems that plug into real business tools,
-            understand context, and make decisions autonomously. My thing is
-            turning complex AI ideas into platforms that actually run in
-            production and move the needle for clients. 16+ years shipping
-            software, 4+ years deploying AI at scale.
+            I lead AI strategy and build production AI systems with Python,
+            LangChain, and RAG daily. I design multi-agent and agentic AI
+            platforms that plug into real business tools, understand context,
+            and make decisions autonomously. My thing is turning complex
+            generative AI ideas into platforms that actually run in production
+            and move the needle for clients. 16+ years shipping software,
+            4+ years deploying AI at scale.
           </p>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
