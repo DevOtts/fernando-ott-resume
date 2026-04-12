@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Ott — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #FAFAF8;
+    --bg-alt: #F0F0EC;
+    --accent: #2563EB;
+    --accent-light: #DBEAFE;
+    --green: #16A34A;
+    --green-light: #DCFCE7;
+    --orange: #EA580C;
+    --text: #1A1A1A;
+    --text-mid: #4A4A4A;
+    --text-soft: #7A7A7A;
+    --text-faint: #A0A0A0;
+    --border: #E5E5E0;
+    --border-light: #EDEDEA;
+    --dark: #0C0C0E;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  html { background: var(--bg); }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-size: 9.5pt;
+  }
+
+  /* ── Page layout ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 14mm 14mm 12mm 14mm;
+    background: #fff;
+    position: relative;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--dark);
+    margin-bottom: 1.25rem;
+  }
+
+  .header-name {
+    font-family: var(--serif);
+    font-size: 30pt;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    color: var(--dark);
+  }
+
+  .header-name span {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-title {
+    font-size: 10pt;
+    color: var(--text-mid);
+    margin-top: 0.3rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .header-contact {
+    text-align: right;
+    font-size: 8pt;
+    color: var(--text-soft);
+    line-height: 2;
+    font-family: var(--mono);
+  }
+
+  .header-contact a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── Two-column body ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    gap: 1.5rem;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    padding-top: 0.2rem;
+  }
+
+  .sidebar-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-label {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .skill-group {
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-group-name {
+    font-size: 7pt;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .skill-tag {
+    font-family: var(--mono);
+    font-size: 6pt;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: var(--bg-alt);
+    color: var(--text-soft);
+    border: 1px solid var(--border);
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 0.35rem;
+  }
+
+  .stat-val {
+    font-family: var(--serif);
+    font-size: 16pt;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 7pt;
+    color: var(--text-soft);
+    line-height: 1.3;
+  }
+
+  .sidebar-info {
+    font-size: 7.5pt;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+
+  .sidebar-info a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── Main column ── */
+  .main {}
+
+  .section {
+    margin-bottom: 1.4rem;
+  }
+
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 17pt;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    color: var(--dark);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ── Summary ── */
+  .summary-text {
+    font-size: 8.8pt;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  /* ── Strengths ── */
+  .strengths-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .strength-card {
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fff;
+  }
+
+  .strength-name {
+    font-family: var(--serif);
+    font-size: 9pt;
+    color: var(--dark);
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .strength-level {
+    font-family: var(--mono);
+    font-size: 5.5pt;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .strength-level.expert {
+    background: var(--green-light);
+    color: var(--green);
+  }
+
+  .strength-level.strong {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .strength-desc {
+    font-size: 7.5pt;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+
+  /* ── Experience ── */
+  .exp-item {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+  }
+
+  .exp-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 2px;
+  }
+
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 12pt;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+
+  .exp-dates {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    color: var(--text-faint);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .exp-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+
+  .exp-company {
+    font-weight: 600;
+    font-size: 8pt;
+    color: var(--text);
+  }
+
+  .exp-dot {
+    color: var(--border);
+    font-size: 7pt;
+  }
+
+  .exp-loc {
+    font-size: 7.5pt;
+    color: var(--text-soft);
+  }
+
+  .exp-desc {
+    font-size: 8pt;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 5px;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .exp-tag {
+    font-family: var(--mono);
+    font-size: 6pt;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--bg-alt);
+    color: var(--text-soft);
+  }
+
+  /* ── Education ── */
+  .edu-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .edu-item:last-child {
+    border-bottom: none;
+  }
+
+  .edu-school {
+    font-family: var(--serif);
+    font-size: 10pt;
+    color: var(--dark);
+    margin-bottom: 1px;
+  }
+
+  .edu-degree {
+    font-size: 7.5pt;
+    color: var(--text-soft);
+  }
+
+  /* ── Divider ── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 0.8rem 0;
+  }
+
+  /* ── Accent strip ── */
+  .accent-bar {
+    background: var(--dark);
+    border-radius: 6px;
+    padding: 10px 14px;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 8px 1.5rem;
+  }
+
+  .accent-stat {
+    text-align: center;
+  }
+
+  .accent-val {
+    font-family: var(--serif);
+    font-size: 15pt;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    display: block;
+  }
+
+  .accent-lbl {
+    font-size: 5.5pt;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── Print ── */
+  @media print {
+    html, body { background: #fff !important; }
+    .page { margin: 0; padding: 12mm 12mm 10mm 12mm; box-shadow: none; }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <div>
+      <div class="header-name">Fernando <span>Ott</span></div>
+      <div class="header-title">
+        Head of AI &nbsp;·&nbsp; AI Engineer &amp; Architect &nbsp;·&nbsp; LLM &amp; Multi-Agent Systems &nbsp;·&nbsp; RAG &nbsp;·&nbsp; AI Strategy<br>
+        Curitiba, Paraná, Brazil &nbsp;·&nbsp; Open to remote / global roles
+      </div>
+    </div>
+    <div class="header-contact">
+      <a href="mailto:ferott@gmail.com">ferott@gmail.com</a><br>
+      <a href="https://www.linkedin.com/in/feott">linkedin.com/in/feott</a><br>
+      <a href="https://fernandoott.com">fernandoott.com</a>
+    </div>
+  </header>
+
+  <!-- ══ BODY GRID ══ -->
+  <div class="body-grid">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+
+      <!-- Key metrics -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">Impact</div>
+        <div class="stat-item">
+          <span class="stat-val">16+</span>
+          <span class="stat-label">years software<br>engineering</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">4+</span>
+          <span class="stat-label">years AI/ML<br>in production</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">25M+</span>
+          <span class="stat-label">users served<br>across products</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">$550K</span>
+          <span class="stat-label">VC raised<br>(Polen)</span>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">AI / ML</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">CrewAI</span>
+          <span class="skill-tag">LangSmith</span>
+          <span class="skill-tag">RAG</span>
+          <span class="skill-tag">MCP</span>
+          <span class="skill-tag">Agentic AI</span>
+          <span class="skill-tag">Prompt Eng.</span>
+          <span class="skill-tag">LLM Eval</span>
+          <span class="skill-tag">OpenAI</span>
+          <span class="skill-tag">Anthropic</span>
+          <span class="skill-tag">Mistral</span>
+          <span class="skill-tag">LLaMA</span>
+          <span class="skill-tag">Ollama</span>
+          <span class="skill-tag">Vector DBs</span>
+          <span class="skill-tag">pgvector</span>
+          <span class="skill-tag">Deep Learning</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Engineering</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">.NET / C#</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Angular</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Supabase</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Observability</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Grafana</span>
+          <span class="skill-tag">Datadog</span>
+          <span class="skill-tag">LangSmith</span>
+          <span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">GitHub</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Leadership</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AI Strategy</span>
+          <span class="skill-tag">Team Lead</span>
+          <span class="skill-tag">Roadmap</span>
+          <span class="skill-tag">Scrum</span>
+          <span class="skill-tag">OKR</span>
+          <span class="skill-tag">Hiring</span>
+          <span class="skill-tag">Cross-func.</span>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">Languages</div>
+        <div class="sidebar-info">
+          🇧🇷 Portuguese — Native<br>
+          🇺🇸 English — Full Professional<br>
+          🇪🇸 Spanish — Limited Working
+        </div>
+      </div>
+
+      <!-- Recognition -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">Recognition</div>
+        <div class="sidebar-info">
+          🏆 Startup Weekend Winner<br>
+          🚀 Start-Up Chile Alum<br>
+          🚀 DotForge Impact UK Alum<br>
+          🌍 Yunus &amp; Youth Fellow
+        </div>
+      </div>
+
+      <!-- Open to -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">Open To</div>
+        <div class="sidebar-info">
+          Head of AI &nbsp;·&nbsp; AI Architect<br>
+          Senior/Staff AI Engineer<br>
+          Remote &nbsp;·&nbsp; Global
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <main class="main">
+
+      <!-- Summary -->
+      <div class="section">
+        <div class="section-tag">Summary</div>
+        <div class="summary-text">
+          I build and lead AI systems that ship to production and move business metrics. As Head of AI at 8 Figure Agency, I architect Brain — a multi-tenant, multi-agent AI platform serving marketing agencies. I define AI strategy, set LLM orchestration patterns (LangChain, CrewAI, MCP), design RAG pipelines, manage evaluation frameworks, and lead a team of AI engineers.
+        </div>
+        <div class="summary-text" style="margin-top:6px;">
+          My work sits at the intersection of AI architecture, product delivery, and cross-functional leadership. I'm equally comfortable defining AI strategy in a boardroom and writing Python to debug a LangChain agent in production. That range — leadership + hands-on engineering — is what I bring to every role.
+        </div>
+      </div>
+
+      <!-- Impact Bar -->
+      <div class="accent-bar">
+        <div class="accent-stat">
+          <span class="accent-val">14×</span>
+          <span class="accent-lbl">Search speed (KeHE)</span>
+        </div>
+        <div class="accent-stat">
+          <span class="accent-val">2×</span>
+          <span class="accent-lbl">Sales conversion (KeHE)</span>
+        </div>
+        <div class="accent-stat">
+          <span class="accent-val">30 hrs</span>
+          <span class="accent-lbl">Saved/client/week (Brain)</span>
+        </div>
+        <div class="accent-stat">
+          <span class="accent-val">5K+</span>
+          <span class="accent-lbl">Companies (Polen)</span>
+        </div>
+        <div class="accent-stat">
+          <span class="accent-val">$1.5M+</span>
+          <span class="accent-lbl">Donated via Polen</span>
+        </div>
+      </div>
+
+      <!-- Strengths -->
+      <div class="section">
+        <div class="section-tag">Core Strengths</div>
+        <div class="strengths-grid">
+          <div class="strength-card">
+            <div class="strength-name">
+              AI Strategy &amp; Roadmap
+              <span class="strength-level expert">Expert</span>
+            </div>
+            <div class="strength-desc">Translating business goals into production AI systems. LLM selection, orchestration patterns, guardrails, ROI framing.</div>
+          </div>
+          <div class="strength-card">
+            <div class="strength-name">
+              LLM Orchestration &amp; Agentic AI
+              <span class="strength-level expert">Expert</span>
+            </div>
+            <div class="strength-desc">Multi-agent architectures, tool use, routing strategies with LangChain, CrewAI, and MCP daily.</div>
+          </div>
+          <div class="strength-card">
+            <div class="strength-name">
+              Hands-On Engineering
+              <span class="strength-level expert">Expert</span>
+            </div>
+            <div class="strength-desc">Python, RAG pipelines, LangChain, vector databases, prompt engineering — shipping code every day.</div>
+          </div>
+          <div class="strength-card">
+            <div class="strength-name">
+              Production ML/AI
+              <span class="strength-level expert">Expert</span>
+            </div>
+            <div class="strength-desc">4+ years deploying generative AI at scale. Evaluation frameworks, observability, not just POCs.</div>
+          </div>
+          <div class="strength-card">
+            <div class="strength-name">
+              Technical Leadership
+              <span class="strength-level strong">Strong</span>
+            </div>
+            <div class="strength-desc">Managed teams of 20+, shipped to 25M+ users. Cross-functional delivery from vision to production.</div>
+          </div>
+          <div class="strength-card">
+            <div class="strength-name">
+              Full-Stack Architecture
+              <span class="strength-level strong">Strong</span>
+            </div>
+            <div class="strength-desc">Python, .NET, Next.js, AWS, Docker, Kubernetes — 16 years of building end-to-end systems.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="section">
+        <div class="section-tag">Career Timeline</div>
+        <div class="section-title">Where I&apos;ve <em>built things</em></div>
+
+        <!-- 8 Figure Agency -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Head of AI &amp; AI Architect</div>
+            <div class="exp-dates">Jul 2025 — Present</div>
+          </div>
+          <div class="exp-meta-row">
+            <span class="exp-company">8 Figure Agency</span>
+            <span class="exp-dot">·</span>
+            <span class="exp-loc">Santa Monica, CA · Remote</span>
+          </div>
+          <div class="exp-desc">
+            I lead the design and execution of Brain, our multi-tenant AI platform connecting to client tools (CRMs, ads platforms, Slack, meetings, data warehouses). I define the technical direction, set LLM strategy (model selection, prompting patterns, tool use, retrieval, guardrails), evaluation frameworks, and production observability with Grafana, Datadog, and LangSmith. I manage a team of AI engineers and researchers. Key result: reduced client operational overhead by 20–30 hrs/week through multi-agent AI automation.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Python</span>
+            <span class="exp-tag">Next.js</span>
+            <span class="exp-tag">LangChain</span>
+            <span class="exp-tag">CrewAI</span>
+            <span class="exp-tag">MCP Server</span>
+            <span class="exp-tag">Vector DBs</span>
+            <span class="exp-tag">MongoDB</span>
+            <span class="exp-tag">Supabase</span>
+            <span class="exp-tag">PostgreSQL</span>
+            <span class="exp-tag">AWS</span>
+            <span class="exp-tag">Grafana</span>
+            <span class="exp-tag">Datadog</span>
+            <span class="exp-tag">LangSmith</span>
+          </div>
+        </div>
+
+        <!-- Otimiza AI -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Lead AI Specialist &amp; Founder</div>
+            <div class="exp-dates">Jan 2024 — Jan 2026</div>
+          </div>
+          <div class="exp-meta-row">
+            <span class="exp-company">Otimiza AI</span>
+            <span class="exp-dot">·</span>
+            <span class="exp-loc">Curitiba, BR · Remote</span>
+          </div>
+          <div class="exp-desc">
+            Founded and led an AI consulting practice integrating AI solutions into client business processes. Designed and implemented AI automation strategies, leveraged data for decision-making, and optimized workflows. Delivered impactful AI-driven solutions aligned to each client's goals — from process automation to AI adoption roadmaps.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Python</span>
+            <span class="exp-tag">LangChain</span>
+            <span class="exp-tag">N8N</span>
+            <span class="exp-tag">Make.com</span>
+            <span class="exp-tag">Vector DBs</span>
+            <span class="exp-tag">Process Automation</span>
+          </div>
+        </div>
+
+        <!-- KeHE -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Tech Lead &amp; Architect</div>
+            <div class="exp-dates">Jul 2022 — Jun 2025</div>
+          </div>
+          <div class="exp-meta-row">
+            <span class="exp-company">KeHE Distributors (NASDAQ: KEHE)</span>
+            <span class="exp-dot">·</span>
+            <span class="exp-loc">Naperville, IL · Remote</span>
+          </div>
+          <div class="exp-desc">
+            Led transformation of the e-commerce search platform for an $8B+ revenue food distributor. Guided POC, selected OpenSearch on AWS, and delivered a 14× search speed improvement and 2× sales conversion lift processing millions of daily queries. Also reduced B2B client onboarding from 15 min to 2 min. Managed multiple teams across retailer and back-office operations. Contracted via Madelabs (Jul '22–Oct '24) then The Bridge (Oct '24–Jun '25).
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">AWS</span>
+            <span class="exp-tag">OpenSearch</span>
+            <span class="exp-tag">.NET 8</span>
+            <span class="exp-tag">Angular</span>
+            <span class="exp-tag">DynamoDB</span>
+            <span class="exp-tag">SQS</span>
+            <span class="exp-tag">PostgreSQL</span>
+            <span class="exp-tag">Datadog</span>
+            <span class="exp-tag">Python</span>
+          </div>
+        </div>
+
+        <!-- Polen -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">CTO &amp; Co-Founder</div>
+            <div class="exp-dates">Nov 2013 — Aug 2024</div>
+          </div>
+          <div class="exp-meta-row">
+            <span class="exp-company">Polen — Corporate Donations Platform</span>
+            <span class="exp-dot">·</span>
+            <span class="exp-loc">Curitiba, BR &amp; International</span>
+          </div>
+          <div class="exp-desc">
+            Built the first social impact Open API in Latin America from scratch. Raised $550K in VC, scaled to 5,000+ companies and 25M+ users, $1.5M+ donated through the platform. Managed ~20 people, implemented OKR &amp; Scrum. Migrated from monolith to microservices (Docker, Kubernetes, Google Cloud). Selected for Start-Up Chile, DotForge (UK), Start You Up (BR), and Yunus &amp; Youth (Global).
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">C# / .NET</span>
+            <span class="exp-tag">Angular</span>
+            <span class="exp-tag">MongoDB</span>
+            <span class="exp-tag">Docker</span>
+            <span class="exp-tag">Kubernetes</span>
+            <span class="exp-tag">Google Cloud</span>
+          </div>
+        </div>
+
+        <!-- Earlier roles (condensed) -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">CTO &amp; Co-Founder</div>
+            <div class="exp-dates">Nov 2016 — Jul 2017</div>
+          </div>
+          <div class="exp-meta-row">
+            <span class="exp-company">Bonuts</span>
+            <span class="exp-dot">·</span>
+            <span class="exp-loc">Curitiba, BR</span>
+          </div>
+          <div class="exp-desc">Built a photo mobile app (iOS + Android) that rewarded users for posting branded-frame photos. Grew to 10K users. Stack: Xamarin, ASP.NET/C#, MongoDB, AWS.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Xamarin</span>
+            <span class="exp-tag">ASP.NET C#</span>
+            <span class="exp-tag">MongoDB</span>
+            <span class="exp-tag">AWS</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Middle Developer → Tech Lead</div>
+            <div class="exp-dates">2008 — 2012</div>
+          </div>
+          <div class="exp-meta-row">
+            <span class="exp-company">FCamara · Many To One · BuscaPé · MPS Informática</span>
+          </div>
+          <div class="exp-desc">
+            Built e-commerce CMS platforms (B2W Group — Walmart.br, Submarino, Americanas), anti-fraud systems (BuscaPé), and justice-sector enterprise software (TJSP). Grew from Junior Developer to Technical Lead across .NET, SQL Server, and early web stacks.
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">ASP.NET / C#</span>
+            <span class="exp-tag">SQL Server</span>
+            <span class="exp-tag">Cassandra</span>
+            <span class="exp-tag">jQuery</span>
+            <span class="exp-tag">MVC</span>
+            <span class="exp-tag">Scrum</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Education -->
+      <div class="section">
+        <div class="section-tag">Education</div>
+        <div class="edu-item">
+          <div class="edu-school">Universidade Federal do Paraná</div>
+          <div class="edu-degree">B.Sc. Computer Science — 2007–2011</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Microsoft</div>
+          <div class="edu-degree">Program Student to Business (S2B), C# — 2008</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">St. George International College</div>
+          <div class="edu-degree">English Language, Vancouver — 2006</div>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- /body-grid -->
+
+</div><!-- /page -->
+
+</body>
+</html>
