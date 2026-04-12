@@ -1,5 +1,3 @@
-"use client";
-
 // ─────────────────────────────────────────────────────────────────────────────
 // /resume — print-optimised page, same design system as the main site.
 // Open at localhost:3000/resume then File → Print → Save as PDF (A4, no margins)
@@ -129,6 +127,18 @@ const shipped = [
 /* ── component ── */
 
 export default function ResumePage() {
+  const email = process.env.RESUME_EMAIL ?? "";
+  const whatsapp = process.env.RESUME_WHATSAPP ?? ""; // e.g. 5541999193736
+
+  const contacts = [
+    { href: "https://www.linkedin.com/in/feott", label: "linkedin.com/in/feott", icon: "https://img.freepik.com/vetores-premium/vector-linkedin-apps-logo-em-arredondado-ativo-isolado_1004619-457.jpg?semt=ais_hybrid&w=740&q=80" },
+    { href: "https://github.com/devotts", label: "github.com/devotts", icon: "https://cdn.simpleicons.org/github/000000" },
+    { href: "https://fernandoott.com", label: "fernandoott.com", icon: "https://cdn.simpleicons.org/firefox/FF7139" },
+    ...(email ? [{ href: `mailto:${email}`, label: email, icon: "https://cdn.simpleicons.org/gmail/EA4335" }] : []),
+    ...(whatsapp ? [{ href: `https://wa.me/${whatsapp}`, label: `+${whatsapp.replace(/(\d{2})(\d{2})(\d{5})(\d{4})/, "$1 $2 $3-$4")}`, icon: "https://cdn.simpleicons.org/whatsapp/25D366" }] : []),
+    { href: "https://www.youtube.com/@otimiza-ai", label: "@otimiza-ai", icon: "https://cdn.simpleicons.org/youtube/FF0000" },
+  ];
+
   return (
     <>
       <style>{`
@@ -702,14 +712,7 @@ export default function ResumePage() {
             {/* Contacts */}
             <div className="sb-contacts">
               <span className="sb-label">Contacts</span>
-              {[
-                { href: "https://www.linkedin.com/in/feott", label: "linkedin.com/in/feott", icon: "https://img.freepik.com/vetores-premium/vector-linkedin-apps-logo-em-arredondado-ativo-isolado_1004619-457.jpg?semt=ais_hybrid&w=740&q=80" },
-                { href: "https://github.com/devotts", label: "github.com/devotts", icon: "https://cdn.simpleicons.org/github/000000" },
-                { href: "https://fernandoott.com", label: "fernandoott.com", icon: "https://cdn.simpleicons.org/firefox/FF7139" },
-                { href: "mailto:ferott@gmail.com", label: "ferott@gmail.com", icon: "https://cdn.simpleicons.org/gmail/EA4335" },
-                { href: "https://wa.me/5541999193736", label: "+55 41 99919-3736", icon: "https://cdn.simpleicons.org/whatsapp/25D366" },
-                { href: "https://www.youtube.com/@otimiza-ai", label: "@otimiza-ai", icon: "https://cdn.simpleicons.org/youtube/FF0000" },
-              ].map((c) => (
+              {contacts.map((c) => (
                 <a key={c.href} href={c.href} className="sb-contact-item">
                   <span className="sb-contact-icon">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
