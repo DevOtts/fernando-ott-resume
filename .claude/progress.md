@@ -225,6 +225,12 @@
 - Same depth illusion applied to cards (opacity + scale + shadow scale with sin(angle))
 - Removed static absolutely-positioned floating card divs and photo-card CSS rule
 
+### Session 39 — 2026-04-11 (/resume page enhancements)
+- Added hero strip to `/resume` page: profile photo with pulse ring, "Open to new opportunities" badge, tagline, and accent tech tags — positioned between the header and the dark metrics bar
+- Added "What I've Shipped" section (2-column grid of 4 project cards) after the Career Timeline and before Skills — each card has project name, green result badge, company, description, and tech tags (Brain/8FA, KeHE Search, Polen, Otimiza AI)
+- Added Contacts section as first item in the sidebar: LinkedIn, GitHub, website (fernandoott.com), email, and WhatsApp with brand icons via simpleicons.org CDN — all clickable links
+- These changes are designed for printing to PDF from /resume — print-optimised sizing, no JS dependencies
+
 ### Session 5 — 2026-04-06 (radial orbital timeline effect)
 - Replaced CSS keyframe orbit with JS-driven trigonometric positioning (setInterval 50ms tick)
 - Matches radial-orbital-timeline pattern: angle increments each tick, x/y from cos/sin
