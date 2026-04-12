@@ -195,14 +195,34 @@ export default function ResumePage() {
           margin-top: 4px;
           line-height: 1.6;
         }
-        .rh-contact {
-          text-align: right;
-          font-family: var(--mono);
-          font-size: 8.5px;
-          color: var(--text-soft);
-          line-height: 2;
+        .rh-qr {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+          flex-shrink: 0;
         }
-        .rh-contact a { color: var(--accent); text-decoration: none; }
+        .rh-qr img {
+          width: 56px;
+          height: 56px;
+          display: block;
+          border-radius: 4px;
+        }
+        .rh-qr-label {
+          font-family: var(--mono);
+          font-size: 6px;
+          color: var(--text-faint);
+          text-align: center;
+          line-height: 1.4;
+        }
+        .rh-qr-cta {
+          font-family: var(--mono);
+          font-size: 6.5px;
+          font-weight: 600;
+          color: var(--accent);
+          text-align: center;
+          line-height: 1.4;
+        }
 
         /* ── metrics bar ── */
         .metrics-bar {
@@ -624,10 +644,14 @@ export default function ResumePage() {
               Curitiba, Paraná, Brazil &nbsp;·&nbsp; Remote · Global
             </div>
           </div>
-          <div className="rh-contact">
-            <a href="mailto:ferott@gmail.com">ferott@gmail.com</a><br />
-            <a href="https://www.linkedin.com/in/feott">linkedin.com/in/feott</a><br />
-            <a href="https://fernandoott.com">fernandoott.com</a>
+          <div className="rh-qr">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=168x168&data=https%3A%2F%2Ffernandoott.com%3Futm_source%3Dresume&bgcolor=ffffff&color=0c0c0e&margin=4"
+              alt="QR code — fernandoott.com"
+            />
+            <div className="rh-qr-cta">Talk with my AI Clone</div>
+            <div className="rh-qr-label">fernandoott.com</div>
           </div>
         </header>
 
@@ -679,7 +703,7 @@ export default function ResumePage() {
             <div className="sb-contacts">
               <span className="sb-label">Contacts</span>
               {[
-                { href: "https://www.linkedin.com/in/feott", label: "linkedin.com/in/feott", icon: "https://cdn.simpleicons.org/linkedin/0A66C2" },
+                { href: "https://www.linkedin.com/in/feott", label: "linkedin.com/in/feott", icon: "https://img.freepik.com/vetores-premium/vector-linkedin-apps-logo-em-arredondado-ativo-isolado_1004619-457.jpg?semt=ais_hybrid&w=740&q=80" },
                 { href: "https://github.com/devotts", label: "github.com/devotts", icon: "https://cdn.simpleicons.org/github/000000" },
                 { href: "https://fernandoott.com", label: "fernandoott.com", icon: "https://cdn.simpleicons.org/firefox/FF7139" },
                 { href: "mailto:ferott@gmail.com", label: "ferott@gmail.com", icon: "https://cdn.simpleicons.org/gmail/EA4335" },
