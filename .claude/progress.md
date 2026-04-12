@@ -16,6 +16,20 @@
 
 ## Session Log
 
+### Session 40 — 2026-04-11 (/resume privacy + PDF regeneration)
+- Moved email (`RESUME_EMAIL`) and WhatsApp (`RESUME_WHATSAPP`) out of source code into server-side env vars — values read via `process.env` at render, never committed to repo
+- Contacts in sidebar are conditionally rendered — omitted if env var is unset (safe default for public repo)
+- Removed unnecessary `"use client"` from `/resume/page.tsx` — now a proper server component
+- Updated `.env.example` with new vars and comments; `.env.local` has real values
+- Regenerated `docs/fernando-ott-resume.pdf` via Playwright (399KB) — includes hero strip, QR code header, all six contacts, and "What I've Shipped" section
+
+### Session 39 — 2026-04-11 (/resume page enhancements)
+- Added hero strip to `/resume` page: profile photo with pulse ring, "Open to new opportunities" badge, tagline, and accent tech tags — positioned between the header and the dark metrics bar
+- Added "What I've Shipped" section (2-column grid of 4 project cards) after Career Timeline and before Skills — each card has project name, green result badge, company, description, and tech tags
+- Added Contacts sidebar section as first item: LinkedIn (rounded blue logo), GitHub, website, email, WhatsApp, YouTube (@otimiza-ai) with brand icons
+- Replaced header email/linkedin/website links with a QR code (→ fernandoott.com?utm_source=resume) and "Talk with my AI Clone" CTA
+- Regenerated `docs/fernando-ott-resume.pdf` with all changes
+
 ### Session 38 — 2026-04-11 (PDF resume from website design system)
 - Created `docs/resume.html` — standalone HTML resume matching the site's exact design tokens (Instrument Serif, IBM Plex Mono, accent #2563EB, dark impact bar, same color variables)
 - Generated `docs/fernando-ott-resume.pdf` via headless Playwright (A4, print-optimized, 2 pages)
