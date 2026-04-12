@@ -708,6 +708,7 @@ export default function ResumePage() {
                 { href: "https://fernandoott.com", label: "fernandoott.com", icon: "https://cdn.simpleicons.org/firefox/FF7139" },
                 { href: "mailto:ferott@gmail.com", label: "ferott@gmail.com", icon: "https://cdn.simpleicons.org/gmail/EA4335" },
                 { href: "https://wa.me/5541999193736", label: "+55 41 99919-3736", icon: "https://cdn.simpleicons.org/whatsapp/25D366" },
+                { href: "https://www.youtube.com/@otimiza-ai", label: "@otimiza-ai", icon: "https://cdn.simpleicons.org/youtube/FF0000" },
               ].map((c) => (
                 <a key={c.href} href={c.href} className="sb-contact-item">
                   <span className="sb-contact-icon">
