@@ -16,6 +16,13 @@
 
 ## Session Log
 
+### Session 38 — 2026-04-11 (PDF resume from website design system)
+- Created `docs/resume.html` — standalone HTML resume matching the site's exact design tokens (Instrument Serif, IBM Plex Mono, accent #2563EB, dark impact bar, same color variables)
+- Generated `docs/fernando-ott-resume.pdf` via headless Playwright (A4, print-optimized, 2 pages)
+- Layout: two-column (148px sidebar + main), sidebar has impact metrics, skill tags, languages, recognition; main has summary, dark accent bar (14×/2×/30hrs/5K+/$1.5M+), strengths grid, full career timeline, education
+- Content sourced from `docs/linkedin-profile.pdf` (all 9 pages) + live `ExperienceSection.tsx` component
+- Committed as 5150b93
+
 ### Session 37 — 2026-04-10 (dual-target SEO/GEO — Head of AI + AI Engineer)
 **F036 — Dual-target SEO/GEO optimization**
 - **Title tag** (page, OG, Twitter): updated to `Fernando Ott — Head of AI | AI Engineer & Architect` — captures 10K+ AI Engineer listings in addition to Head of AI
