@@ -16,15 +16,14 @@
 
 ## Session Log
 
-### Session 41 — 2026-04-30 (broken hero photo — diagnosis only, awaiting user decision)
-- User reported the hero profile photo is broken in production
-- Root cause: hero `<img>` src is a LinkedIn signed CDN URL with `e=1776902400` (Apr 20, 2026) — expired before today (2026-04-30), so `media.licdn.com` now returns 403
-- Three call sites use the same expired URL:
-  - [components/HeroSection.tsx:379](components/HeroSection.tsx#L379) — main site hero
-  - [app/resume/page.tsx:674](app/resume/page.tsx#L674) — `/resume` page (also feeds the PDF)
-  - [README.md:2](README.md#L2) — repo readme
-- `public/favicon-fernando-ott.png` exists (386KB) but is a stylized red-circle composite, not a clean headshot — would look bad as the 180px hero photo
-- **Status:** awaiting user choice between option A (use the existing favicon as-is, fast) or option B (provide a clean self-hosted headshot path). No code changed, no commit.
+### Session 41 — 2026-04-30 (fix: broken hero photo in production)
+- Bug: hero `<img>` 403'd in production. Root cause was a LinkedIn signed CDN URL with `e=1776902400` (Apr 20, 2026) that expired before today (2026-04-30) — `media.licdn.com` returns 403 once the signature lapses
+- Fix: replaced the LinkedIn URL with a self-hosted asset (`public/devotts-profile.png`, supplied by the user) in three call sites:
+  - `components/HeroSection.tsx` (main hero)
+  - `app/resume/page.tsx` (resume page hero strip — also feeds the PDF)
+  - `README.md` (repo header)
+- Removed the now-unused `media.licdn.com` entry from `next.config.ts` `images.remotePatterns`
+- `pnpm typecheck` and `pnpm build` pass clean
 
 ### Session 40 — 2026-04-11 (/resume privacy + PDF regeneration)
 - Moved email (`RESUME_EMAIL`) and WhatsApp (`RESUME_WHATSAPP`) out of source code into server-side env vars — values read via `process.env` at render, never committed to repo
