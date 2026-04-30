@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://media.licdn.com/dms/image/v2/D4D03AQGLRfIttnbNkA/profile-displayphoto-scale_400_400/B4DZrLOHGnG8Ag-/0/1764346067628?e=1776902400&v=beta&t=SBczeajmRTKGsCVbCaaun0QQD1NfASdxhaz7k8tcB6M" width="120" style="border-radius:50%" alt="Fernando Ott" />
+  <img src="public/devotts-profile.png" width="120" style="border-radius:50%" alt="Fernando Ott" />
 </p>
 
 <h1 align="center">Fernando Ott</h1>

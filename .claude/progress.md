@@ -16,6 +16,16 @@
 
 ## Session Log
 
+### Session 41 — 2026-04-30 (broken hero photo — diagnosis only, awaiting user decision)
+- User reported the hero profile photo is broken in production
+- Root cause: hero `<img>` src is a LinkedIn signed CDN URL with `e=1776902400` (Apr 20, 2026) — expired before today (2026-04-30), so `media.licdn.com` now returns 403
+- Three call sites use the same expired URL:
+  - [components/HeroSection.tsx:379](components/HeroSection.tsx#L379) — main site hero
+  - [app/resume/page.tsx:674](app/resume/page.tsx#L674) — `/resume` page (also feeds the PDF)
+  - [README.md:2](README.md#L2) — repo readme
+- `public/favicon-fernando-ott.png` exists (386KB) but is a stylized red-circle composite, not a clean headshot — would look bad as the 180px hero photo
+- **Status:** awaiting user choice between option A (use the existing favicon as-is, fast) or option B (provide a clean self-hosted headshot path). No code changed, no commit.
+
 ### Session 40 — 2026-04-11 (/resume privacy + PDF regeneration)
 - Moved email (`RESUME_EMAIL`) and WhatsApp (`RESUME_WHATSAPP`) out of source code into server-side env vars — values read via `process.env` at render, never committed to repo
 - Contacts in sidebar are conditionally rendered — omitted if env var is unset (safe default for public repo)

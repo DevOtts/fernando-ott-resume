@@ -671,7 +671,7 @@ export default function ResumePage() {
             <div className="hero-pulse" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://media.licdn.com/dms/image/v2/D4D03AQGLRfIttnbNkA/profile-displayphoto-scale_400_400/B4DZrLOHGnG8Ag-/0/1764346067628?e=1776902400&v=beta&t=SBczeajmRTKGsCVbCaaun0QQD1NfASdxhaz7k8tcB6M"
+              src="/devotts-profile.png"
               alt="Fernando Ott"
             />
           </div>
